@@ -12,11 +12,11 @@
 				<h2>Login</h2>
 				<div class="parameter">
 					<p><label for="email">Email</label></p>
-					<p><input type="email" placeholder="myepicemail@cloud.xyz"></p>
+					<p><input type="email" placeholder="myepicemail@cloud.xyz" required="required"></p>
 				</div>
 				<div class="parameter">
 					<p><label for="password">Password</label></p>
-					<p><input type="password" placeholder="iliketurtles420"></p>
+					<p><input type="password" placeholder="iliketurtles420" required="required"></p>
 				</div>
 				<button type="submit">Login</button>
 				<p>Not registered yet? <a href="/register/">Register here</a></p>
