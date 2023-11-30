@@ -1,8 +1,38 @@
 main {
-	margin: 0;
+	margin: 20dvh 0 0 0;
 	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
+	align-items: center;
+	justify-items: center;
+	gap: 60px;
 }
 
+form > :first-child {
+	margin: 0;
+}
+
+@media only screen and (min-width: 700px) {
+	main {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	main > :first-child {
+		justify-self: self-end;
+	}
+
+	main > form {
+		justify-self: self-start;
+	}
+}
+
+button {
+	width: 100px;
+	height: 50px;
+	transition: 100ms;
+}
+
+.parameter {
+	margin: 30px 0;
+}
