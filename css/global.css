@@ -47,3 +47,25 @@ button.secondary {
 button:hover {
 	cursor: pointer;
 }
+
+input {
+	background: var(--bg);
+	padding: 0.6em 1.2em;
+	border: solid 1px var(--fg);
+	color: var(--fg);
+	border-radius: 4px;
+	transition: 300ms;
+
+	font-size: 16px;
+}
+
+input:focus {
+	outline: none;
+
+	border-color: var(--accent);
+}
+
+a, a:visited, a:active {
+	color: var(--accent);
+	text-decoration: none;
+}
