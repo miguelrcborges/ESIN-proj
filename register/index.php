@@ -8,7 +8,7 @@
 	<body class="dark">
 		<main>
 			<div style="background-color:orange;width:300px;height:300px"></div>
-			<form action ="/process.php" method ="post" >
+			<form action="/actions/register" method="POST">
 				<h2>Register</h2>
 				<p><label for="email">Email</label></p>
 				<p><input type="email" name="user_email" required="required" ></p>
