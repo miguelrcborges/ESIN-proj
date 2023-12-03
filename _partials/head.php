@@ -1,3 +1,10 @@
+<?php
+	session_start();
+
+	$msg = $_SESSION['msg'];
+	unset($_SESSION['msg']);
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>

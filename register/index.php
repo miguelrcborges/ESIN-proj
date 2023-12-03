@@ -6,8 +6,11 @@
 <body class="dark">
 	<main>
 		<div style="background-color:orange;width:300px;height:300px"></div>
-		<form action ="/actions/register/" method ="post" >
+		<form action="/actions/register/" method="POST" >
 			<h2>Register</h2>
+<?php if (isset($msg)) { ?>
+			<span><?php echo $msg ?></span>
+<?php } ?>
 			<div class="parameter">
 				<p><label for="email">Email</label></p>
 				<p><input type="email" name="user_email" placeholder="johnsmith@domain.xyz" required="required" ></p>

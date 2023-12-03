@@ -1,15 +1,17 @@
 <?php
+	session_start();
 	$email = $_POST['user_email'];
 	$pass = $_POST['password'];
 	$confirm = $_POST['confirm'];
 
-	# checks if both passwords are equal
 	if ($confirm != $pass) {
-		# TODO(Inserting user in the database)
-		# TODO(Pass error message)
+		$_SESSION['msg'] = "The passwords don't match";
 		header('Location:/register/');
-	} else {
-		# TODO(Pass succesful message)
-		header('Location:/')
+		die();
 	}
+	
+	# TODO(Inserting user in the database && other needed checks)
+	$_SESSION['msg'] = "The registration was done sucessfully";
+	header('Location:/');
+	die();
 ?>
