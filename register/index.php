@@ -5,15 +5,19 @@
 ?>
 <body class="dark">
 	<main>
-		<div style="background-color:orange;width:300px;height:300px"></div>
+		<img src="/assets/logo.png">
 		<form action="/actions/register/" method="POST" >
 			<h2>Register</h2>
 <?php if (isset($msg)) { ?>
 			<span><?php echo $msg ?></span>
 <?php } ?>
 			<div class="parameter">
-				<p><label for="email">Email</label></p>
-				<p><input type="email" name="user_email" placeholder="johnsmith@domain.xyz" required="required" ></p>
+				<p><label for="name">Name</label></p>
+				<p><input type="text" name="name" placeholder="Jon Smith" required="required"></p>
+			</div>
+			<div class="parameter">
+				<p><label for="username">Username</label></p>
+				<p><input type="text" name="username" placeholder="jsmith" required="required"></p>
 			</div>
 			<div class="parameter">
 				<p><label for="password">Password</label></p>

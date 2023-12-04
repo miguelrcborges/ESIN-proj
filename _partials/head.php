@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$msg = $_SESSION['msg'];
+	$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : null;
 	unset($_SESSION['msg']);
 ?>
 
@@ -11,4 +11,5 @@
 	<title>Web Jonas<?php if ($title) { echo " - $title"; } ?></title>
 	<link rel="stylesheet" href="/css/global.css">
 	<?php if ($css) { ?><link rel="stylesheet" href="/css/<?php echo "$css"; ?>.css"><?php } ?>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 </head>

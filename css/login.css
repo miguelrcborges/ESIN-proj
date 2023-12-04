@@ -1,6 +1,5 @@
 body {
 	min-height: 95dvh;
-	padding: 50px 50px;
 	display: flex;
 	align-items: center;
 	justify-items: center;
@@ -13,14 +12,22 @@ main {
 	grid-template-columns: 1fr;
 	align-items: center;
 	justify-items: center;
-	gap: 60px;
+	gap: 10px;
+}
+
+main > * {
+	padding: 25px;
 }
 
 form > :first-child {
 	margin: 0;
 }
 
-@media only screen and (min-width: 700px) {
+img {
+	max-width: 300px;
+}
+
+@media (orientation: landscape) {
 	main {
 		grid-template-columns: 1fr 1fr;
 	}
