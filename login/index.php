@@ -5,19 +5,19 @@
 ?>
 <body class="dark">
 	<main>
-		<div style="background-color:orange;width:300px;height:300px"></div>
+		<img src="/assets/logo.png">
 		<form action="/actions/login/" method="POST">
 			<h2>Login</h2>
 <?php if (isset($msg)) { ?>
 			<span><?php echo $msg ?></span>
 <?php } ?>
 			<div class="parameter">
-				<p><label for="email">Email</label></p>
-				<p><input type="email" name="user_email" placeholder="myepicemail@cloud.xyz" required="required"></p>
+				<p><label for="username">Username</label></p>
+				<p><input type="text" name="username" placeholder="jsmith" required="required"></p>
 			</div>
 			<div class="parameter">
 				<p><label for="password">Password</label></p>
-				<p><input type="password" name="password" placeholder="iliketurtles420" required="required"></p>
+				<p><input type="password" name="password" placeholder="snakegoodfriend420" required="required"></p>
 			</div>
 			<button type="submit">Login</button>
 			<p>Not registered yet? <a href="/register/">Register here</a></p>
