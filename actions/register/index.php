@@ -24,7 +24,7 @@
 
 	$dbh = new PDO('sqlite:../../db');
 
-	$sq = $dbh->prepare('SELECT * FROM Student WHERE username=? LIMIT 1;');
+	$sq = $dbh->prepare('SELECT * FROM Student WHERE username=?;');
 	$sq->execute([$username]);
 	$user_exists = $sq->fetch();
 	if ($user_exists) {
@@ -36,7 +36,12 @@
 	$pw_hash = password_hash($password, PASSWORD_DEFAULT);
 	$iq = $dbh->prepare('INSERT INTO Student (name, username, password_hash, creation_date)
 	 	VALUES (?, ?, ?, ?)');
-	$iq->execute([$name, $username, $pw_hash, time()]);
+	$res = $iq->execute([$name, $username, $pw_hash, time()]);
+	if (!$res) {
+		$_SESSION['msg'] = "Failed to add user. Please try again. If the problem persists, contact the support.";
+		header('Location:/register/');
+		die();
+	}
 	$_SESSION['msg'] = "The registration was done sucessfully";
 	header('Location:/');
 	die();

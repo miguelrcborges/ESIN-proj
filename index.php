@@ -1,6 +1,11 @@
 <?php 
 	$css = "index";
 	include_once("_partials/head.php");
+
+	if (isset($_SESSION['user_id'])) {
+		echo '<body class="dark"><a href="/actions/logout">Logout</a></body>';
+		die();
+	}
 ?>
 <body class="dark">
 	<main>
