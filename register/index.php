@@ -1,9 +1,11 @@
 <?php 
+	include("../_partials/redirect_logged.php");
+
 	$title = "Register";
-	$css = "login";
+	$css = ["login"];
 	include('../_partials/head.php'); 
 ?>
-<body class="dark">
+<body>
 	<main>
 		<img src="/assets/logo.png">
 		<form action="/actions/register/" method="POST" >

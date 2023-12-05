@@ -1,0 +1,24 @@
+header {
+	padding: 10px 20px;
+	display: flex;
+	justify-content: space-between;
+
+	border-bottom: 2px solid var(--fg);
+}
+
+header > img {
+	max-height: 70px;
+}
+
+header > ul {
+	display: flex;
+	align-items: flex-end;
+	gap: 15px;
+}
+
+header > ul > a > li {
+	list-style-type: none;
+	color: var(--fg);
+	font-size: 18px;
+	font-weight: 700;
+}

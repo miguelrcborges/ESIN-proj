@@ -1,11 +1,8 @@
 <?php 
-	$css = "index";
-	include_once("_partials/head.php");
+	include("_partials/redirect_logged.php");
 
-	if (isset($_SESSION['user_id'])) {
-		echo '<body class="dark"><a href="/actions/logout">Logout</a></body>';
-		die();
-	}
+	$css = ["index"];
+	include_once("_partials/head.php");
 ?>
 <body class="dark">
 	<main>
