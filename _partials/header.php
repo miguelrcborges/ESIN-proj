@@ -5,11 +5,13 @@
 			<?php if ($user_is_admin) { echo "<a href='/admin/'><li>Admin Panel</li></a>"; } ?>
 			<a href="/forum/"><li>Forum</li></a>
 			<a href="/exercises/"><li>Exercises</li></a>
+			<a href="/actions/change_theme/"><li>
 <?php if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
-	echo "<a href='/actions/dark_theme/'><li>Dark Theme</li></a>"; 
+	echo "Dark Theme"; 
 } else {
-	echo "<a href='/actions/light_theme/'><li>Light Theme</li></a>";
+	echo "Light Theme";
 }?>
+			</li></a>
 		</ul>
 		<a id="menu" href="/links/">
 			<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

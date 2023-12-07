@@ -14,11 +14,13 @@
 <?php } ?>
 			<a href="/forum/"><li>Forum</li></a>
 			<a href="/exercises/"><li>Exercises</li></a>
+			<a href='/actions/change_theme/'><li>
 <?php if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
-	echo "<a href='/actions/dark_theme/'><li>Dark Theme</li></a>"; 
+	echo "Dark Theme";
 } else {
-	echo "<a href='/actions/light_theme/'><li>Light Theme</li></a>";
+	echo "Light Theme";
 }?>
+			</li></a>
 		</ul>
 	</main>
 </body>
