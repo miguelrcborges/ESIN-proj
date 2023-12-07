@@ -20,5 +20,6 @@
 		echo "<link rel='stylesheet' href='/css/$file.css'>";
 	}
 ?>
+	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 </head>

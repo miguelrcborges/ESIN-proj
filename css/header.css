@@ -6,7 +6,7 @@ header {
 	border-bottom: 2px solid var(--fg);
 }
 
-header > img {
+header > a > img {
 	max-height: 70px;
 }
 
@@ -21,4 +21,30 @@ header > ul > a > li {
 	color: var(--fg);
 	font-size: 18px;
 	font-weight: 700;
+}
+
+#menu {
+	display: none;
+}
+
+
+@media (orientation: portrait) or (max-width: 650px) {
+	#menu > svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	#menu > svg > path {
+		stroke: var(--fg)
+	}
+
+	#menu {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	header > ul {
+		display: none;
+	}
 }
