@@ -1,11 +1,13 @@
 <?php 
+	include("../_partials/redirect_logged.php");
+
 	$title = "Login";
-	$css = "login";
+	$css = ["login"];
 	include('../_partials/head.php'); 
 ?>
-<body class="dark">
+<body>
 	<main>
-		<img src="/assets/logo.png">
+		<a href="/"><img src="/assets/logo.png"></a>
 		<form action="/actions/login/" method="POST">
 			<h2>Login</h2>
 <?php if (isset($msg)) { ?>

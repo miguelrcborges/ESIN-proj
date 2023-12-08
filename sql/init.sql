@@ -8,10 +8,10 @@ DROP TABLE IF EXISTS QuestionAttempts;
 DROP TABLE IF EXISTS QuestionRating;
 DROP TABLE IF EXISTS Question;
 DROP TABLE IF EXISTS StudentUCs;
+DROP TABLE IF EXISTS Course;
+DROP TABLE IF EXISTS Role;
 DROP TABLE IF EXISTS UC;
 DROP TABLE IF EXISTS Student;
-DROP TABLE IF EXISTS Role;
-DROP TABLE IF EXISTS Course;
 
 
 CREATE TABLE Student (
@@ -24,6 +24,14 @@ CREATE TABLE Student (
 	course_id INTEGER,
 	FOREIGN KEY (role_id) REFERENCES Role(id),
 	FOREIGN KEY (course_id) REFERENCES Course(id)
+
+CREATE TABLE UC (
+	id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	semester INTEGER NOT NULL,
+	year INTEGER NOT NULL,
+	course INTEGER NOT NULL,
+	FOREIGN KEY (course) REFERENCES Course(id)
 );
 
 CREATE TABLE Role (
@@ -46,6 +54,18 @@ CREATE TABLE UC (
 );
 
 
+CREATE TABLE Student (
+	id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	username TEXT UNIQUE NOT NULL,
+	password_hash TEXT NOT NULL,
+	creation_date INTEGER NOT NULL,
+	role_id INTEGER NOT NULL DEFAULT 1,
+	course_id INTEGER,
+	FOREIGN KEY (role_id) REFERENCES Role(id),
+	FOREIGN KEY (course_id) REFERENCES Course(id)
+);
+
 CREATE TABLE StudentUCs (
 	student INTEGER,
 	uc INTEGER,
@@ -53,7 +73,6 @@ CREATE TABLE StudentUCs (
 	FOREIGN KEY (student) REFERENCES Student(id),
 	FOREIGN KEY (uc) REFERENCES UC(id)
 );
-
 
 CREATE TABLE Question (
 	id INTEGER PRIMARY KEY,
@@ -68,7 +87,6 @@ CREATE TABLE Question (
 	FOREIGN KEY (uc) REFERENCES UC(id)
 );
 
-
 CREATE TABLE QuestionRating (
 	student INTEGER,
 	question INTEGER,
@@ -78,7 +96,6 @@ CREATE TABLE QuestionRating (
 	FOREIGN KEY (student) REFERENCES Student(id),
 	FOREIGN KEY (question) REFERENCES Question(id)
 );
-
 
 CREATE TABLE QuestionAttempts (
 	student INTEGER,
@@ -90,7 +107,6 @@ CREATE TABLE QuestionAttempts (
 	FOREIGN KEY (question) REFERENCES Question(id)
 );
 
-
 CREATE TABLE Thread (
 	id INTEGER PRIMARY KEY,
 	title TEXT NOT NULL,
@@ -99,7 +115,6 @@ CREATE TABLE Thread (
 	author INTEGER NOT NULL,
 	FOREIGN KEY (author) REFERENCES Student(id)
 );
-
 
 CREATE TABLE Reply (
 	id INTEGER PRIMARY KEY,
@@ -110,7 +125,6 @@ CREATE TABLE Reply (
 	FOREIGN KEY (author) REFERENCES Student(id),
 	FOREIGN KEY (thread) REFERENCES Thread(id)
 );
-
 
 CREATE TABLE NotificationLevel (
 	student INTEGER,

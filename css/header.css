@@ -1,0 +1,94 @@
+header {
+	padding: 10px 20px;
+	display: flex;
+	justify-content: space-between;
+
+	border-bottom: 2px solid var(--fg);
+}
+
+header > a > img {
+	max-height: 70px;
+}
+
+header > ul {
+	display: flex;
+	align-items: flex-end;
+	gap: 15px;
+}
+
+header > ul > a > li {
+	list-style-type: none;
+	color: var(--fg);
+	font-size: 18px;
+	font-weight: 700;
+}
+
+#menu {
+	display: none;
+}
+
+nav {
+	display: none;
+}
+
+
+@media (orientation: portrait) or (max-width: 650px) {
+	#menu > svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	#menu > svg > path {
+		stroke: var(--fg)
+	}
+
+	#menu {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	header > ul {
+		display: none;
+	}
+
+	#nav:checked + nav {
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		display: block;
+		background: var(--bg);
+		padding: 20px 40px 20px 20px;
+		border-left: 2px solid var(--fg);
+		z-index: 1;
+	}
+
+	#close-menu > svg > g > path {
+		stroke: var(--fg);
+	}
+
+	#close-menu > svg {
+		width: 32px;
+		height: 32px;
+	}
+
+	#menu, #close-menu {
+		cursor: pointer;
+	}
+
+	nav ul {
+		padding: 0;
+	}
+
+	nav li {
+		list-style: none;
+		color: var(--fg);
+		font-weight: 700;
+		font-size: 20px;
+		padding: 8px 0;
+		border-top: 2px solid var(--fg);
+		border-bottom: 2px solid var(--fg);
+		margin: 24px 0;
+	}
+}

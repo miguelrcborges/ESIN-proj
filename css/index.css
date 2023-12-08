@@ -33,10 +33,5 @@ button {
 }
 
 button:hover {
-	transform: translateY(-10px);
-	box-shadow: 5px 2px 3px var(--primary);
-}
-
-button.secondary:hover {
-	box-shadow: 5px 2px 3px var(--secondary);
+	transform: translateY(-3px);
 }

@@ -1,5 +1,7 @@
 <?php 
-	$css = "index";
+	include("_partials/redirect_logged.php");
+
+	$css = ["index"];
 	include_once("_partials/head.php");
 
 	if (isset($_SESSION['user_id'])) {

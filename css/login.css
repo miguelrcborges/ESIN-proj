@@ -27,7 +27,7 @@ img {
 	max-width: 300px;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-width: 650px) {
 	main {
 		grid-template-columns: 1fr 1fr;
 	}
