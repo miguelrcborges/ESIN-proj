@@ -24,6 +24,7 @@ CREATE TABLE Student (
 	course_id INTEGER,
 	FOREIGN KEY (role_id) REFERENCES Role(id),
 	FOREIGN KEY (course_id) REFERENCES Course(id)
+);
 
 CREATE TABLE UC (
 	id INTEGER PRIMARY KEY,
