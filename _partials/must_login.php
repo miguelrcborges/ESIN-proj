@@ -1,6 +1,4 @@
 <?php
-	session_start();
-
 	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['msg'] = "Only registered users can see the following page";
 		header('Location:/');

@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	include("_partials/redirect_logged.php");
 
 	$css = ["index"];
@@ -9,7 +10,7 @@
 		die();
 	}
 ?>
-<body class="dark">
+<body>
 	<main>
 		<img src="/assets/webjonas.png">
 <?php if (isset($msg)) { ?>

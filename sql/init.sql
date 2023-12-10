@@ -24,6 +24,7 @@ CREATE TABLE Student (
 	course_id INTEGER,
 	FOREIGN KEY (role_id) REFERENCES Role(id),
 	FOREIGN KEY (course_id) REFERENCES Course(id)
+);
 
 CREATE TABLE UC (
 	id INTEGER PRIMARY KEY,
@@ -42,36 +43,6 @@ CREATE TABLE Role (
 CREATE TABLE Course (
 	id INTEGER PRIMARY KEY,
 	name TEXT NOT NULL
-);
-
-CREATE TABLE UC (
-	id INTEGER PRIMARY KEY,
-	name TEXT NOT NULL,
-	semester INTEGER NOT NULL,
-	year INTEGER NOT NULL,
-	course INTEGER NOT NULL,
-	FOREIGN KEY (course) REFERENCES Course(id)
-);
-
-
-CREATE TABLE Student (
-	id INTEGER PRIMARY KEY,
-	name TEXT NOT NULL,
-	username TEXT UNIQUE NOT NULL,
-	password_hash TEXT NOT NULL,
-	creation_date INTEGER NOT NULL,
-	role_id INTEGER NOT NULL DEFAULT 1,
-	course_id INTEGER,
-	FOREIGN KEY (role_id) REFERENCES Role(id),
-	FOREIGN KEY (course_id) REFERENCES Course(id)
-);
-
-CREATE TABLE StudentUCs (
-	student INTEGER,
-	uc INTEGER,
-	PRIMARY KEY (student, uc),
-	FOREIGN KEY (student) REFERENCES Student(id),
-	FOREIGN KEY (uc) REFERENCES UC(id)
 );
 
 CREATE TABLE Question (

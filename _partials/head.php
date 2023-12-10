@@ -1,17 +1,18 @@
 <?php
-	session_start();
-
 	$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : null;
 	unset($_SESSION['msg']);
+
+	if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
+		$change_theme_label = "Dark Theme"; 
+		$html_class = "light";
+	} else {
+		$change_theme_label = "Light Theme";
+		$html_class = "dark";
+	}
 ?>
 
 <!DOCTYPE HTML>
-<html lang="en" class="
-<?php if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
-	echo "light"; 
-} else {
-	echo "dark";
-}?>">
+<html lang="en" class="<?php echo $html_class ?>">
 <head>
 	<title>Web Jonas<?php if (isset($title)) { echo " - $title"; } ?></title>
 	<link rel="stylesheet" href="/css/global.css">

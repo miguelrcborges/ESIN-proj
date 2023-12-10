@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	include("../_partials/redirect_logged.php");
 
 	$title = "Register";

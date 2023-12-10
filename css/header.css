@@ -62,7 +62,34 @@ nav {
 		padding: 20px 40px 20px 20px;
 		border-left: 2px solid var(--fg);
 		z-index: 1;
+		/* animation-name: slide-in;
+		animation-duration: 200ms; */
 	}
+
+	/*
+	@keyframes slide-in {
+		from {
+			transform: translateX(200px);
+		} to {
+			transform: translateX(0);
+		}
+	}
+
+	nav {
+		animation-name: slide-out;
+		animation-duration: 200ms;
+	}
+
+	@keyframes slide-in {
+		from {
+			transform: translateX(10000px);
+			display: block;
+		} to {
+			transform: translateX(0);
+			display: none;
+		}
+	}
+	*/
 
 	#close-menu > svg > g > path {
 		stroke: var(--fg);

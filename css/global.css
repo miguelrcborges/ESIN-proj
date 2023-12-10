@@ -7,6 +7,11 @@
 	--accent: #1a8bd1;
 }
 
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
 .light {
 	--bg: #edf7fd;
 	--fg: #051a24;
