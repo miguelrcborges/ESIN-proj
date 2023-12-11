@@ -4,7 +4,8 @@
 	$password = $_POST['password'];
 
 	$dbh = new PDO('sqlite:../../db');
-
+	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	
 	$sq = $dbh->prepare('SELECT * FROM Student WHERE username=?;');
 	$sq->execute([$username]);
 	$user_exists = $sq->fetch();

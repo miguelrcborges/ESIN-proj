@@ -12,7 +12,7 @@
 		<ul>
 			<?php if ($user_is_admin) { echo "<a href='/admin/'><li>Admin Panel</li></a>"; } ?>
 			<a href="/forum/"><li>Forum</li></a>
-			<a href="/exercises/"><li>Exercises</li></a>
+			<a href="/choiceUC/"><li>Exercises</li></a>
 			<a href="/actions/change_theme/"><li><?php echo $theme ?></li></a>
 		</ul>
 			<label id="menu" for="nav">

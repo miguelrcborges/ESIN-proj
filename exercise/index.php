@@ -6,10 +6,7 @@
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
 	session_start();
-
 ?>
 <main>
 	<h1><? var_dump($_SESSION); ?></h1>
-	<h1><a href="/actions/logout/">TEXT TEXT TEXT</a> </h1>
 </main>
-
