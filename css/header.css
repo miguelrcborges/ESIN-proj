@@ -1,4 +1,4 @@
-header {
+body > header {
 	padding: 10px 20px;
 	display: flex;
 	justify-content: space-between;
@@ -6,17 +6,17 @@ header {
 	border-bottom: 2px solid var(--fg);
 }
 
-header > a > img {
+body > header > a > img {
 	max-height: 70px;
 }
 
-header > ul {
+body > header > ul {
 	display: flex;
 	align-items: flex-end;
 	gap: 15px;
 }
 
-header > ul > a > li {
+body > header > ul > a > li {
 	list-style-type: none;
 	color: var(--fg);
 	font-size: 18px;
@@ -29,6 +29,7 @@ header > ul > a > li {
 
 nav {
 	display: none;
+	transition: display 0.5s
 }
 
 
@@ -48,7 +49,7 @@ nav {
 		align-items: center;
 	}
 
-	header > ul {
+	body > header > ul {
 		display: none;
 	}
 

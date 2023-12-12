@@ -1,7 +1,8 @@
-footer {
-	padding: 10px 20px;
+body > footer {
+	padding: 20px 40px;
 	display: flex;
 	justify-content: space-between;
 
-	border-bottom: 2px solid var(--fg);
+	background-color: color-mix(in srgb, var(--primary) 10%, transparent); 
+	margin-top: auto;
 }
