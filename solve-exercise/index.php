@@ -11,8 +11,8 @@
 
     $sq = $dbh->prepare("SELECT COUNT(id) FROM Question WHERE UC=?;");
 	$sq->execute([$uc]);
-	$n_questions = intval($sq->fetch());
-
+	$n_questions = $sq->fetch();
+    $n_questions = intval($n_questions[0]);
 
 
 
@@ -46,6 +46,9 @@
 
     shuffle($opt_order);
     
+    $sq = $dbh->prepare("SELECT username FROM Student WHERE id=?;");
+	$sq->execute([$selected_question["author"]]);
+	$authorName = $sq->fetch();
 
 
 ?>
@@ -60,7 +63,10 @@
     </section>
     <section class="question">
         <div>
-            <p id=question> <?php echo($selected_question["question"]) ?> </p><br>
+            <div id=question>
+                <p> <?php echo($selected_question["question"]); ?> </p>
+                <p id=signature> made by <?php echo($authorName[0]); ?> </p>
+            </div>
             
             <?php
             for ($i = 0; $i < $n_opts; $i++) {
