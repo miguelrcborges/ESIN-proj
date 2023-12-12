@@ -52,11 +52,13 @@
 
 <h1>Exercises - UC420420</h1>
 <main>
-    <arrows>
-    <img src="upvote_unclicked">
-    <img src="downvote_unclicked">
-    </arrows>
-    <question>
+    <section class="arrows">
+        <img class="empty" src="/assets/arrows/upvote_empty.png" width=60px>
+        <img class="filled" src="/assets/arrows/upvote_filled.png" width=60px>
+        <img class="empty" src="/assets/arrows/downvote_empty.png" width=60px>
+        <img class="filled" src="/assets/arrows/downvote_filled.png" width=60px>
+    </section>
+    <section class="question">
         <div>
             <p id=question> <?php echo($selected_question["question"]) ?> </p><br>
             
@@ -69,15 +71,16 @@
             ?>
 
         </div>
-    </question>
-    <controls>
+    </section>
+
+    <section class="controls">
         <div>
             <a href="\exercise-builder">Add Exercise</a>
             <a href="url">Leaderboard</a>
 
         </div>
         <a href="url">Skip</a>
-    </controls>
+        </section>
 
 </main>
 

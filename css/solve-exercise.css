@@ -1,3 +1,7 @@
+h1 {
+    margin-left: 2em;
+}
+
 main {
     margin: 3.25em;
     margin-top: 0px;
@@ -30,7 +34,7 @@ div{
     flex-direction: column;
 }
 
-question {
+section.question {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -48,19 +52,14 @@ question {
     border-color: #838484;
 }
 
-controls {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
 
-controls {
+section.controls {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-controls > a {
+section.controls > a {
     padding: 15%;
     border: 0.2em;
     border-style: solid;
@@ -84,4 +83,16 @@ div > a {
 
 #option3:placeholder-shown ~ #option4 {
     display: none;
+}
+
+.arrows .filled {
+    display: none;
+}
+
+.arrows .empty:hover {
+    display:none;
+}
+
+.arrows .empty:hover + .filled {
+    display: inline-block;
 }
