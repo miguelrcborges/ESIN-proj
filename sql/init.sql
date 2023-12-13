@@ -45,6 +45,14 @@ CREATE TABLE Course (
 	name TEXT NOT NULL
 );
 
+CREATE TABLE StudentUCs (
+	student INTEGER,
+	uc INTEGER,
+	PRIMARY KEY (student, uc),
+	FOREIGN KEY (student) REFERENCES Student(id),
+	FOREIGN KEY (uc) REFERENCES UC(id)
+);
+
 CREATE TABLE Question (
 	id INTEGER PRIMARY KEY,
 	question TEXT NOT NULL,

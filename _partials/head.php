@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : null;
 	unset($_SESSION['msg']);
 
