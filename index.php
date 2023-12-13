@@ -2,7 +2,7 @@
 	session_start();
 	include("_partials/redirect_logged.php");
 
-	$css = ["index"];
+	$css = ["index", "footer"];
 	include_once("_partials/head.php");
 
 	if (isset($_SESSION['user_id'])) {
@@ -21,5 +21,7 @@
 			<a href="/login/"><button>Login</button></a>
 		</div>
 	</main>
-</body>
-</html>
+
+<?php
+	include_once("_partials/footer.php");
+?>
