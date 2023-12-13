@@ -2,7 +2,7 @@
 	include_once("../_partials/must_login.php");
 
 	$title = "Exercises";
-	$css = ["index", "header"];
+	$css = ["header","choiceUC"];
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
 
@@ -15,15 +15,19 @@
     $stmt->execute(array($_SESSION['user_id']));
     $ucs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-  
-<main>
-    <h1>Choose what you will study today!</h1>
-     <form action="/actions/choiceUC/" method='post'>
-        <select name="uc_id">
-            <?php foreach($ucs as $uc){
-                echo '<option value=' . $uc['id'] . '>' . $uc['name'] . '</option>';
-            } ?>
-        </select>
-        <input type="submit" value="Study"> 
-    </form>
-</main>
+<body>
+    <main>
+        <h1 class="message">Choose what you will study today!</h1>
+        <?php if (isset($msg)) { ?>
+		<span><?php echo $msg ?></span>
+        <?php } ?>
+        <form action="/actions/choiceUC/" method='post'>
+            <select name="uc_id">
+                <?php foreach($ucs as $uc){
+                    echo '<option value=' . $uc['id'] . '>' . $uc['name'] . '</option>';
+                } ?>
+            </select>
+            <button type="submit">Study</button>
+        </form>
+    </main>
+</body>
