@@ -6,8 +6,6 @@
 	$css = ["forum", "header", "footer"];
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
-	session_start();
-
 ?>
 <main>
 	<header>
