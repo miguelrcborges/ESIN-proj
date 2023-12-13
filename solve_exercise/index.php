@@ -2,6 +2,7 @@
 	session_start();
 	include_once("../_partials/must_login.php");
 
+
 	// TODO: You need to add something into the options which allows to verify which is right
 	// TODO: Fix CSS
 	// TODO: Add logic if there is no questions
@@ -13,15 +14,34 @@
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
 
+	// Acho que nao vale a pena este check quando o proximo existe
+	// Alguem que esteja a abusar o nosso site nao merece informacao extra lol
+	// $sq = $dbh->prepare('SELECT * FROM UC WHERE id=?;');
+	// $sq->execute([$uc]);
+	// if (!$sq->fetch()) {
+	// 	$_SESSION['msg'] = "UC does not exist! Please choose a valid one.";
+	// 	header('Location:/select_uc/');
+	// 	die();
+	// }
+
+	$sq = $dbh->prepare('SELECT * FROM StudentUCs WHERE uc = ? INTERSECT SELECT * FROM StudentUCs WHERE student = ?;');
+	$sq->execute([$uc, $_SESSION['user_id']]);
+	if(!$sq->fetch()){
+		$_SESSION['msg'] = "Please choose an UC you are enrolled in!";
+		header('Location:/select_uc/');
+		die();
+	}
+
 	$sq = $dbh->prepare("SELECT COUNT(id) FROM Question WHERE UC=?;");
 	$sq->execute([$uc]);
 	$n_questions = $sq->fetch();
 
+	// TODO: Properly place the count in adequate element
 	$n_questions = intval($n_questions[0]);
 	if ($n_questions > 0) {
 		echo rand(1,$n_questions);
 		echo("/");
-		echo ($n_questions);
+		echo $n_questions;
 	} else {
 		$_SESSION['msg'] = "No questions for this UC";
 		die();        
