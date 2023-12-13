@@ -22,10 +22,10 @@
 		<?php if (isset($msg)) { ?>
 		<div class="message"><?php echo $msg ?></div>
 		<?php } ?>
-		<form action="/actions/choiceUC/" method='post'>
+		<form action="/solve_exercise/" method='GET'>
 			<select name="uc_id">
 				<?php foreach($ucs as $uc){
-				echo '<option value=' . $uc['id'] . '>' . $uc['name'] . '</option>';
+					echo '<option value="' . $uc['id'] . '" name="uc">' . $uc['name'] . '</option>';
 				} ?>
 			</select>
 			<button type="submit">Study</button>

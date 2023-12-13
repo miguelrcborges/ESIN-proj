@@ -3,7 +3,7 @@
 	include_once("../_partials/must_login.php");
 
 	$title = "Exercise Builder";
-	$css = ["exercise-builder", "header", "footer"];
+	$css = ["exercise_builder", "header", "footer"];
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
 ?>

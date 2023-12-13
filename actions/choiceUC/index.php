@@ -4,7 +4,7 @@
 	$dbh = new PDO('sqlite:../../db');
 	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
-    $sq = $dbh->prepare('SELECT * FROM UC WHERE id=?;');
+	$sq = $dbh->prepare('SELECT * FROM UC WHERE id=?;');
 	$sq->execute([$uc]);
 	if (!$sq->fetch()) {
 		$_SESSION['msg'] = "UC does not exist! Please choose a valid one.";
@@ -16,7 +16,7 @@
 	$sq->execute([$uc, $_SESSION['user_id']]);
 	if(!$sq->fetch()){
 		$_SESSION['msg'] = "Please choose an UC you are enrolled in!";
-		header('Location:/choiceUC/');
+		header('Location:/select_uc/');
 		die();
 	}
 

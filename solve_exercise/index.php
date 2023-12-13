@@ -2,13 +2,14 @@
 	session_start();
 	include_once("../_partials/must_login.php");
 
-	// TODO: Get UC from GET request
 	// TODO: You need to add something into the options which allows to verify which is right
 	// TODO: Fix CSS
-	$uc = 1;
+	// TODO: Add logic if there is no questions
+	//   Suggestion: Maybe create a template to handle the case of not having any question, and rendering it.
+	$uc = $_GET['uc_id'];
 
 	$title = "Exercises";
-	$css = ["solve-exercise", "header", "footer"];
+	$css = ["solve_exercise", "header", "footer"];
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");
 
