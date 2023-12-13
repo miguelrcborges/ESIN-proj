@@ -5,7 +5,8 @@
 	// TODO: Get UC from GET request
 	// TODO: You need to add something into the options which allows to verify which is right
 	// TODO: Fix CSS
-	$uc = 1;
+    
+	$uc = $_SESSION['uc'];
 
 	$title = "Exercises";
 	$css = ["solve-exercise", "header", "footer"];

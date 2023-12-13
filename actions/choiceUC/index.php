@@ -21,6 +21,6 @@
 	}
 
 	$_SESSION['uc'] = $uc;
-	header('Location:/exercise/');
+	header('Location:/solve-exercise/');
 	die();
 ?>
