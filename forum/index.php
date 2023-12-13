@@ -2,7 +2,7 @@
 	session_start();
 	include_once("../_partials/must_login.php");
 
-	$title = "Login";
+	$title = "Forum";
 	$css = ["forum", "header", "footer"];
 	include_once("../_partials/head.php");
 	include_once("../_partials/header.php");

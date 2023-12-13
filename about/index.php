@@ -16,5 +16,5 @@
 	</div>
 </main>
 
-<?php include_once("../_partials/footer.php") ?>
+<?php include_once("../_partials/footer.php"); ?>
 
