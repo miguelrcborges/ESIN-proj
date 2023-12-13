@@ -1,9 +1,9 @@
-<?php
+	<?php
 	session_start();
 
 	$user = $_SESSION["user_id"];
 	// TODO: Get UC from POST
-	$uc = $_SESSION['uc'];
+	$uc = 101;
 
 	$question = $_POST['question'];
 	$option1 = $_POST['option1'];
@@ -36,6 +36,6 @@
 
 
 	$_SESSION['msg'] = "Question registered sucessfully";
-	header('Location:/solve-exercise/');
+	header("Location:" . $_SERVER["HTTP_REFERER"]);
 	die()
 ?>

@@ -4,9 +4,9 @@
 	$css = ["about", "footer"];
 	include_once("../_partials/head.php");
 ?>
-<h1>About JOnAS</h1>
 
 <main>
+	<h1>About JOnAS</h1>
 	<a href="/forum/"><img src="/assets/favicon.ico"></a>
 
 	<div>
@@ -14,8 +14,6 @@
 		<p>When Discord discontinued support for bots, Miguel developed <i>Web-JOnAS</i>. The web platform replicated the functionalities of the Discord bot, and in the winter of 2021, introduced a flashcard feature initially tailored for Anatomy exams. However, as other projects gained priority, <i>Web-JOnAS</i> was left to the side.</p>
 		<p>Now, when Miguel and Francisco, along with their long-time collaborator Tomás Cruz, were tasked to build a website for the curricular unit of Information Systems Engineering, it was a no-brainer to use this opportunity to bring <i>Web-JOnAS</i> to a new level, mixing legacy features such as the question leaderboard, with new ones like the question forums.</p>
 	</div>
-
-	
 </main>
 
 <?php include_once("../_partials/footer.php"); ?>
