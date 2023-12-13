@@ -1,4 +1,4 @@
-main{
+main {
 	width: 100%;
 	height: 100%;
 	display: grid;
@@ -8,13 +8,13 @@ main{
 	gap: 10px;
 }
 
-.title{
+.title {
     grid-row:2;
     text-align:center;
     align-self:center;
 }
 
-.message{
+.message {
     align-self:start;
     text-align:center;
     grid-row:4;
@@ -22,14 +22,14 @@ main{
     font-weight:bold;
 }
 
-form{
+form {
     grid-row:3;
     display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
-select{
+select {
     display:flex;
     padding: 10px 150px;
     margin: 10px;
@@ -41,13 +41,13 @@ select{
     align-self:center;
 }
 
-button{ 
+button { 
     width: 100px;
     height: 50px;
     transition: 100ms ease-in-out 10ms;
     align-self:center;
 }
 
-button:hover{
+button:hover {
     transform:scale(1.1);
 }

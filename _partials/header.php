@@ -5,7 +5,7 @@
 			<?php if ($user_is_admin) { echo "<a href='/admin/'><li>Admin Panel</li></a>"; } ?>
 			<a href="/forum/"><li>Forum</li></a>
 			<a href="/select_uc/"><li>Exercises</li></a>
-			<a href="/actions/change_theme/"><li><?php echo $theme ?></li></a>
+			<a href="/actions/change_theme/"><li><?php echo $change_theme_label ?></li></a>
 			<a href="/actions/logout/"><li>Logout</li></a>
 		</ul>
 			<label id="menu" for="nav">
@@ -29,7 +29,8 @@
 		<ul>
 			<?php if ($user_is_admin) { echo "<a href='/admin/'><li>Admin Panel</li></a>"; } ?>
 			<a href="/forum/"><li>Forum</li></a>
-			<a href="/exercises/"><li>Exercises</li></a>
+			<a href="/select_uc/"><li>Exercises</li></a>
 			<a href="/actions/change_theme/"><li><?php echo $change_theme_label ?></li></a>
+			<a href="/actions/logout/"><li>Logout</li></a>
 		</ul>
 	</nav>
