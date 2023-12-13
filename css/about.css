@@ -1,5 +1,14 @@
+h1 {
+    margin-left: 1em;
+    margin-top: 0px;
+    margin-right: 30em;
+
+}
+
 main {
     margin: 3.25em;
     margin-top: 0px;
     margin-right: 30em;
+    display: flex;
+    flex-direction: row;
 }
