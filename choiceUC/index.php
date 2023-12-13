@@ -17,9 +17,9 @@
 ?>
 <body>
     <main>
-        <h1 class="message">Choose what you will study today!</h1>
+        <h1 class="title">Choose what you will study today!</h1>
         <?php if (isset($msg)) { ?>
-		<span><?php echo $msg ?></span>
+		<div class="message"><?php echo $msg ?></div>
         <?php } ?>
         <form action="/actions/choiceUC/" method='post'>
             <select name="uc_id">
