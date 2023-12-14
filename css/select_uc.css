@@ -1,17 +1,15 @@
 main {
 	width: 100%;
 	height: 100%;
-	display: grid;
-	grid-template-columns: 1fr;
-    grid-template-rows:2fr 0.5fr 1fr 3fr;
+	display: flex;
+	flex-direction:column;
 	align-items: center;
+    justify-content:center;
 	gap: 10px;
 }
 
 .title {
-    grid-row:2;
     text-align:center;
-    align-self:center;
 }
 
 .message {
@@ -23,10 +21,11 @@ main {
 }
 
 form {
-    grid-row:3;
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 select {
@@ -38,14 +37,12 @@ select {
     color: var(--fg);
     font-weight:bold;
     text-align:center;
-    align-self:center;
 }
 
 button { 
     width: 100px;
     height: 50px;
     transition: 100ms ease-in-out 10ms;
-    align-self:center;
 }
 
 button:hover {
