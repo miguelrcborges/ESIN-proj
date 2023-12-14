@@ -1,14 +1,36 @@
-h1 {
-    margin-left: 1em;
-    margin-top: 0px;
-    margin-right: 30em;
-
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 30px;
 }
 
-main {
-    margin: 3.25em;
-    margin-top: 0px;
-    margin-right: 30em;
-    display: flex;
-    flex-direction: row;
+main > h1 {
+	align-self: flex-start;
+}
+
+.grid {
+	max-width: 800px;
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
+	justify-items: center;
+}
+
+p {
+	text-align: justify; 
+}
+
+@media (orientation: landscape) and (min-width: 700px) {
+	.grid {
+		grid-template-columns: auto 1fr;
+	}
+
+	.grid > :first-child {
+		justify-self: self-end;
+	}
+	.grid > #description {
+		justify-self: self-start;
+	}
 }
