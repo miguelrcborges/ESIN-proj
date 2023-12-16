@@ -39,7 +39,7 @@
 				<strong>Filters</strong>
 				<div class='filter-container'>
 					<label for="uc">UC:</label>	
-					<select name="uc">
+					<select id="uc" name="uc">
 						<option value="">None</option>
 						<?php foreach ($ucs as $uc) {
 							echo '<option value="' . $uc['id'] . '" name="uc">' . $uc['name'] . '</option>';

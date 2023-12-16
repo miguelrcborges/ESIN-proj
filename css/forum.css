@@ -35,13 +35,15 @@ main > header > search select {
 }
 
 .thread-container {
-	margin: 20px;
-	display: grid;
-	gap: 20px;
 	align-self: center;
+	margin: 20px;
+	gap: 20px;
+	min-height: 50dvh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: flex-start;
 	max-width: 1200px;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: 1fr;
 }
 
 .thread-container > a > article {
@@ -50,6 +52,7 @@ main > header > search select {
 	padding: 20px;
 	border-radius: 10px;
 	transition: 300ms;
+	width: 400px;
 }
 
 .thread-container > a > article:hover {
@@ -89,18 +92,4 @@ main > header > search select {
 	align-items: center;
 	justify-content: center;
 	height: 50dvh;
-}
-
-@media (max-width: 1200px) {
-	.thread-container {
-		grid-template-columns: 1fr 1fr;
-		max-width: 800px;
-	}
-}
-
-@media (max-width: 800px) {
-	.thread-container {
-		grid-template-columns: 1fr;
-		max-width: 400px;
-	}
 }
