@@ -1,3 +1,8 @@
+main {
+	display: flex;
+	flex-direction: column;
+}
+
 main > header {
 	padding: 20px 40px;
 	border-bottom: 2px solid color-mix(in srgb, var(--fg) 20%, transparent);
@@ -16,4 +21,74 @@ main > header > search > form {
 	display: flex;
 	gap: 25px;
 	align-items: center;
+}
+
+main > header > search select {
+	height: 50px;
+	aspect-ratio: 3;
+}
+
+.filter-container {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.thread-container {
+	margin: 20px;
+	display: grid;
+	gap: 20px;
+	align-self: center;
+	max-width: 1200px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+}
+
+.thread-container > a > article {
+	color: var(--fg);
+	background-color: color-mix(in srgb, var(--secondary) 20%, transparent);
+	padding: 20px;
+	border-radius: 10px;
+	transition: 300ms;
+}
+
+.thread-container > a > article:hover {
+	background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.thread-container > a > article > header {
+	display: flex;
+	flex-direction: column;
+}
+
+.thread-container > a > article > header > h2 {
+	margin: 1px;
+	align-self: flex-start;
+}
+
+.thread-container > a > article > header > .date {
+	margin: 1px;
+	align-self: flex-end;
+	color: color-mix(in srgb, var(--fg) 60%, transparent);
+}
+
+.no-posts {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50dvh;
+}
+
+@media (max-width: 1200px) {
+	.thread-container {
+		grid-template-columns: 1fr 1fr;
+		max-width: 800px;
+	}
+}
+
+@media (max-width: 800px) {
+	.thread-container {
+		grid-template-columns: 1fr;
+		max-width: 400px;
+	}
 }

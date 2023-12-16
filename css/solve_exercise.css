@@ -15,8 +15,8 @@ p {
     width : 50%;
     border-radius: 12px; 
     margin-bottom: 0.5em;
-    color: --fg;
-    background-color: #838484; /*--secondary; not working */
+    color: var(--fg);
+    background-color: var(--secondary);
     opacity: 0.5;
     transition: width 1s, height 0.5s;
 }
@@ -29,7 +29,7 @@ p {
     opacity: 1;
 }
 
-div{
+div {
     display: flex;
     flex-direction: column;
 }

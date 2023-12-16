@@ -32,7 +32,6 @@ nav {
 	transition: display 0.5s
 }
 
-
 @media (orientation: portrait) or (max-width: 650px) {
 	#menu > svg {
 		width: 32px;

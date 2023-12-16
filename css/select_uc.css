@@ -2,49 +2,41 @@ main {
 	width: 100%;
 	height: 100%;
 	display: flex;
-	flex-direction:column;
+	flex-direction: column;
 	align-items: center;
-    justify-content:center;
-	gap: 10px;
+	justify-content: center;
+	min-height: 80dvh;
+	gap: 30px;
 }
 
 .title {
-    text-align:center;
+	text-align: center;
 }
 
 .message {
-    align-self:start;
-    text-align:center;
-    grid-row:4;
-    color: red;
-    font-weight:bold;
+	color: var(--red);
+	font-weight: bold;
 }
 
 form {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 
 select {
-    display:flex;
-    padding: 10px 150px;
-    margin: 10px;
-    background-color: var(--secondary);
-    border:2px solid var(--primary);
-    color: var(--fg);
-    font-weight:bold;
-    text-align:center;
+	max-width: 300px;
 }
 
 button { 
-    width: 100px;
-    height: 50px;
-    transition: 100ms ease-in-out 10ms;
+	width: 100px;
+	height: 50px;
+	transition: 100ms ease-in-out 10ms;
 }
 
 button:hover {
-    transform:scale(1.1);
+	transform: scale(1.1);
 }
