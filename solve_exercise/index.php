@@ -5,6 +5,7 @@
 
 	// TODO: You need to add something into the options which allows to verify which is right
 	// TODO: Fix CSS
+	// TODO: Handle empty GET
 	$uc = $_GET['uc_id'];
 
 	$title = "Exercises";
@@ -30,26 +31,28 @@
 		die();
 	}
 
-	$sq = $dbh->prepare("SELECT COUNT(id) FROM Question WHERE UC=?;");
+	$sq = $dbh->prepare("SELECT COUNT(id) as count FROM Question WHERE UC=?;");
 	$sq->execute([$uc]);
 	$n_questions = $sq->fetch();
 
 	// TODO: Properly place the count in adequate element
-	$n_questions = intval($n_questions[0]);
-	$selected_question = rand(0, $n_questions-1);
-	if ($n_questions > 0) {
-		echo rand(1, $n_questions);
+	$selected_question = rand(0, $n_questions['count']-1);
+	if ($n_questions['count'] > 0) {
+		echo $selected_question;
 		echo("/");
-		echo $n_questions;
+		echo $n_questions['count'];
 	} else {
 		// TODO: Render that there are no quesitons in this UC if there are no questions
+		echo "<p>Maybe include another file when its empty</p>";
+		include_once("../_partials/footer.php");
+		die();
 	}
 
 	// TODO: Probably a algorithm better than selecting a random is preferable
 	$sq = $dbh->prepare("SELECT Question.id as id, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, Student.name as author, UC.name as uc_name
 		FROM Question JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
 		WHERE uc=? LIMIT 1 OFFSET ?;");
-	$sq->execute([$uc, $n_questions-1]);
+	$sq->execute([$uc, $selected_question]);
 	$selected_question = $sq->fetch();
 	$opt_order = ["correct_answer", "wrong_answer1", "wrong_answer2", "wrong_answer3"];
 

@@ -8,6 +8,8 @@
 	$user_id = $_SESSION['user_id'];
 
 	$dbh = new PDO('sqlite:../db');
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 	$sq = $dbh->prepare('SELECT role_id FROM Student WHERE id=?;');
 	$sq->execute([$user_id]);
 	$user_exists = $sq->fetch();

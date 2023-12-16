@@ -9,18 +9,26 @@
 	include_once("../_partials/header.php");
 
 	$dbh = new PDO('sqlite:../db');
-	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 	$stmt = $dbh->prepare("SELECT id, name FROM StudentUCs JOIN UC ON id=uc WHERE student=?");
 	$stmt->execute(array($_SESSION['user_id']));
-	$ucs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$ucs = $stmt->fetchAll();
+
+	if (!$ucs) {
+		$error = "You are not enrroled in any UC! Please do so by enrolling <a href=\"/user_settings/\">here</a>!";
+	}
 ?>
 
 <main>
 	<h1 class="title">Choose what you will study today!</h1>
-	<?php if (isset($msg)) { ?>
-	<div class="message"><?php echo $msg ?></div>
-	<?php } ?>
+	<?php if (isset($error)) { ?>
+	<div class="error"><?php echo $error?></div>
+</main>
+	<?php 
+			include_once("../_partials/footer.php");
+			die();
+		} 
+	?>
 	<form action="/solve_exercise/" method='GET'>
 		<select name="uc_id">
 			<?php foreach ($ucs as $uc) {
