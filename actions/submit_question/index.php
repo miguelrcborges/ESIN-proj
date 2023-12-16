@@ -2,9 +2,9 @@
 	session_start();
 
 	$user = $_SESSION["user_id"];
-	// TODO: Get UC from POST
-	$uc = 101;
+	$uc = $_POST["uc"];
 
+	// TODO: Handle NULL and check if user has UC
 	$question = $_POST['question'];
 	$option1 = $_POST['option1'];
 	$option2 = $_POST['option2'];
@@ -36,6 +36,6 @@
 
 
 	$_SESSION['msg'] = "Question registered sucessfully";
-	header("Location:" . $_SERVER["HTTP_REFERER"]);
+	header("Location:/solve_exercise/?uc_id=" . $uc );
 	die()
 ?>

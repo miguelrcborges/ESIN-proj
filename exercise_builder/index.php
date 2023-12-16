@@ -9,8 +9,9 @@
 ?>
 <main>
 	<h1>Question Builder - UC420420</h1>
-	<form action="/actions/submit-question/" method="POST">
+	<form action="/actions/submit_question/" method="POST">
 		<div>
+			<input type="hidden" name="uc" value="<?php echo $_GET['uc_id'] ?>">
 			<input type="text" id="question" name="question" placeholder="Type your question..." required="required"><br>
 			<input type="text" id="option1" name="option1" placeholder="Correct Answer" required="required">
 			<input type="text" id="option2" name="option2" placeholder="Wrong Answer" required="required">

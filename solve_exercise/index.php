@@ -80,7 +80,7 @@
 	<section class="question">
 		<div>
 			<div id=question>
-				<p><?php echo($selected_question["question"]); ?> </p>
+				<p><?php echo($selected_question["question"]); ?></p>
 				<p id="signature"> made by <?php echo($selected_question['author']); ?> </p>
 			</div>
 			<?php
@@ -95,7 +95,7 @@
 
 	<section class="controls">
 		<div>
-			<a href="/exercise-builder/">Add Exercise</a>
+			<a href="/exercise_builder/?uc_id=<?php echo $uc; ?>">Add Exercise</a>
 			<a href="#">Leaderboard</a>
 		</div>
 		<a href="#">Skip</a>
