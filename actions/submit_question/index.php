@@ -15,7 +15,7 @@
 		die();
 	}
 
-	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'db');
+	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
 	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND UC=?");
 	$stmt->execute([$uc, $user]);
 
@@ -44,7 +44,7 @@
 		$option1 == $option2 ||
 		$option1 == $option3
 	) {
-		$_SESSION['msg'] = "The correct option is equal to one of the wrong ones.";
+		$_SESSION['error'] = "The correct option is equal to one of the wrong ones.";
 		header("Location:" . $_SERVER["HTTP_REFERER"]);
 		die();
 	}
@@ -54,7 +54,7 @@
 	$sq->execute([$question, $option1, $option2, $option3, $option4, $user, $uc]);
 
 
-	$_SESSION['msg'] = "Question registered sucessfully";
+	$_SESSION['success'] = "Question registered sucessfully";
 	header("Location:/solve_exercise/?uc_id=" . $uc );
 	die()
 ?>

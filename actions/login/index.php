@@ -3,21 +3,21 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
-	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'db');
+	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
 	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	
 	$sq = $dbh->prepare('SELECT * FROM Student WHERE username=?;');
 	$sq->execute([$username]);
 	$user_exists = $sq->fetch();
 	if (!$user_exists) {
-		$_SESSION['msg'] = "User not found";
+		$_SESSION['error'] = "User not found";
 		header('Location:/login/');
 		die();
 	}
 
 	$is_correct = password_verify($password, $user_exists['password_hash']);
 	if (!$is_correct) {
-		$_SESSION['msg'] = "Incorrect password";
+		$_SESSION['error'] = "Incorrect password";
 		header('Location:/login/');
 		die();
 	}

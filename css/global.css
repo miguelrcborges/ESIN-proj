@@ -88,3 +88,13 @@ select {
 	font-weight: bold;
 	text-align: center;
 }
+
+.error {
+	color: var(--red);
+	font-weight: bold;
+}
+
+.success {
+	color: var(--green);
+	font-weight: bold;
+}

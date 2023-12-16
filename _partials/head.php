@@ -1,6 +1,8 @@
 <?php
-	$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : null;
-	unset($_SESSION['msg']);
+	$error = isset($_SESSION['error']) ? $_SESSION['error'] : null;
+	unset($_SESSION['error']);
+	$success = isset($_SESSION['success']) ? $_SESSION['success'] : null;
+	unset($_SESSION['success']);
 
 	if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
 		$change_theme_label = "Dark Theme"; 

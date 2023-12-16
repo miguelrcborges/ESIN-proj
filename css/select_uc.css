@@ -34,9 +34,3 @@ button {
 button:hover {
 	transform: scale(1.1);
 }
-
-.error {
-	color: var(--red);
-	font-weight: bold;
-}
-

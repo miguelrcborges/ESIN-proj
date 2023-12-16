@@ -11,8 +11,8 @@
 		<a href="/"><img src="/assets/logo.png"></a>
 		<form action="/actions/register/" method="POST" >
 			<h2>Register</h2>
-<?php if (isset($msg)) { ?>
-			<span><?php echo $msg ?></span>
+<?php if (isset($error)) { ?>
+			<span class="error"><?php echo $error?></span>
 <?php } ?>
 			<div class="parameter">
 				<p><label for="name">Name</label></p>
