@@ -5,8 +5,6 @@
 
 	// TODO: You need to add something into the options which allows to verify which is right
 	// TODO: Fix CSS
-	// TODO: Add logic if there is no questions
-	//   Suggestion: Maybe create a template to handle the case of not having any question, and rendering it.
 	$uc = $_GET['uc_id'];
 
 	$title = "Exercises";
@@ -24,9 +22,9 @@
 	// 	die();
 	// }
 
-	$sq = $dbh->prepare('SELECT * FROM StudentUCs WHERE uc = ? INTERSECT SELECT * FROM StudentUCs WHERE student = ?;');
+	$sq = $dbh->prepare('SELECT * FROM StudentUCs WHERE uc = ? AND student = ?;');
 	$sq->execute([$uc, $_SESSION['user_id']]);
-	if(!$sq->fetch()){
+	if (!$sq->fetch()) {
 		$_SESSION['msg'] = "Please choose an UC you are enrolled in!";
 		header('Location:/select_uc/');
 		die();
@@ -38,18 +36,19 @@
 
 	// TODO: Properly place the count in adequate element
 	$n_questions = intval($n_questions[0]);
+	$selected_question = rand(0, $n_questions-1);
 	if ($n_questions > 0) {
-		echo rand(1,$n_questions);
+		echo rand(1, $n_questions);
 		echo("/");
 		echo $n_questions;
 	} else {
-		$_SESSION['msg'] = "No questions for this UC";
-		die();        
+		// TODO: Render that there are no quesitons in this UC if there are no questions
 	}
 
 	// TODO: Probably a algorithm better than selecting a random is preferable
-	// TODO: Transform both selects into a single query with a JOIN
-	$sq = $dbh->prepare("SELECT * FROM Question WHERE UC=? LIMIT 1 OFFSET ?;");
+	$sq = $dbh->prepare("SELECT Question.id as id, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, Student.name as author, UC.name as uc_name
+		FROM Question JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
+		WHERE uc=? LIMIT 1 OFFSET ?;");
 	$sq->execute([$uc, $n_questions-1]);
 	$selected_question = $sq->fetch();
 	$opt_order = ["correct_answer", "wrong_answer1", "wrong_answer2", "wrong_answer3"];
@@ -65,13 +64,9 @@
 	}
 
 	shuffle($opt_order);
-
-	$sq = $dbh->prepare("SELECT username FROM Student WHERE id=?;");
-	$sq->execute([$selected_question["author"]]);
-	$authorName = $sq->fetch();
 ?>
 
-<h1>Exercises - UC420420</h1>
+<h1>Exercises - <?php echo $selected_question['uc_name']; ?></h1>
 <main>
 	<section class="arrows">
 		<img class="empty" src="/assets/arrows/upvote_empty.png" width=60px>
@@ -82,8 +77,8 @@
 	<section class="question">
 		<div>
 			<div id=question>
-				<p> <?php echo($selected_question["question"]); ?> </p>
-				<p id="signature"> made by <?php echo($authorName[0]); ?> </p>
+				<p><?php echo($selected_question["question"]); ?> </p>
+				<p id="signature"> made by <?php echo($selected_question['author']); ?> </p>
 			</div>
 			<?php
 				for ($i = 0; $i < $n_opts; $i++) {
