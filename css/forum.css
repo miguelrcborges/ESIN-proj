@@ -72,6 +72,18 @@ main > header > search select {
 	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
+.thread-container > a > article > footer {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.thread-container > a > article > footer > img {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
 .no-posts {
 	display: flex;
 	align-items: center;

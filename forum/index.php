@@ -15,14 +15,14 @@
 	if (isset($_GET['uc']) && $_GET['uc'] != null) {
 		// The 2nd condition restricts the view, not letting users see
 		// users seeing posts from courses which they arent signed up
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date
+		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
 			FROM Thread JOIN Student ON Thread.author = Student.id
 				WHERE uc=? 
 				AND uc in 
 					(SELECT uc FROM StudentUCs WHERE student=?)");
 		$stmt->execute([$_GET['uc'], $user_id]);
 	} else {
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date
+		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
 			FROM Thread JOIN Student ON Thread.author = Student.id
 				WHERE uc is NULL OR
 				uc in 
@@ -64,7 +64,8 @@
 						<p><?php echo $thread['content'];?></p>
 					</main>
 					<footer>
-						<span>Author: <?php echo $thread['author_name']; ?></span>
+						<img src="/assets/pfp/cat<?php echo $thread['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+						<span><?php echo $thread['author_name']; ?></span>
 					</footer>
 				</article>
 			</a>
