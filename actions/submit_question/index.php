@@ -1,10 +1,30 @@
 <?php
 	session_start();
 
-	$user = $_SESSION["user_id"];
-	$uc = $_POST["uc"];
+	$user = isset($_SESSION["user_id"]) && $_SESSION["user_id"];
+	$uc = isset($_POST["uc"]) && $_POST["uc"];
 
-	// TODO: Handle NULL and check if user has UC
+	if (!$user) {
+		$_SESSION['error'] = "You need to be a registered member to submit questions.";
+		header("Location:/");
+		die();
+	}
+	if (!$uc) {
+		$_SESSION['error'] = "Please select a valid curricular unit.";
+		header("Location:/select_uc/");
+		die();
+	}
+
+	$dbh = new PDO('sqlite:../../db');
+	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND UC=?");
+	$stmt->execute([$uc, $user]);
+
+	if (!$stmt->fetchAll()) {
+		$_SESSION['error'] = "You can't submit questions to a curricular unit that you aren't signed up.";
+		header("Location:/select_uc/");
+		die();
+	}
+
 	$question = $_POST['question'];
 	$option1 = $_POST['option1'];
 	$option2 = $_POST['option2'];
@@ -20,7 +40,7 @@
 	}
 
 	if (
-		$option1 == $option2 ||
+	$option1 == $option2 ||
 		$option1 == $option2 ||
 		$option1 == $option3
 	) {
