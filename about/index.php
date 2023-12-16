@@ -2,7 +2,7 @@
 	session_start();
 
 	$css = ["about", "footer"];
-	include_once("../_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
 ?>
 
 <main>
@@ -17,5 +17,4 @@
 	</div>
 </main>
 
-<?php include_once("../_partials/footer.php"); ?>
-
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");

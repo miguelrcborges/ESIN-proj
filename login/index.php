@@ -1,10 +1,10 @@
 <?php 
 	session_start();
-	include("../_partials/redirect_logged.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/redirect_logged.php");
 
 	$title = "Login";
 	$css = ["login"];
-	include('../_partials/head.php'); 
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/head.php'); 
 ?>
 <body>
 	<main>

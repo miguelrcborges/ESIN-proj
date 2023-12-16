@@ -1,10 +1,10 @@
 <?php 
 	session_start();
-	include("../_partials/redirect_logged.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/redirect_logged.php");
 
 	$title = "Register";
 	$css = ["login"];
-	include('../_partials/head.php'); 
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/head.php'); 
 ?>
 <body>
 	<main>
@@ -32,6 +32,5 @@
 			</div>
 			<button type="submit">Register</button>
 			<p>Already registered? <a href="/login/">Log in</a></p>
-		</div>
 	</main>
 </body>

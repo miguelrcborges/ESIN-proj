@@ -3,7 +3,7 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
-	$dbh = new PDO('sqlite:../../db');
+	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'db');
 	$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 	
 	$sq = $dbh->prepare('SELECT * FROM Student WHERE username=?;');

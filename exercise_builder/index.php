@@ -1,11 +1,11 @@
 <?php 
 	session_start();
-	include_once("../_partials/must_login.php");
+	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/redirect_logged.php");
 
 	$title = "Exercise Builder";
 	$css = ["exercise_builder", "header", "footer"];
-	include_once("../_partials/head.php");
-	include_once("../_partials/header.php");
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/head.php'); 
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/header.php'); 
 ?>
 <main>
 	<h1>Question Builder - UC420420</h1>

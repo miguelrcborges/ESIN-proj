@@ -1,11 +1,11 @@
 <?php 
 	session_start();
-	include_once("../_partials/must_login.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_login.php");
 
 	$title = "Exercises";
 	$css = ["header", "footer", "select_uc"];
-	include_once("../_partials/head.php");
-	include_once("../_partials/header.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
 
 
 	$dbh = new PDO('sqlite:../db');
@@ -40,5 +40,5 @@
 </main>
 
 <?php
-	include_once("../_partials/footer.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php");
 ?>

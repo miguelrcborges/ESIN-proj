@@ -1,11 +1,11 @@
 <?php 
 	session_start();
-	include_once("../_partials/must_login.php");
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/must_login.php'); 
 
 	$title = "Forum";
 	$css = ["forum", "header", "footer"];
-	include_once("../_partials/head.php");
-	include_once("../_partials/header.php");
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/head.php'); 
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/header.php'); 
 
 	$stmt = $dbh->prepare("SELECT id, name FROM StudentUCs JOIN UC ON id=uc WHERE student=?");
 	$stmt->execute([$_SESSION['user_id']]);
@@ -79,5 +79,5 @@
 </main>
 
 <?php	
-	include_once("../_partials/footer.php"); 
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/footer.php'); 
 ?>

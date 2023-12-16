@@ -15,7 +15,7 @@
 		die();
 	}
 
-	$dbh = new PDO('sqlite:../../db');
+	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . 'db');
 	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND UC=?");
 	$stmt->execute([$uc, $user]);
 
@@ -49,7 +49,6 @@
 		die();
 	}
 
-	$dbh = new PDO('sqlite:../../db');
 	$sq = $dbh->prepare("INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) 
 		VALUES ( ?, ?, ?, ?, ?, ?, ?);");
 	$sq->execute([$question, $option1, $option2, $option3, $option4, $user, $uc]);
