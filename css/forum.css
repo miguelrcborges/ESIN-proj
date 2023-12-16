@@ -9,6 +9,7 @@ main > header {
 
 	display: flex;
 	flex-wrap: wrap;
+	gap: 10px;
 	justify-content: space-between;
 }
 
@@ -19,7 +20,10 @@ main > header button {
 
 main > header > search > form {
 	display: flex;
-	gap: 25px;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	row-gap: 25px;
+	gap: 5px;
 	align-items: center;
 }
 
@@ -53,6 +57,12 @@ main > header > search select {
 	border-radius: 10px;
 	transition: 300ms;
 	width: 400px;
+}
+
+@media (max-width: 400px) {
+	.thread-container > a > article {
+		width: 90dvw;
+	}
 }
 
 .thread-container > a > article:hover {
