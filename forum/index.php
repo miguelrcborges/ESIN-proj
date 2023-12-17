@@ -33,7 +33,7 @@
 ?>
 <main>
 	<header>
-		<button>Add a Post</button>
+		<a href="/create_thread/"><button>Create Thread</button></a>
 		<search>
 			<form action="/forum/" type="POST">
 				<strong>Filters</strong>

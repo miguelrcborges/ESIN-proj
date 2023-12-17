@@ -58,7 +58,7 @@ button:hover {
 	cursor: pointer;
 }
 
-input {
+input, textarea {
 	background: var(--bg);
 	padding: 0.6em 1.2em;
 	border: solid 1px var(--fg);
@@ -69,10 +69,13 @@ input {
 	font-size: 16px;
 }
 
-input:focus {
+input:focus, textarea:focus {
 	outline: none;
-
 	border-color: var(--accent);
+}
+
+textarea {
+	font-family: system-ui, sans-serif;
 }
 
 a, a:visited, a:active {

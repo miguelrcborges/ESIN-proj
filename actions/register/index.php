@@ -34,8 +34,8 @@
 
 	$pw_hash = password_hash($password, PASSWORD_DEFAULT);
 	$iq = $dbh->prepare('INSERT INTO Student (name, username, password_hash, creation_date)
-	 	VALUES (?, ?, ?, ?)');
-	$res = $iq->execute([$name, $username, $pw_hash, time()]);
+	 	VALUES (?, ?, ?, unixepoch())');
+	$res = $iq->execute([$name, $username, $pw_hash]);
 	if (!$res) {
 		$_SESSION['error'] = "Failed to add user. Please try again. If the problem persists, contact the support.";
 		header('Location:/register/');

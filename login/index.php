@@ -16,11 +16,11 @@
 <?php } ?>
 			<div class="parameter">
 				<p><label for="username">Username</label></p>
-				<p><input type="text" name="username" placeholder="jsmith" required="required"></p>
+				<p><input type="text" id="username" name="username" placeholder="jsmith" required="required"></p>
 			</div>
 			<div class="parameter">
 				<p><label for="password">Password</label></p>
-				<p><input type="password" name="password" placeholder="snakegoodfriend420" required="required"></p>
+				<p><input type="password" id="password" name="password" placeholder="snakegoodfriend420" required="required"></p>
 			</div>
 			<button type="submit">Login</button>
 			<p>Not registered yet? <a href="/register/">Register here</a></p>

@@ -1,11 +1,11 @@
 <?php 
 	session_start();
-	include_once($_SERVER['document_root'] . "/_partials/must_admin.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_admin.php");
 
 	$title = "Admin Panel";
 	$css = ["admin_panel", "header", "footer"];
-	include_once($_SERVER['document_root'] . "/_partials/head.php");
-	include_once($_SERVER['document_root'] . "/_partials/header.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
 ?>
 
 <h1>Admin Panel </h1>
@@ -31,4 +31,4 @@
 		</div>
 </main>
 
-<?php include_once($_SERVER['document_root'] . "/_partials/footer.php"); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); ?>
