@@ -9,7 +9,7 @@
 
 	$stmt = $dbh->prepare("SELECT id, name FROM StudentUCs JOIN UC ON id=uc WHERE student=?");
 	$stmt->execute([$_SESSION['user_id']]);
-	$ucs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$ucs = $stmt->fetchAll();
 
 	// TODO: Probably a cap will be need to be added when more Threads are available.
 	if (isset($_GET['uc']) && $_GET['uc'] != null) {
@@ -29,7 +29,7 @@
 					(SELECT uc FROM StudentUCs WHERE student=?)");
 		$stmt->execute([$user_id]);
 	}
-	$threads = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$threads = $stmt->fetchAll();
 ?>
 <main>
 	<header>

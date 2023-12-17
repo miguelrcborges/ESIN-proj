@@ -9,7 +9,7 @@
 
 	$stmt = $dbh->prepare("SELECT id, name FROM StudentUCs JOIN UC ON id=uc WHERE student=?");
 	$stmt->execute([$_SESSION['user_id']]);
-	$ucs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	$ucs = $stmt->fetchAll();
 ?>
 <main>
 	<h1>Thread creation</h1>

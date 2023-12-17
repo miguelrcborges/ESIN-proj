@@ -12,7 +12,7 @@
 	if ($filter) {
 		$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? and uc=?;");
 		$stmt->execute([$_SESSION['user_id'], $filter]);
-		$isinuc = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$isinuc = $stmt->fetchAll();
 		
 		if (!$isinuc) {
 			$_SESSION['error'] = "You can't post threads on courses you aren't signed in";
