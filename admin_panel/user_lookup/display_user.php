@@ -1,5 +1,4 @@
 	<?php
-	session_start();
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_admin.php");
 
 	$sql = $dbh->prepare('
@@ -28,21 +27,21 @@
 		die();
 	}
 
-	$pfp_loc = $_SERVER['DOCUMENT_ROOT'].'/assets/pfp/cat'.($user_stats[1]%10) . '.jpg';
+	$pfp_loc = '/assets/pfp/cat'.($user_stats["id"]%10) . '.jpg';
 ?>
 
 
 <img src=<?php echo($pfp_loc);?> alt='Profile Picture' style='width:300px;height:300px;'>
 
 <div>
-	<p><strong>Name:</strong>                       <?php echo $user_stats[0]?> </p>
+	<p><strong>Name:</strong>                       <?php echo $user_stats["name"]?> </p>
 	<p><strong>Username:</strong>                   <?php echo $username?> </p>
-	<p><strong>Course:</strong>                     <?php echo $user_stats[4]?> </p>
-	<p><strong>Account Role:</strong>               <?php echo $user_stats[3]?> </p>
-	<p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', strtotime($user_stats[3])) ?> </p>
+	<p><strong>Course:</strong>                     <?php echo $user_stats["course_name"]?> </p>
+	<p><strong>Account Role:</strong>               <?php echo $user_stats["role_name"]?> </p>
+	<p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', strtotime($user_stats["creation_date"])) ?> </p>
 </div>
 
-<form action='\actions\ban_user' method='POST'>
+<form id="ban" action='\actions\ban_user' method='POST'>
 	<input type='hidden' name='username' value='<?php echo($username); ?>'>
 	<button>Ban User</button>
 </form>

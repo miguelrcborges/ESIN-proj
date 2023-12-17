@@ -13,10 +13,13 @@
 
 
 	if ($rowsAffected > 0) {
-		$_SESSION['msg'] = 'User with username $username deleted successfully.';
+		echo('User with username '.$username.' deleted successfully.');
+		$_SESSION['success'] = 'User with username '.$username.' deleted successfully.';
 	} else {
-		$_SESSION['msg'] = 'No user found with username "$username".';
+		echo('No user found with username "'.$username.'".');
+		$_SESSION['error'] = 'No user found with username "'.$username.'".';
 	}
 
-	header($_SERVER['DOCUMENT_ROOT'].'/admin_panel/user_lookup');
+	header('Location:/admin_panel/user_lookup');
+	die();
 ?>

@@ -1,9 +1,9 @@
-main {
+section {
     display: flex;
     flex-direction: row;
 }
 
-main > sidebar {
+sidebar {
     width: 200px;
     border-style: solid;
     border-width: 0 2px 0 0;
@@ -15,17 +15,16 @@ main > sidebar {
     justify-content: flex-start;
 }
 
-main > sidebar > * {
+sidebar > * {
     margin-block-start: 1em;
     margin-block-end: 1em;
 
     margin-left: 1em;
 }
 
-main > sidebar > form > button {
+sidebar > a > button {
     background-color: transparent;
     color: var(--fg);
-
 }
 
 
@@ -33,14 +32,14 @@ h2 {
     margin-top: 0;
 }
 
-main > div {
+section > main {
     flex-grow: 9;
     margin-left: 1em;
     display: flex;
     flex-direction:column;
 }
 
-main > div > div {
+section > main > div {
     margin-top: 1em;
     display: grid;
 	column-gap: 50px;

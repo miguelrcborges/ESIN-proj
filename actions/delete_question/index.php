@@ -10,8 +10,10 @@
 	$rowsAffected = $sqlDelete->rowCount();
 
 	if ($rowsAffected > 0) {
-		$_SESSION['error'] = "Question #$q_id removed successfully";
+		echo("Question #$q_id removed successfully");
+		$_SESSION['success'] = "Question #$q_id removed successfully";
 	} else {
+		echo("Question #$q_id not found");
 		$_SESSION['error'] = "Question #$q_id not found";
 	}
 
