@@ -163,7 +163,7 @@ INSERT INTO UC (name, code, semester, year, course) VALUES ('Image Processing', 
 INSERT INTO UC (name, code, semester, year, course) VALUES ('Information Systems Engeneering', 'ESIN', 1, 4, 1);
 INSERT INTO UC (name, code, semester, year, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1, 4, 1);
 
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Diamantino Freitas', 'diamantino', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 0, 1, 2);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Diamantino Freitas', 'diamantino', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 0, 2, 2);
 INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Jonas Carvalho', 'jonas', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 0, 1, 1);
 INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Pedro Felix', 'furrix', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 0, 1, 1);
 
