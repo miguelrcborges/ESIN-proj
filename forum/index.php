@@ -11,7 +11,8 @@
 	$stmt->execute([$_SESSION['user_id']]);
 	$ucs = $stmt->fetchAll();
 
-	// TODO: Probably a cap will be need to be added when more Threads are available.
+	// TODO: Probably a cap will be need to be added when more Threads are available. (Pagination)
+	// TODO: UI breaks if a thread happens to have a huge word.
 	if (isset($_GET['uc']) && $_GET['uc'] != null) {
 		// The 2nd condition restricts the view, not letting users see
 		// users seeing posts from courses which they arent signed up
@@ -51,7 +52,12 @@
 
 <?php if (count($threads) > 0) { ?>
 	<section class="thread-container">
-		<?php foreach ($threads as $thread) { ?>
+		<?php 
+			foreach ($threads as $thread) { 
+				if ($thread['content'] && strlen($thread['content']) > 180) {
+					$thread['content'] = substr($thread['content'], 0, 177) . "...";
+				}
+		?>
 			<a href="/thread/?thread=<?php echo $thread['id'];?>">
 				<article>
 					<header>
