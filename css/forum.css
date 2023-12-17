@@ -79,9 +79,9 @@ main > header > search select {
 	align-self: flex-start;
 }
 
-.thread-container > a > article > header > .date {
-	margin: 1px;
-	align-self: flex-end;
+.thread-container > a > article > header > .top-row {
+	display: flex;
+	justify-content: space-between;
 	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 

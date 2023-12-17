@@ -16,16 +16,14 @@
 		// The 2nd condition restricts the view, not letting users see
 		// users seeing posts from courses which they arent signed up
 		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
-			FROM Thread JOIN Student ON Thread.author = Student.id
-				WHERE uc=? 
-				AND uc in 
+			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
+				WHERE uc=? AND uc in 
 					(SELECT uc FROM StudentUCs WHERE student=?)");
 		$stmt->execute([$_GET['uc'], $user_id]);
 	} else {
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
-			FROM Thread JOIN Student ON Thread.author = Student.id
-				WHERE uc is NULL OR
-				uc in 
+		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id, UC.name as uc_name
+			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
+				WHERE uc is NULL OR uc in 
 					(SELECT uc FROM StudentUCs WHERE student=?)");
 		$stmt->execute([$user_id]);
 	}
@@ -57,7 +55,10 @@
 			<a href="/thread/?thread=<?php echo $thread['id'];?>">
 				<article>
 					<header>
-						<span class="date"><?php echo date('j/m/y G:i', (int)$thread['creation_date'])?></span>
+						<div class="top-row">
+							<span class="uc"><?php echo $thread['uc_name']; ?></span>
+							<span class="date"><?php echo date('j/m/y G:i', (int)$thread['creation_date'])?></span>
+						</div>
 						<h2><?php echo $thread['title'];?></h2>
 					</header>
 					<main>
