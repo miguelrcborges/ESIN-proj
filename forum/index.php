@@ -19,13 +19,15 @@
 		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
 			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
 				WHERE uc=? AND uc in 
-					(SELECT uc FROM StudentUCs WHERE student=?)");
+					(SELECT uc FROM StudentUCs WHERE student=?)
+			ORDER BY creation_date DESC");
 		$stmt->execute([$_GET['uc'], $user_id]);
 	} else {
 		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id, UC.name as uc_name
 			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
 				WHERE uc is NULL OR uc in 
-					(SELECT uc FROM StudentUCs WHERE student=?)");
+					(SELECT uc FROM StudentUCs WHERE student=?)
+			ORDER BY creation_date DESC");
 		$stmt->execute([$user_id]);
 	}
 	$threads = $stmt->fetchAll();
