@@ -47,7 +47,6 @@ main > header > search select {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-content: flex-start;
-	max-width: 1200px;
 }
 
 .thread-container > a > article {
