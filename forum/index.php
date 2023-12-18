@@ -16,7 +16,7 @@
 	if (isset($_GET['uc']) && $_GET['uc'] != null) {
 		// The 2nd condition restricts the view, not letting users see
 		// users seeing posts from courses which they arent signed up
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id
+		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id, UC.name as uc_name
 			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
 				WHERE uc=? AND uc in 
 					(SELECT uc FROM StudentUCs WHERE student=?)
