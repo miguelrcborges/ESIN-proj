@@ -48,8 +48,10 @@
 	<section class ="thread">
 		<header>
 			<h1 class="title"> <?php echo $thread['thread_title'];?> </h1>
-			<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-			<span class="author"> <?php echo $thread['op_name'];?> </span>
+			<div class="profile">
+				<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+				<span class="author"> <?php echo $thread['op_name'];?> </span>
+			</div>
 		</header>
 		<body>
 			<?php if ($thread['thread_content'] != NULL){ ?>
@@ -69,8 +71,10 @@
 			<?php foreach($replies as $reply){ ?>
 				<article>
 					<header>
-						<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-						<span><?php echo $reply['author_name']; ?></span>
+						<div class="profile">
+							<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+							<span><?php echo $reply['author_name']; ?></span>
+						</div>
 					</header>
 					<body>
 						<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
@@ -90,7 +94,7 @@
 	<?php }?>
 
 	<!-- Adicionar replies here -->
-	<form action="" method='POST'>
+	<form action="/actions/submit_reply/" method='POST'>
 		<textarea name="reply" rows="2" cols="75" placeholder="Write here your reply."></textarea>
 		<input type="hidden" name ="thread_id" value=<?php echo $thread_id?>>
 		<button type="submit">Post Reply</button>

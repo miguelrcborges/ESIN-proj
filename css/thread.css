@@ -3,7 +3,6 @@ main{
     flex-direction:column;
     gap:10px;
     min-height: 75dvh;
-    justify-content:center;
 }
 
 .thread{
@@ -11,6 +10,12 @@ main{
     margin: 20px;
     display:flex;
     flex-direction:column;
+    border-radius:20px;
+    padding: 20px;
+}
+
+.profile{
+    justify-content:center;
 }
 
 .reply_container article{
@@ -18,6 +23,22 @@ main{
     flex-direction: column;
     background-color: var(--secondary);
     margin: 20px;
+    border-radius:20px;
+    padding: 20px;
+}
+
+main img{
+    width: 40px;
+	height: 40px;
+}
+
+.thread header{
+    display:flex;
+    flex-direction:column;
+}
+
+.profile{
+    justify-content:center;
 }
 
 form{
