@@ -1,0 +1,26 @@
+main{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height: 75dvh;
+    justify-content:center;
+}
+
+.thread{
+    background-color: var(--secondary);
+    margin: 20px;
+    display:flex;
+    flex-direction:column;
+}
+
+.reply_container article{
+    display:flex;
+    flex-direction: column;
+    background-color: var(--secondary);
+    margin: 20px;
+}
+
+form{
+    align-self:flex-end;
+}
+    

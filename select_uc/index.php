@@ -20,15 +20,21 @@
 	}
 
 	if (!$ucs) {
-		$error = "You are not enrroled in any UC! Please do so by enrolling <a href=\"/user_settings/\">here</a>!";
+		$enrolled = "You are not enrolled in any UC! Please do so by enrolling <a href=\"/user_settings/\">here</a>!";
 	}
 ?>
 
 <main>
 	<h1 class="title">Choose what you will study today!</h1>
+	
+	<?php if (isset($enrolled)) { ?>
+		<div class="error"><?php echo $enrolled?></div> </form> </main> 
+	<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); die();} ?>
+	
 	<?php if (isset($error)) { ?>
-	<div class="error"><?php echo $error?></div>
+		<div class="error"><?php echo $error?></div>
 	<?php } ?>
+
 	<form action="/solve_exercise/" method='GET'>
 		<select name="uc_id">
 			<?php foreach ($ucs as $uc) {
