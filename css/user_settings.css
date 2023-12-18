@@ -57,3 +57,8 @@ main > form > button {
     width:10em;
     padding: 10px;
 }
+
+#info {
+    display: flex;
+    flex-direction: row;
+}
