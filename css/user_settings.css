@@ -1,0 +1,59 @@
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+sidebar {
+    width: 200px;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color:  var(--fg);
+
+
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+sidebar > * {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+
+    margin-left: 1em;
+}
+
+sidebar > a > button {
+    background-color: transparent;
+    color: var(--fg);
+}
+
+
+h2 {
+    margin-top: 0;
+}
+
+section > main {
+    margin-left: 1em;
+    display: flex;
+    flex-direction:column;
+}
+
+form {
+    display: flex;
+    flex-direction:column;
+}
+
+img {
+    border-radius: 100%;
+    margin-right: 30px;
+}
+
+main > form > * {
+    margin: 5px 0;
+}
+
+main > form > button {
+    align-self: center;
+    width:10em;
+    padding: 10px;
+}

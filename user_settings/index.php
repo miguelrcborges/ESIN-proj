@@ -1,28 +1,18 @@
 <?php 
 	session_start();
-	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/redirect_logged.php");
+	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/must_login.php'); 
 
-	$title = "Login";
-	$css = ["login"];
-	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php"); 
+	$title = "User Settings";
+	$css = ["user_settings", "header", "footer"];
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
 ?>
-<body>
-	<main>
-		<a href="/"><img src="/assets/logo.png"></a>
-		<form action="/actions/login/" method="POST">
-			<h2>Login</h2>
-<?php if (isset($error)) { ?>
-			<span class="error"><?php echo $error?></span>
-<?php } ?>
-			<div class="parameter">
-				<p><label for="username">Username</label></p>
-				<p><input type="text" name="username" placeholder="jsmith" required="required"></p>
-			</div>
-			<div class="parameter">
-				<p><label for="password">Password</label></p>
-				<p><input type="password" name="password" placeholder="snakegoodfriend420" required="required"></p>
-			</div>
-			<button type="submit">Login</button>
-			<p>Not registered yet? <a href="/register/">Register here</a></p>
-	</main>
-</body>
+
+<h1>User Settings</h1>
+
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/sidebar.php"); ?>
+<main>
+</main>
+
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); ?>
+
