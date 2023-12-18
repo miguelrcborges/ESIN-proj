@@ -9,20 +9,20 @@
 
 
 	$user_id = $_SESSION["user_id"];
-	
-    $sql = $dbh->prepare("
-    SELECT
-        s.name,
-        s.username,
-        s.creation_date,
-        r.name AS role_name,
-        c.name AS course_name
-    FROM
-        Student s
-        JOIN Role r ON s.role_id = r.id
-        JOIN Course c ON s.course_id = c.id
-    WHERE
-        s.id = ?
+
+	$sql = $dbh->prepare("
+	SELECT
+			s.name,
+			s.username,
+			s.creation_date,
+			r.name AS role_name,
+			c.name AS course_name
+	FROM
+			Student s
+			JOIN Role r ON s.role_id = r.id
+			JOIN Course c ON s.course_id = c.id
+	WHERE
+			s.id = ?
 ");
 
 $sql->execute([$user_id]);
