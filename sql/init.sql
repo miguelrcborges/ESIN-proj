@@ -79,7 +79,7 @@ CREATE TABLE QuestionAttempts (
 	student INTEGER,
 	question INTEGER,
 	date INTEGER NOT NULL,
-	was_correct INTEGER NOT NULL CHECK (was_correct IN (0, 1)),
+	selected INTEGER NOT NULL CHECK (selected IN (1, 2, 3, 4)),
 	PRIMARY KEY (student, question),
 	FOREIGN KEY (student) REFERENCES Student(id),
 	FOREIGN KEY (question) REFERENCES Question(id)
@@ -91,6 +91,8 @@ CREATE TABLE Thread (
 	creation_date INTEGER NOT NULL,
 	content TEXT,
 	author INTEGER NOT NULL,
+	uc INTEGER,
+	FOREIGN KEY (uc) REFERENCES UC(id)
 	FOREIGN KEY (author) REFERENCES Student(id)
 );
 

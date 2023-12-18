@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	include_once("../_partials/must_login.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_login.php");
 
 	$uc = isset($_GET['uc_id']) ? $_GET['uc_id'] : false;
 
@@ -34,7 +34,7 @@
 
 	// TODO: Probably a algorithm better than selecting a random is preferable
 	$sq = $dbh->prepare("SELECT Question.id as id, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3,
-			Student.name as author, UC.name as uc_name, Student.id as author_id
+			Student.name as author, UC.name as uc_name, UC.id as uc_id, Student.id as author_id
 		FROM Question JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
 		WHERE uc=? AND uc in (SELECT uc FROM StudentUCs WHERE student=?) ORDER BY random() LIMIT 1;");
 	$sq->execute([$uc, $user_id]);
@@ -82,9 +82,11 @@
 				</section>
 			</section>
 		</div>
-		<form class="inputs">
+		<form action="/actions/answer_question/" method="POST" class="inputs">
 			<?php for ($i = 0; $i < $n_opts; $i++) { ?>
 			<label for="<?php echo $opt_order[$i]?>">
+				<input type="hidden" name="qid" value="<?php echo $selected_question['id'] ?>">
+				<input type="hidden" name="uc" value="<?php echo $selected_question['uc_id'] ?>">
 				<input type="radio" style="display:none" 
 					name="answer"
 					id="<?php echo $opt_order[$i]?>"
@@ -99,4 +101,4 @@
 	</article>
 </main>
 
-<?php include_once("../_partials/footer.php"); ?>
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); ?>

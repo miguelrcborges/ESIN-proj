@@ -80,8 +80,7 @@ CREATE TABLE QuestionAttempts (
 	student INTEGER,
 	question INTEGER,
 	date INTEGER NOT NULL,
-	was_correct INTEGER NOT NULL CHECK (was_correct IN (0, 1)),
-	PRIMARY KEY (student, question),
+	selected INTEGER NOT NULL CHECK (selected IN (1, 2, 3, 4)),
 	FOREIGN KEY (student) REFERENCES Student(id),
 	FOREIGN KEY (question) REFERENCES Question(id)
 );
