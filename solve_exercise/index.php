@@ -73,8 +73,8 @@
 		<div class="grid">
 			<section class="controls">
 				<a href="/exercise_builder/?uc_id=<?php echo $uc; ?>"><button>Add Exercise</button></a>
-				<a href="#"><button class="secondary">Leaderboard</button></a>
-				<a href="#"><button class="secondary">Skip</button></a>
+				<a href=""><button class="secondary">Leaderboard</button></a>
+				<a href="/solve_exercise/?uc_id=<?php echo $uc; ?>"><button class="secondary">Skip</button></a>
 			</section>
 			<section class="question-container">
 				<section class="question">
