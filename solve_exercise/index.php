@@ -11,22 +11,7 @@
 		die();
 	}
 
-	$sq = $dbh->prepare('SELECT uc FROM StudentUCs WHERE uc = ? AND student = ?;');
-	$sq->execute([$uc, $user_id]);
-	$response = $sq->fetch();
-	if (!$response) {
-		$_SESSION['error'] = "Please choose an UC you are enrolled in!";
-		header('Location:/select_uc/');
-		die();
-	}
 
-	// TODO: Receive the selected answer
-	// TODO: Find a way to hide a reply button until an option wasn't selected
-	//	There is :has selector, but it is too shiny (firefox received it the prev month lol)
-	$title = "Exercises";
-	$css = ["solve_exercise", "header", "footer"];
-	include_once("../_partials/head.php");
-	include_once("../_partials/header.php");
 
 	$sq = $dbh->prepare("SELECT COUNT(id) as count FROM Question WHERE UC=?;");
 	$sq->execute([$uc]);
@@ -40,9 +25,26 @@
 	$sq->execute([$uc, $user_id]);
 	$selected_question = $sq->fetch();
 	if (!$selected_question) {
-		// TODO: Render that there are no quesitons in this UC if there are no questions
-		echo "<p>Maybe include another file when its empty</p>";
-		include_once("../_partials/footer.php");
+		// This query could have been done before the previous query, which would 
+		// simplify the code a bit, but doing it this way, we will avoid an extra 
+		// query most of the times (which part of the times would be users exploiting 
+		// the system, which shouldn't really be taking considerations)
+		$sq = $dbh->prepare('SELECT name FROM StudentUCs JOIN UC on StudentUCs.uc = UC.id WHERE uc = ? AND student = ?;');
+		$sq->execute([$uc, $user_id]);
+		$response = $sq->fetch();
+		if (!$response) {
+			$_SESSION['error'] = "Please choose an UC you are enrolled in!";
+			header('Location:/select_uc/');
+			die();
+		}
+
+		$title = "Exercises";
+		$css = ["solve_exercise", "header", "footer"];
+		include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+		include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
+		include_once('no_questions.php');	
+		include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php");
+		die();	
 	}
 
 	if ($selected_question["wrong_answer3"] != NULL) {
@@ -56,6 +58,13 @@
 	$opt_order = array_slice(["correct_answer", "wrong_answer1", "wrong_answer2", "wrong_answer3"], 0, $n_opts);
 
 	shuffle($opt_order);
+
+	// TODO: Find a way to hide a reply button until an option wasn't selected
+	//	There is :has selector, but it is too shiny (firefox received it the prev month lol)
+	$title = "Exercises";
+	$css = ["solve_exercise", "header", "footer"];
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
 ?>
 
 <main>

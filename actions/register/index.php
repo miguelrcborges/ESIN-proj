@@ -6,7 +6,7 @@
 	$confirm = $_POST['confirm'];
 
 	if ($confirm != $password) {
-		$_SESSION['error'] = "The passwords don't match";
+		$_SESSION['error'] = "The passwords don't match.";
 		header('Location:/register/');
 		die();
 	}

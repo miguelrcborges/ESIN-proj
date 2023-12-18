@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	$user = isset($_SESSION["user_id"]) && $_SESSION["user_id"];
-	$uc = isset($_POST["uc"]) && $_POST["uc"];
+	$user = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : false;
+	$uc = isset($_POST["uc"]) ? $_POST["uc"] : false;
 
 	if (!$user) {
 		$_SESSION['error'] = "You need to be a registered member to submit questions.";
@@ -16,8 +16,8 @@
 	}
 
 	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
-	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND UC=?");
-	$stmt->execute([$uc, $user]);
+	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND uc=?;");
+	$stmt->execute([$user, $uc]);
 
 	if (!$stmt->fetchAll()) {
 		$_SESSION['error'] = "You can't submit questions to a curricular unit that you aren't signed up.";

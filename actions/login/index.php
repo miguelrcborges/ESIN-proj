@@ -10,14 +10,14 @@
 	$sq->execute([$username]);
 	$user_exists = $sq->fetch();
 	if (!$user_exists) {
-		$_SESSION['error'] = "User not found";
+		$_SESSION['error'] = "User not found.";
 		header('Location:/login/');
 		die();
 	}
 
 	$is_correct = password_verify($password, $user_exists['password_hash']);
 	if (!$is_correct) {
-		$_SESSION['error'] = "Incorrect password";
+		$_SESSION['error'] = "Incorrect password.";
 		header('Location:/login/');
 		die();
 	}

@@ -1,6 +1,6 @@
 <?php
 	if (!isset($_SESSION['user_id'])) {
-		$_SESSION['error'] = "Only registered users can see the following page";
+		$_SESSION['error'] = "Only registered users can see the following page.";
 		header('Location:/');
 		die();
 	}
