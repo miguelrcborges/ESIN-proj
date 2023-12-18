@@ -1,14 +1,9 @@
 <?php
 	session_start();
+	include_once($_SERVER['DOCUMENT_ROOT']."/_partials/must_login.php");
 
-	$user = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : false;
 	$uc = isset($_POST["uc"]) ? $_POST["uc"] : false;
 
-	if (!$user) {
-		$_SESSION['error'] = "You need to be a registered member to submit questions.";
-		header("Location:/");
-		die();
-	}
 	if (!$uc) {
 		$_SESSION['error'] = "Please select a valid curricular unit.";
 		header("Location:/select_uc/");
@@ -17,7 +12,7 @@
 
 	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
 	$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND uc=?;");
-	$stmt->execute([$user, $uc]);
+	$stmt->execute([$user_id, $uc]);
 
 	if (!$stmt->fetchAll()) {
 		$_SESSION['error'] = "You can't submit questions to a curricular unit that you aren't signed up.";
@@ -51,7 +46,7 @@
 
 	$sq = $dbh->prepare("INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) 
 		VALUES ( ?, ?, ?, ?, ?, ?, ?);");
-	$sq->execute([$question, $option1, $option2, $option3, $option4, $user, $uc]);
+	$sq->execute([$question, $option1, $option2, $option3, $option4, $user_id, $uc]);
 
 
 	$_SESSION['success'] = "Question registered sucessfully.";
