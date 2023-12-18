@@ -90,7 +90,7 @@
 	<?php }?>
 
 	<!-- Adicionar replies here -->
-	<form action="" method='POST'>
+	<form action="/actions/submit_reply/" method='POST'>
 		<textarea name="reply" rows="2" cols="75" placeholder="Write here your reply."></textarea>
 		<input type="hidden" name ="thread_id" value=<?php echo $thread_id?>>
 		<button type="submit">Post Reply</button>
