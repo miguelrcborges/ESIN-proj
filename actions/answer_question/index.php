@@ -11,7 +11,7 @@
 		die();
 	}
 
-	$map = ['correct_answer' => 1, 'wrong_answer1', 'wrong_answer2', 'wrong_answer3'];
+	$map = ['correct_answer' => 1, 'wrong_answer1' => 2, 'wrong_answer2' => 3, 'wrong_answer3' => 4];
 	$selected = isset($map[$answer]) ? $map[$answer] : false;
 	if (!$selected) {
 		$_SESSION['error'] = "Please don't cheat! :c";
