@@ -43,7 +43,12 @@
 					<select id="uc" name="uc">
 						<option value="">None</option>
 						<?php foreach ($ucs as $uc) {
-							echo '<option value="' . $uc['id'] . '" name="uc">' . $uc['name'] . '</option>';
+							if ($uc['id']==$_GET['uc']) {
+								echo '<option value="' . $uc['id'] . '" name="uc" selected>' . $uc['name'] . '</option>';
+							}
+							else{
+								echo '<option value="' . $uc['id'] . '" name="uc">' . $uc['name'] . '</option>';
+							}
 						} ?>
 					</select>
 				</div>
