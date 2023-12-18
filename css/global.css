@@ -58,6 +58,16 @@ button:hover {
 	cursor: pointer;
 }
 
+button:disabled, button[disabled] {
+	cursor: not-allowed;
+	background-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+button.secondary:disabled, button.secondary[disabled] {
+	cursor: not-allowed;
+	background-color: color-mix(in srgb, var(--secondary) 40%, transparent);
+}
+
 input, textarea {
 	background: var(--bg);
 	padding: 0.6em 1.2em;
