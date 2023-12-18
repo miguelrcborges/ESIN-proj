@@ -10,9 +10,9 @@
 
 <h1>Admin Panel </h1>
 
-<main>
-	<?php include_once("../../_partials/admin_panel_sidebar.php") ?>
-	<div>
+<section>
+	<?php include_once("../_partials/sidebar.php") ?>
+	<main>
 		<h2>Manage Questions</h2>
 		<form action="/admin_panel/question_lookup" type="GET">
 			<input type="number" name="q_id" placeholder="Question ID" required="required">
@@ -21,14 +21,12 @@
 
 		<div>
 			<?php
-				if (isset($_GET['q_id'])) {
-					$q_id = $_GET["q_id"];
-					include_once("display_question.php");
-				} else {
-					echo("</div>");
+			if (isset($_GET['q_id'])) {
+				$q_id = $_GET["q_id"];
+				include_once("display_question.php");
 			}?>
-
 		</div>
-</main>
+	</main>
+</section>
 
 <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); ?>
