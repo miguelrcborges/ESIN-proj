@@ -20,7 +20,7 @@
 	}
 
 	if (!$ucs) {
-		$error = "You are not enrroled in any UC! Please do so by enrolling <a href=\"/user_settings/\">here</a>!";
+		$error = "You are not enroled in any UC! Please do so by enrolling <a href=\"/user_settings/manage_ucs\">here</a>!";
 	}
 ?>
 

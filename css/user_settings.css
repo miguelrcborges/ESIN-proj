@@ -62,3 +62,11 @@ main > form > button {
     display: flex;
     flex-direction: row;
 }
+
+#error_no_course {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}

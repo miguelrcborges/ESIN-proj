@@ -10,7 +10,11 @@
 
 <h2>Change Name</h2>
 <form action='\actions\user_settings\change_course' method='POST'>
-    <p><strong>Current Course: </strong><?php echo $user_info["course_name"]?></p>
+    <p><strong>Current Course: </strong><?php if ($user_info["course_id"]==NULL) {
+                                                                echo("None");
+                                                            } else {
+                                                                echo $user_info["course_name"];
+                                                            }?></p>
     <label for new_name><strong>New Course:</strong></label>
     <select name="c_id">
         <?php foreach ($courses as $course) {

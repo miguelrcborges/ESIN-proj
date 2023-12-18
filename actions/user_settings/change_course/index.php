@@ -1,10 +1,14 @@
 <?php
 	session_start();
+	include_once($_SERVER['DOCUMENT_ROOT']."/_partials/must_login.php");
+	
 	$user = $_SESSION["user_id"];
 	$course = $_POST['c_id'];
 	$password = $_POST['password'];
 
-	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
+	//delete all UCs because the current UCs are from a different course
+	$stmt = $dbh->prepare("DELETE FROM StudentUCs WHERE student = ?;");
+	$stmt->execute([$user]);
 
 	$sq = $dbh->prepare('SELECT course_id, password_hash FROM Student WHERE id=?;');
 	$sq->execute([$user]);

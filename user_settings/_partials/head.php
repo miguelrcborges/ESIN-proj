@@ -22,6 +22,7 @@
         Student s
         JOIN Role r ON s.role_id = r.id
         JOIN Course c ON s.course_id = c.id
+        or s.course_id is null
     WHERE
         s.id = ?
 ");
