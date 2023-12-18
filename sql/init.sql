@@ -76,11 +76,11 @@ CREATE TABLE QuestionRating (
 );
 
 CREATE TABLE QuestionAttempts (
-	student INTEGER,
-	question INTEGER,
+	id INTEGER PRIMARY KEY,
+	student INTEGER NOT NULL,
+	question INTEGER NOT NULL,
 	date INTEGER NOT NULL,
 	selected INTEGER NOT NULL CHECK (selected IN (1, 2, 3, 4)),
-	PRIMARY KEY (student, question),
 	FOREIGN KEY (student) REFERENCES Student(id),
 	FOREIGN KEY (question) REFERENCES Question(id)
 );
@@ -92,8 +92,8 @@ CREATE TABLE Thread (
 	content TEXT,
 	author INTEGER NOT NULL,
 	uc INTEGER,
-	FOREIGN KEY (uc) REFERENCES UC(id)
 	FOREIGN KEY (author) REFERENCES Student(id)
+	FOREIGN KEY (uc) REFERENCES UC(id)
 );
 
 CREATE TABLE Reply (

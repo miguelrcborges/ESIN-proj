@@ -14,7 +14,7 @@
 	$map = ['correct_answer'=> 1, 'wrong_answer1' => 2, 'wrong_answer2' => 3, 'wrong_answer3' => 4];
 	$selected = isset($map[$answer]) ? $map[$answer] : false;
 	if (!$selected) {
-		$_SESSION['error'] = "Please don't cheat :c.";
+		$_SESSION['error'] = "Please don't cheat! :c";
 		header("Location:/select_uc/");
 		die();
 	}
@@ -33,7 +33,6 @@
 	$stmt = $dbh->prepare("INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (?, ?, unixepoch(), ?);");
 	$stmt->execute([$user_id, $question_id, $selected]);
 	
-	// TODO: Create question attempt page and redirect to there
-	header("Location:/solve_exercise/?uc_id=" . $uc);
+	header("Location:/attempt/?a=" . $dbh->lastInsertId());
 	die();
 ?>

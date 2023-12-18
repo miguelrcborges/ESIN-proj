@@ -54,7 +54,7 @@
 	$sq->execute([$question, $option1, $option2, $option3, $option4, $user, $uc]);
 
 
-	$_SESSION['success'] = "Question registered sucessfully";
+	$_SESSION['success'] = "Question registered sucessfully.";
 	header("Location:/solve_exercise/?uc_id=" . $uc );
 	die()
 ?>

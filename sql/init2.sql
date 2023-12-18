@@ -77,8 +77,9 @@ CREATE TABLE QuestionRating (
 );
 
 CREATE TABLE QuestionAttempts (
-	student INTEGER,
-	question INTEGER,
+	id INTEGER PRIMARY KEY,
+	student INTEGER NOT NULL,
+	question INTEGER NOT NULL,
 	date INTEGER NOT NULL,
 	selected INTEGER NOT NULL CHECK (selected IN (1, 2, 3, 4)),
 	FOREIGN KEY (student) REFERENCES Student(id),
@@ -126,6 +127,7 @@ CREATE TABLE Notification (
 
 INSERT INTO Role (name) VALUES ('membro');
 INSERT INTO Role (name) VALUES ('admin');
+INSERT INTO Role (name) VALUES ('banned');
 
 INSERT INTO Course (name) VALUES ('Bioengeneering');
 INSERT INTO Course (name) VALUES ('Retirement Preparation');

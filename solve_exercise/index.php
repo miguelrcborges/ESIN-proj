@@ -11,12 +11,6 @@
 		die();
 	}
 
-
-
-	$sq = $dbh->prepare("SELECT COUNT(id) as count FROM Question WHERE UC=?;");
-	$sq->execute([$uc]);
-	$n_questions = $sq->fetch();
-
 	// TODO: Probably a algorithm better than selecting a random is preferable
 	$sq = $dbh->prepare("SELECT Question.id as id, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3,
 			Student.name as author, UC.name as uc_name, UC.id as uc_id, Student.id as author_id
@@ -69,6 +63,12 @@
 
 <main>
 	<h1>Exercises - <?php echo $selected_question['uc_name']; ?></h1>
+	<?php if ($success) { ?>
+		<p class="success"><?php echo $success; ?></p>
+	<?php } ?>
+	<?php if ($error) { ?>
+		<p class="error"><?php echo $error; ?></p>
+	<?php } ?>
 	<article>
 		<div class="grid">
 			<section class="controls">
@@ -91,7 +91,7 @@
 				</section>
 			</section>
 		</div>
-		<form action="/actions/answer_question/" method="POST" class="inputs">
+		<form action="/actions/answer_question/" method="POST" class="answers">
 			<?php for ($i = 0; $i < $n_opts; $i++) { ?>
 			<label for="<?php echo $opt_order[$i]?>">
 				<input type="hidden" name="qid" value="<?php echo $selected_question['id'] ?>">

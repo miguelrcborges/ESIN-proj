@@ -22,4 +22,12 @@
 	}
 
 	$user_is_admin = $user_exists['role_id'] == 2;
+	$user_is_banned = $user_exists['role_id'] == 3;
+	if ($user_is_banned) {
+		session_destroy();	
+		session_start();
+		$_SESSION['error'] = "You have been banned.";
+		header('Location:/');
+		die();
+	}
 ?>

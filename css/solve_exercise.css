@@ -33,13 +33,13 @@ main {
 	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
-.question header > div {
+.question header > div, .replier > div {
 	display: flex;
 	align-items: center;
 	gap: 5px;
 }
 
-.question header > div > img {
+.replier img, .question header > div > img {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -50,27 +50,52 @@ main {
 	border-radius: 16px;
 }
 
-.inputs {
+.answers {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	padding: 24px;
 	gap: 32px;
 }
 
-.inputs > label {
+.answers > * {
 	width: min(800px, 90%);
 }
 
-.inputs > label > div {
+.answers > label > div {
 	background-color: color-mix(in srgb, var(--secondary) 30%, transparent);
 	padding: 20px 25px;
 	border-radius: 5px;
 	transition: 200ms;
 }
 
-.inputs > button {
+.answers > button {
 	padding: 20px 40px;
+}
+
+.answers > header {
+	display: flex;
+	justify-content: space-between;
+	gap: 5px
+}
+
+.replier {
+	color: color-mix(in srgb, var(--fg) 60%, transparent);
+}
+
+.answer {
+	background-color: color-mix(in srgb, var(--secondary) 30%, transparent);
+	padding: 20px 25px;
+	border-radius: 5px;
+	cursor: not-allowed;
+}
+
+.answer.correct-answer {
+	background-color: color-mix(in srgb, var(--green) 50%, color-mix(in srgb, var(--secondary) 30%, transparent));
+}
+
+.answer.wrong-answer {
+	background-color: color-mix(in srgb, var(--red) 50%, color-mix(in srgb, var(--secondary) 30%, transparent));
 }
 
 input[type="radio"] + div:hover {
@@ -97,5 +122,9 @@ input[type="radio"]:checked + div {
 	.controls {
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.answers {
+		align-items: flex-start;
 	}
 }
