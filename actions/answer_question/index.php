@@ -28,7 +28,6 @@
 		header("Location:/select_uc/");
 		die();
 	}
-	
 
 	$stmt = $dbh->prepare("INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (?, ?, ?, ?);");
 	$stmt->execute([$user_id, $question_id, time(), $selected]);

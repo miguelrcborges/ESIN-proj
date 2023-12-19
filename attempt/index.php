@@ -13,14 +13,15 @@
 
 	$sq = $dbh->prepare("SELECT QuestionAttempts.student as student, Question.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, 
 			Student.name as author, Student.id as author_id, selected, UC.name as uc, QuestionAttempts.id as id, UC.id as uc_id, Question.id as question_id,
-			QuestionAttempts.date as date, QuestionRating.user_score as q_rating
+			QuestionAttempts.date as date, QuestionRating.user_score as q_rating, rating
 		FROM QuestionAttempts
 		JOIN Question ON QuestionAttempts.question = Question.id
 		JOIN UC ON Question.uc = UC.id
 		JOIN Student ON Question.Author = Student.id
-		LEFT JOIN QuestionRating ON QuestionAttempts.student = QuestionRating.student AND QuestionAttempts.question = QuestionRating.question
-		WHERE QuestionAttempts.id = ?");
-	$sq->execute([$attempt]);
+		LEFT JOIN QuestionRating ON QuestionAttempts.question = QuestionRating.question
+		LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Question.id = t2.question
+		WHERE QuestionAttempts.id = ? AND QuestionRating.student = ?");
+	$sq->execute([$attempt, $user_id]);
 	$attempt= $sq->fetch();
 	if (!$attempt) {
 		$_SESSION['error'] = "Select a valid attempt to visualize.";
@@ -37,6 +38,11 @@
 	if (!$attempt['q_rating']) {
 		$attempt['q_rating'] = 0;
 	}
+
+	if (!$attempt['rating']) {
+		$attempt['rating'] = 0;
+	}
+
 	$q_rating_base_url = "/actions/set_rating/?q=" . $attempt['question_id'] . "&v=";
 	
 	if ($attempt["wrong_answer3"] != NULL) {
@@ -46,6 +52,7 @@
 	} else {
 		$n_opts = 2;
 	}
+
 
 	$options = [1 => 'correct_answer', 'wrong_answer1', 'wrong_answer2', 'wrong_answer3'];
 
@@ -79,21 +86,25 @@
 							<span>Question #<?php echo $attempt['question_id']; ?></span>
 						</div>
 					</header>
-					<h2><?php echo $attempt["question"]; ?></h2>
+					<main>
+						<h2><?php echo $attempt["question"]; ?></h2>
+					</main>
 					<footer>
-						<span>Did you like this question?</span>
-						<?php 
-							if ($attempt['q_rating'] != 1) {
-								echo "<a href=\"" . $q_rating_base_url . 1 . "\">Yes.</a>";
-							}
-							if ($attempt['q_rating'] != 0) {
-								echo "<a href=\"" . $q_rating_base_url . 0 . "\">Remove " . ($attempt['q_rating'] == 1 ? "like" : "dislike") . ".</a>";
-							}
-							if ($attempt['q_rating'] != -1) {
-								echo "<a href=\"" . $q_rating_base_url . -1 . "\">No.</a>";
-							}
-						?>
-					</span>
+						<div>
+							<span>Did you like this question?</span>
+							<?php 
+								if ($attempt['q_rating'] != 1) {
+									echo "<a href=\"" . $q_rating_base_url . 1 . "\">Yes.</a>";
+								}
+								if ($attempt['q_rating'] != 0) {
+									echo "<a href=\"" . $q_rating_base_url . 0 . "\">Remove " . ($attempt['q_rating'] == 1 ? "like" : "dislike") . ".</a>";
+								}
+								if ($attempt['q_rating'] != -1) {
+									echo "<a href=\"" . $q_rating_base_url . -1 . "\">No.</a>";
+								}
+							?>
+						</div>
+						<span>Rating: <?php echo $attempt["rating"]; ?></span>
 					</footer>
 				</section>
 			</section>

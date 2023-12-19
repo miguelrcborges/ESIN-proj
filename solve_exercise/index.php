@@ -12,10 +12,13 @@
 	}
 
 	// TODO: Probably a algorithm better than selecting a random is preferable
-	$sq = $dbh->prepare("SELECT Question.id as id, question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3,
-			Student.name as author, UC.name as uc_name, UC.id as uc_id, Student.id as author_id
-		FROM Question JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
+	$sq = $dbh->prepare("SELECT Question.id as id, Question.question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3,
+			Student.name as author, UC.name as uc_name, UC.id as uc_id, Student.id as author_id, rating
+		FROM Question 
+		JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
+			LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Question.id = t2.question
 		WHERE uc=? AND uc in (SELECT uc FROM StudentUCs WHERE student=?) ORDER BY random() LIMIT 1;");
+
 	$sq->execute([$uc, $user_id]);
 	$selected_question = $sq->fetch();
 	if (!$selected_question) {
@@ -39,6 +42,10 @@
 		include_once('no_questions.php');	
 		include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php");
 		die();	
+	}
+	
+	if (!$selected_question['rating']) {
+		$selected_question['rating'] = 0;
 	}
 
 	if ($selected_question["wrong_answer3"] != NULL) {
@@ -87,7 +94,13 @@
 							<span>Question #<?php echo $selected_question['id']; ?></span>
 						</div>
 					</header>
-					<h2><?php echo $selected_question["question"]; ?></h2>
+					<main>
+						<h2><?php echo $selected_question["question"]; ?></h2>
+					</main>
+					<footer>
+						<span></span>
+						<span>Rating: <?php echo $selected_question["rating"]; ?></span>
+					</footer>
 				</section>
 			</section>
 		</div>
