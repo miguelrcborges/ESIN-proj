@@ -90,7 +90,7 @@
 		<h2>No posts found.</h2>
 	</article>
 <?php } ?>
-</main>
+</main>sss
 
 <?php	
 	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/footer.php'); 
