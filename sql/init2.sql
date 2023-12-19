@@ -197,3 +197,19 @@ INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Where is
 
 INSERT INTO Reply (content, creation_date, author, thread) VALUES ('No thanks uwu', 1, 3, 1);
 INSERT INTO Reply (content, creation_date, author, thread) VALUES ('Yes', 1, 2, 2);
+
+
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3600, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 2, 3601, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3610, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 2, 3611, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3611, 2);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3611, 5);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3611, 2);
+
+
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (2, 1, 3600, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (2, 2, 3601, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (2, 1, 3610, 1);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (2, 1, 3611, 5);
+INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (2, 1, 3611, 2);

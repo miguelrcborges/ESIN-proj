@@ -1,0 +1,45 @@
+main {
+    margin: 3.25em;
+    margin-top: 0px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 2em minmax(18em, 35em) 7em 2em;
+    gap: 1px 0;
+    width: 70%;
+}
+
+.index, .name, .number {
+    padding: 5px;
+    text-align: center;
+}
+
+.index {
+    font-weight: bold;
+    text-align: right;
+    background-color: var(--primary);
+    border-radius: 100% 0 0 100%;
+}
+
+.name {
+    border-left: 1px solid var(--fg);
+    border-right: 1px solid var(--fg);
+    background-color: var(--primary);
+}
+
+.number {
+    text-align: left;
+    background-color: var(--primary);
+}   
+
+/*for formatting of the broder radius*/
+.empty {
+    text-align: left;
+    background-color: var(--primary);
+    border-radius: 0 100% 100% 0;
+}  
+
+#error {
+    align-self: center;
+}
