@@ -1,18 +1,22 @@
-<?php 
-	session_start();
-	include($_SERVER['DOCUMENT_ROOT'] . '/_partials/must_login.php'); 
-
-	$title = "User Settings";
-	$css = ["user_settings", "header", "footer"];
-	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
-	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/head.php"); 
+$pfp_loc = '/assets/pfp/cat'.($user_id%10) . '.jpg';
 ?>
+<h2>Info</h2>
+<div id="info">
+    <img src=<?php echo($pfp_loc);?> alt='Profile Picture' style='width:300px;height:300px;'>
 
-<h1>User Settings</h1>
+    <div>
+        <p><strong>Name:</strong>                       <?php echo $user_info["name"]?> </p>
+        <p><strong>Username:</strong>                   <?php echo $user_info["username"]?> </p>
+        <p><strong>Course:</strong>                     <?php if ($user_info["course_id"]==NULL) {
+                                                                echo("None");
+                                                            } else {
+                                                                echo $user_info["course_name"];
+                                                            }?> </p>
+        <p><strong>Account Role:</strong>               <?php echo $user_info["role_name"]?> </p>
+        <p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', strtotime($user_info["creation_date"])) ?> </p>
+    </div>
+</div>
 
-<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/sidebar.php"); ?>
-<main>
-</main>
-
-<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); ?>
-
+<?php include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/footer.php"); ?>
