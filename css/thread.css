@@ -1,87 +1,98 @@
-*{
-    flex-wrap:wrap;
-}
-
-main{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
     min-height: 75dvh;
+    padding: 10px 20px;
 }
 
-main article{
-    max-width:100dvh;
+main article {
+    width: min(80%, 700px);
 }
 
-main img{
+main img {
     width: 40px;
 	height: 40px;
-    border-radius:50%;
+    border-radius: 50%;
 }
 
-.thread{
-    margin: 20px 20px 15px 20px;
+.thread {
     background-color: var(--secondary);
-    opacity:80%;
-    border-radius:20px;
+    border-radius: 20px;
     padding: 20px;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: anywhere;
+    width: 100%;
 }
 
-.thread header{
-    display:flex;
-    flex-direction:column;
+.thread header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.thread h1{
+.thread p {
+    overflow-wrap: anywhere;
+}
+
+.thread h1 {
     margin-top: 0px;
 }
 
-.profile{
-    display:flex;   
-    justify-content:left;
-    align-items:center;
+.profile {
+    display: flex;   
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+    justify-content: left;
+    align-items: center;
     font-weight: bold;
-    gap:10px;
+    gap: 10px;
 }
 
-.reply_container{
-    display:flex;
-    flex-direction:column;
-    gap: 5px;
-}
-
-.other_replies{
-    display:flex;
+.reply_container {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    margin: 5px 20px 5px 20px;
+    overflow-wrap: anywhere;
+    gap: 15px;
+}
+
+.other_replies {
     background-color: color-mix(in srgb, var(--secondary) 30%, transparent);
-    border-radius:20px;
-    padding: 20px;
 }
 
-.my_replies{
-    align-self:flex-end;
-    display:flex;
-    flex-direction: column;
-    margin: 5px 20px 5px 20px;
+.my_replies {
     background-color: var(--primary);
-    border-radius:20px;
-    padding: 20px;
+    align-self: flex-end;
 }
 
-.no_replies{
-    font-weight:bold;
-    align-self:center;
-    font-size:large;
+.my_replies, .other_replies {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow-wrap: anywhere;
+    border-radius: 20px;
+    padding: 15px;
 }
 
-form{
-    margin: 20px;
-    align-self:flex-end;
-    display:flex;
-    align-items:center;
+.no_replies {
+    font-weight: bold;
+    align-self: center;
+    font-size: large;
+    text-align: center;
+}
+
+form {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
     gap: 20px;
+    width: min(80%, 700px);
 }
-    
+
+form button {
+    width: 100px;
+	height: 50px;
+}

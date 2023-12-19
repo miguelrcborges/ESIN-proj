@@ -22,7 +22,6 @@
 	WHERE Thread.id = ?");
 	$stm->execute([$thread_id]);
 	$thread = $stm->fetch();
-	// var_dump($thread);
 
 	$stm = $dbh->prepare("SELECT 
 	Reply.id as reply_id,
@@ -36,15 +35,9 @@
 	WHERE Reply.thread = ?");
 	$stm->execute([$thread_id]);
 	$replies = $stm->fetchAll();
-	// var_dump($replies);
 ?>
 
 <main>
-	<!-- Alterar o css das seguintes partes, a ideia é 
-		Título yada yada
-		By Autor  	data 
-		
-	Encaixar a uc algures, uma tag-->
 	<section class ="thread">
 		<header>
 			<h1 class="title"> <?php echo $thread['thread_title'];?> </h1>
@@ -54,7 +47,7 @@
 			</span>
 		</header>
 		<body>
-			<?php if ($thread['thread_content'] != NULL){ ?>
+			<?php if ($thread['thread_content'] != NULL) { ?>
 				<p id='thread_content'> <?php echo $thread['thread_content'] ?> </p>
 			<?php }
 			else { ?>
@@ -111,7 +104,6 @@
 		</article>
 	<?php } ?>
 
-	<!-- Adicionar replies here -->
 	<form action="/actions/submit_reply/" method='POST'>
 		<textarea name="reply" rows="2" cols="75" placeholder="Write here your reply."></textarea>
 		<input type="hidden" name ="thread_id" value=<?php echo $thread_id?>>
