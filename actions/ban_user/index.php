@@ -13,10 +13,8 @@
 
 
 	if ($rowsAffected > 0) {
-		echo('User with username '.$username.' deleted successfully.');
 		$_SESSION['success'] = 'User with username '.$username.' deleted successfully.';
 	} else {
-		echo('No user found with username "'.$username.'".');
 		$_SESSION['error'] = 'No user found with username "'.$username.'".';
 	}
 

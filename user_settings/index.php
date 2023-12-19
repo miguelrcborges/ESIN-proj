@@ -1,10 +1,19 @@
 <?php
+$page_title = "Info";
 include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/head.php"); 
 $pfp_loc = '/assets/pfp/cat'.($user_id%10) . '.jpg';
 ?>
-<h2>Info</h2>
+
 <div id="info">
-    <img src=<?php echo($pfp_loc);?> alt='Profile Picture' style='width:300px;height:300px;'>
+
+    <?php if ($success) { ?>
+			<p class="success"><?php echo $success; ?></p>
+		<?php }
+		if ($error) { ?>
+			<p class="error"><?php echo $error; ?></p>
+		<?php } ?>
+
+    <img src=<?php echo($pfp_loc);?> alt='Profile Picture'>
 
     <div>
         <p><strong>Name:</strong>                       <?php echo $user_info["name"]?> </p>

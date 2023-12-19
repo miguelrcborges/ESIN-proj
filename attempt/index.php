@@ -11,16 +11,16 @@
 		die();
 	}
 
-	$sq = $dbh->prepare("SELECT QuestionAttempts.student as student, Question.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, 
-			Student.name as author, Student.id as author_id, selected, UC.name as uc, QuestionAttempts.id as id, UC.id as uc_id, Question.id as question_id,
-			QuestionAttempts.date as date, QuestionRating.user_score as q_rating, rating
-		FROM QuestionAttempts
-		JOIN Question ON QuestionAttempts.question = Question.id
-		JOIN UC ON Question.uc = UC.id
-		JOIN Student ON Question.Author = Student.id
-		LEFT JOIN QuestionRating ON QuestionAttempts.question = QuestionRating.question
-		LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Question.id = t2.question
-		WHERE QuestionAttempts.id = ? AND QuestionRating.student = ?");
+	$sq = $dbh->prepare("SELECT QA.student as student, Q.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, 
+			S.name as author, S.id as author_id, selected, UC.name as uc, QA.id as id, UC.id as uc_id, Q.id as question_id,
+			QA.date as date, QR.user_score as q_rating, rating
+		FROM QuestionAttempts QA
+			JOIN Question Q ON QA.question = Q.id
+			JOIN UC ON Q.uc = UC.id
+			JOIN Student S ON Q.Author = S.id
+			LEFT JOIN QuestionRating QR ON QA.question = QR.question
+			LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Q.id = t2.question
+		WHERE QA.id = ? AND QR.student = ?");
 	$sq->execute([$attempt, $user_id]);
 	$attempt= $sq->fetch();
 	if (!$attempt) {
