@@ -21,8 +21,8 @@
 		}
 	}
 
-	$stmt = $dbh->prepare("INSERT INTO Thread (title, creation_date, content, author, uc) VALUES (?, unixepoch(), ?, ?, ?);");
-	$stmt->execute([$title, $content, $user_id, $filter]);
+	$stmt = $dbh->prepare("INSERT INTO Thread (title, creation_date, content, author, uc) VALUES (?, ?, ?, ?, ?);");
+	$stmt->execute([$title, time(), $content, $user_id, $filter]);
 	$_SESSION['success'] = "Thread was created successfully";
 	header("Location:/forum/");
 	die();

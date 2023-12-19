@@ -30,8 +30,8 @@
 	}
 	
 
-	$stmt = $dbh->prepare("INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (?, ?, unixepoch(), ?);");
-	$stmt->execute([$user_id, $question_id, $selected]);
+	$stmt = $dbh->prepare("INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (?, ?, ?, ?);");
+	$stmt->execute([$user_id, $question_id, time(), $selected]);
 	
 	header("Location:/attempt/?a=" . $dbh->lastInsertId());
 	die();

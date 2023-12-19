@@ -28,8 +28,8 @@
 		}
 	}
 	
-	$stmt = $dbh->prepare("INSERT INTO Reply (creation_date, content, author, thread) VALUES (unixepoch(), ?, ?, ?)");
-	$stmt->execute([$reply, $user_id, $thread]);
+	$stmt = $dbh->prepare("INSERT INTO Reply (creation_date, content, author, thread) VALUES (?, ?, ?, ?)");
+	$stmt->execute([time(), $reply, $user_id, $thread]);
 	$_SESSION['success'] = "Reply posted with success.";
 	header("Location:/thread/?thread=" . $thread);
 	die();
