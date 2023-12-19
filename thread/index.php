@@ -48,10 +48,10 @@
 	<section class ="thread">
 		<header>
 			<h1 class="title"> <?php echo $thread['thread_title'];?> </h1>
-			<div class="profile">
-				<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-				<span class="author"> <?php echo $thread['op_name'];?> </span>
-			</div>
+			<span class="profile">
+				<img src="/assets/pfp/cat<?php echo $thread['op_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+				<span class="author"><?php echo $thread['op_name'];?></span>
+			</span>
 		</header>
 		<body>
 			<?php if ($thread['thread_content'] != NULL){ ?>
@@ -62,34 +62,52 @@
 			<?php } ?> 
 		</body>	
 		<footer>
-			<h3 class="date"> <?php echo date('j/m/y G:i', (int)$thread['thread_date']);?> </h3>
+			<span class="date"> <?php echo date('j/m/y G:i', (int)$thread['thread_date']);?> </span>
 		</footer>
 	</section>
 
 	<?php if (count($replies)>0) {?>
 		<section class="reply_container">
-			<?php foreach($replies as $reply){ ?>
-				<article>
-					<header>
-						<div class="profile">
-							<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-							<span><?php echo $reply['author_name']; ?></span>
-						</div>
-					</header>
-					<body>
-						<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
-					</body>
-					<footer>
-						<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
-					</footer>					
-				</article>
-			<?php } ?>
+			<?php foreach($replies as $reply){ 
+				if ($reply['author_id']!=$_SESSION['user_id']) {?>
+					<article class="other_replies">
+						<header>
+							<div class="profile">
+								<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+								<span><?php echo $reply['author_name']; ?></span>
+							</div>
+						</header>
+						<body>
+							<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
+						</body>
+						<footer>
+							<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
+						</footer>					
+					</article>
+			<?php }
+				else{ ?>
+					<article class="my_replies">
+						<header>
+							<div class="profile">
+								<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
+								<span><?php echo $reply['author_name']; ?></span>
+							</div>
+						</header>
+						<body>
+							<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
+						</body>
+						<footer>
+							<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
+						</footer>					
+					</article>
+				<?php }
+			}?>
 		</section>
 	<?php } 
 	
 	else {?>
 		<article class="no_replies">
-			<p>No replies were found</p>
+			<p>No replies were found...</p>
 		</article>
 	<?php }?>
 
