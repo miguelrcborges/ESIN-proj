@@ -27,7 +27,7 @@
 	$question = $sql->fetch();
 
 	if (empty($question)) {
-		echo('<p class="error">No question with ID ' . $q_id . '</p>');
+		echo('<p class="error">No question with ID ' . $q_id . '</p></main></section></body>');
         include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
 		die();
 	}

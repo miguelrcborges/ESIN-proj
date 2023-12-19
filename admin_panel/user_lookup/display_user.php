@@ -23,7 +23,7 @@
 	$user_stats = $sql->fetch();
 
 	if (empty($user_stats)) {
-		echo('<p class="error">No user named "' . $username . '"</p>');
+		echo('<p class="error">No user named "' . $username . '"</p></main></section></body>');
         include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
 		die();
 	}
