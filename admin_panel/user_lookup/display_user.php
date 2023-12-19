@@ -23,15 +23,17 @@
 	$user_stats = $sql->fetch();
 
 	if (empty($user_stats)) {
-		echo('<p>No user named "' . $username . '"</p>');
+		echo('<p class="error">No user named "' . $username . '"</p>');
+        include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
 		die();
 	}
 
 	$pfp_loc = '/assets/pfp/cat'.($user_stats["id"]%10) . '.jpg';
 ?>
 
+<div>
 
-<img src=<?php echo($pfp_loc);?> alt='Profile Picture' style='width:300px;height:300px;'>
+<img src=<?php echo($pfp_loc);?> alt='Profile Picture'>
 
 <div>
 	<p><strong>Name:</strong>                       <?php echo $user_stats["name"]?> </p>
@@ -45,3 +47,5 @@
 	<input type='hidden' name='username' value='<?php echo($username); ?>'>
 	<button>Ban User</button>
 </form>
+
+</div>

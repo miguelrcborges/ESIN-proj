@@ -27,12 +27,13 @@
 	$question = $sql->fetch();
 
 	if (empty($question)) {
-		echo('<p>No question with ID ' . $q_id . '</p>');
+		echo('<p class="error">No question with ID ' . $q_id . '</p>');
+        include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
 		die();
 	}
 ?>
 
-
+<div>
 <div id='question_info'>
 	<p><strong>Question:</strong>                   <?php echo $question["question"]?> </p>
 	<p><strong>Correct Answer:</strong>             <?php echo $question["correct_answer"]?> </p>
@@ -52,3 +53,4 @@
 	<input type='hidden' name='q_id' value='<?php echo($q_id); ?>'>
 	<button>Delete Question</button>
 </form>
+</div>

@@ -1,5 +1,6 @@
 h1 {
-    margin: 0 0 1em 1em;
+    padding: 0 0 1em 1em;
+    margin: 0; 
 }
 
 section {
@@ -18,27 +19,17 @@ sidebar {
 	display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    gap: 1em;
 }
 
-sidebar > * {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-
-    margin-left: 1em;
-}
 
 sidebar > a > button {
     background-color: transparent;
     color: var(--fg);
 }
 
-
-h2 {
-    margin-top: 0;
-}
-
 section > main {
-    margin-left: 1em;
+    padding: 30px 15px;
     display: flex;
     flex-direction:column;
 }
@@ -46,11 +37,11 @@ section > main {
 form {
     display: flex;
     flex-direction:column;
+    width: min(300px, 70dvw);;
 }
 
-img {
-    border-radius: 100%;
-    margin-right: 30px;
+select {
+    height: 40px;
 }
 
 main > form > * {
@@ -63,15 +54,91 @@ main > form > button {
     padding: 10px;
 }
 
+main > form > div {
+    display: flex;
+    justify-content: space-between;
+}
+
 #info {
     display: flex;
     flex-direction: row;
+    gap: 15px;
 }
 
-#error_no_course {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
+#info > img {        
+    border-radius: 100%;
+    width: min(300px, 60dvw);
+    height: min(300px, 60dvw);
+}
+
+.success, .error {
+    margin: 15px 0;
+}
+
+h2 {
+    margin: 0 0 40px 0 ;
+}
+
+@media (orientation: portrait) or (max-width: 650px) {
+    main {
+        align-self: center;
+    }
+
+    h1 {
+        padding: 0.5em 0 0.5em 1em;
+    }
+
+    sidebar {
+        width: auto;
+        border-style: solid;
+        border-width: 2px 0 2px 0;
+        border-color:  var(--fg);
+
+        margin: 0;
+    
+    
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    sidebar > a > button {
+        background-color: transparent;
+        color: var(--fg);
+        border-width: 0 0 2px 0;
+        border-radius: 0;
+        border-style: solid;
+        align-items: center;
+    }
+
+    #info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #info > img {        
+        align-self: center;
+    }
+
+    main > form {
+        gap: 20px;
+    }
+
+    select {
+        height: 40px;
+    }
+
+    form {
+        width: min(380px, 90dvw);
+    }
+
+    
 }

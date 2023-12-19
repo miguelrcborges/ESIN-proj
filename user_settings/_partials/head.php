@@ -37,3 +37,11 @@ $user_info = $sql->fetch();
 <section>
     <?php include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/sidebar.php"); ?>
     <main>
+        <h2><?php echo $page_title;?></h2>
+
+        <?php if ($success) { ?>
+			<p class="success"><?php echo $success; ?></p>
+		<?php }
+		if ($error) { ?>
+			<p class="error"><?php echo $error; ?></p>
+		<?php } ?>
