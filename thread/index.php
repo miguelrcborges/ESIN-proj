@@ -60,7 +60,7 @@
 			<?php } ?> 
 		</body>	
 		<footer>
-			<h3 class="date"> <?php echo date('j/m/y G:i', (int)$thread['thread_date']);?> </h3>
+			<h3 class="date"> <?php echo date('j/m/y G:i', intval($thread['thread_date']));?> </h3>
 		</footer>
 	</section>
 
@@ -76,7 +76,7 @@
 						<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
 					</body>
 					<footer>
-						<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
+						<span><?php echo date('j/m/y G:i', intval($reply['reply_date']));?></span>
 					</footer>					
 				</article>
 			<?php } ?>

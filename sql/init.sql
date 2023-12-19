@@ -126,3 +126,4 @@ CREATE TABLE Notification (
 
 INSERT INTO Role (name) VALUES ('membro');
 INSERT INTO Role (name) VALUES ('admin');
+INSERT INTO Role (name) VALUES ('banned');

@@ -50,6 +50,13 @@ main {
 	border-radius: 16px;
 }
 
+.question > footer {
+	display: flex;
+	padding: 2px 4px;
+	column-gap: 8px;
+	flex-wrap: wrap;
+}
+
 .answers {
 	display: flex;
 	flex-direction: column;
@@ -100,6 +107,7 @@ main {
 
 input[type="radio"] + div:hover {
 	background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+	cursor: pointer;
 }
 
 input[type="radio"]:checked + div {

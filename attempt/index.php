@@ -11,12 +11,14 @@
 		die();
 	}
 
-	$sq = $dbh->prepare("SELECT student, Question.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, QuestionAttempts.date as date,
-			Student.name as author, Student.id as author_id, selected, UC.name as uc, QuestionAttempts.id as id, UC.id as uc_id, Question.id as question_id
+	$sq = $dbh->prepare("SELECT QuestionAttempts.student as student, Question.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, 
+			Student.name as author, Student.id as author_id, selected, UC.name as uc, QuestionAttempts.id as id, UC.id as uc_id, Question.id as question_id,
+			QuestionAttempts.date as date, QuestionRating.user_score as q_rating
 		FROM QuestionAttempts
 		JOIN Question ON QuestionAttempts.question = Question.id
 		JOIN UC ON Question.uc = UC.id
 		JOIN Student ON Question.Author = Student.id
+		LEFT JOIN QuestionRating ON QuestionAttempts.student = QuestionRating.student AND QuestionAttempts.question = QuestionRating.question
 		WHERE QuestionAttempts.id = ?");
 	$sq->execute([$attempt]);
 	$attempt= $sq->fetch();
@@ -31,6 +33,11 @@
 		header('Location:/select_uc/');
 		die();
 	}
+
+	if (!$attempt['q_rating']) {
+		$attempt['q_rating'] = 0;
+	}
+	$q_rating_base_url = "/actions/set_rating/?q=" . $attempt['question_id'] . "&v=";
 	
 	if ($attempt["wrong_answer3"] != NULL) {
 		$n_opts = 4;
@@ -73,6 +80,21 @@
 						</div>
 					</header>
 					<h2><?php echo $attempt["question"]; ?></h2>
+					<footer>
+						<span>Did you like this question?</span>
+						<?php 
+							if ($attempt['q_rating'] != 1) {
+								echo "<a href=\"" . $q_rating_base_url . 1 . "\">Yes.</a>";
+							}
+							if ($attempt['q_rating'] != 0) {
+								echo "<a href=\"" . $q_rating_base_url . 0 . "\">Remove " . ($attempt['q_rating'] == 1 ? "like" : "dislike") . ".</a>";
+							}
+							if ($attempt['q_rating'] != -1) {
+								echo "<a href=\"" . $q_rating_base_url . -1 . "\">No.</a>";
+							}
+						?>
+					</span>
+					</footer>
 				</section>
 			</section>
 		</div>
@@ -88,7 +110,7 @@
 					?>
 					replied:
 				</div>
-				<span><?php echo date('j/m/y G:i', (int)$attempt['date'])?></span>
+				<span><?php echo date('j/m/y G:i', intval($attempt['date']))?></span>
 			</header>
 			<?php for ($i = 1; $i <= $n_opts; $i++) { ?>
 			<div class="

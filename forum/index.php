@@ -70,7 +70,7 @@
 					<header>
 						<div class="top-row">
 							<span class="uc"><?php echo $thread['uc_name']; ?></span>
-							<span class="date"><?php echo date('j/m/y G:i', (int)$thread['creation_date'])?></span>
+							<span class="date"><?php echo date('j/m/y G:i', intval($thread['creation_date']))?></span>
 						</div>
 						<h2><?php echo $thread['title'];?></h2>
 					</header>
