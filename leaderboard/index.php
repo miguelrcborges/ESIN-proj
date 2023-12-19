@@ -29,9 +29,8 @@
     $question_attempts = $stmt->fetchAll();
 
     if (empty($question_attempts)) {
-        echo "<main><h1>Leaderboard - ". $uc_name['name'] ."</h1>";
+        echo "<h1>Leaderboard - ". $uc_name['name'] ."</h1>";
         echo "<p id='error'>No attempts have been made for any question in this UC.</p>";
-        echo "</main>";
         include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
         die();
     }
@@ -85,8 +84,8 @@
 
 
 
+<h1>Leaderboard - <?php echo $uc_name['name']; ?></h1>
 <main>
-	<h1>Leaderboard - <?php echo $uc_name['name']; ?></h1>
 
 <div class="grid-container">
 <?php

@@ -1,13 +1,14 @@
-main {
-    margin: 3.25em;
-    margin-top: 0px;
+h1 {
+    margin: 0 0 1em 1em;
 }
+
 
 .grid-container {
     display: grid;
     grid-template-columns: 2em minmax(18em, 35em) 7em 2em;
     gap: 1px 0;
     width: 70%;
+    margin: 0 0 1em 1em;
 }
 
 .index, .name, .number {

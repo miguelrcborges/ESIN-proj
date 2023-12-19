@@ -1,3 +1,7 @@
+h1 {
+    margin: 0 0 1em 1em;
+}
+
 section {
     display: flex;
     flex-direction: row;
@@ -8,6 +12,7 @@ sidebar {
     border-style: solid;
     border-width: 0 2px 0 0;
     border-color:  var(--fg);
+    margin: 0 0 0 1em;
 
 
 	display: flex;
