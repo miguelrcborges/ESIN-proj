@@ -102,6 +102,10 @@ select {
 	text-align: center;
 }
 
+textarea{
+	resize: none;
+}
+
 .error {
 	color: var(--red);
 	font-weight: bold;
