@@ -11,17 +11,27 @@
 		die();
 	}
 
-	$sq = $dbh->prepare("SELECT QA.student as student, Q.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, 
-			S.name as author, S.id as author_id, selected, UC.name as uc, QA.id as id, UC.id as uc_id, Q.id as question_id,
-			QA.date as date, QR.user_score as q_rating, rating
+	$sq = $dbh->prepare("
+		SELECT 
+			QA.student as replier_id, QA.id as id,
+			Q.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, Q.id as question_id,
+			A.name as author, A.id as author_id, selected, 
+			R.name as replier,
+			UC.name as uc, UC.id as uc_id, 
+			QA.date as date, 
+			QR.user_score as q_rating, 
+			rating
 		FROM QuestionAttempts QA
 			JOIN Question Q ON QA.question = Q.id
 			JOIN UC ON Q.uc = UC.id
-			JOIN Student S ON Q.Author = S.id
-			LEFT JOIN QuestionRating QR ON QA.question = QR.question
+			JOIN Student A ON Q.author = A.id
+			JOIN Student R ON QA.student = R.id
+			LEFT JOIN
+				(SELECT question, user_score FROM QuestionRating WHERE student = ?) QR ON QA.question = QR.question
 			LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Q.id = t2.question
-		WHERE QA.id = ? AND QR.student = ?");
-	$sq->execute([$attempt, $user_id]);
+		WHERE QA.id = ?
+	");
+	$sq->execute([$user_id, $attempt]);
 	$attempt= $sq->fetch();
 	if (!$attempt) {
 		$_SESSION['error'] = "Select a valid attempt to visualize.";
@@ -29,7 +39,7 @@
 		die();
 	}
 
-	if ($attempt['student'] != $user_id && !$user_is_admin) {
+	if ($attempt['replier'] != $user_id && !$user_is_admin) {
 		$_SESSION['error'] = "You haven't permission to see this attempt.";
 		header('Location:/select_uc/');
 		die();
@@ -113,10 +123,10 @@
 			<header class="replier">
 				<div>
 					<?php 
-						if ($user_id == $attempt['student']) {
+						if ($user_id == $attempt['replier']) {
 							echo "You";
 						} else {
-								echo "<img src=\"/assets/pfp/cat" . $attempt['author_id'] % 10 . ".jpg\" alt=\"Profile Picture\"/>" . $attempt['author'];
+								echo "<img src=\"/assets/pfp/cat" . $attempt['replier_id'] % 10 . ".jpg\" alt=\"Profile Picture\"/>" . $attempt['replier'];
 						}
 					?>
 					replied:

@@ -25,7 +25,8 @@ main {
 	margin: 32px 16px;
 }
 
-.question header, .question footer {
+.question header,
+.question footer {
 	padding: 18px;
 	display: flex;
 	align-items: center;
@@ -33,13 +34,16 @@ main {
 	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
-.question header > div, .replier > div, .question footer > div {
+.question header > div,
+.replier > div,
+.question footer > div {
 	display: flex;
 	align-items: center;
 	gap: 5px;
 }
 
-.replier img, .question header > div > img {
+.replier img,
+.question header > div >img {
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -105,6 +109,14 @@ input[type="radio"] + div:hover {
 
 input[type="radio"]:checked + div {
 	background-color: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+form.answers > button {
+	visibility: hidden;
+}
+
+form.answers > label:has(input[type="radio"]:checked) ~ button {
+	visibility: visible;
 }
 
 @media (orientation: landscape) and (min-width: 650px) {

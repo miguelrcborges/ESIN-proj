@@ -19,7 +19,7 @@ main > h1 {
 }
 
 p {
-	text-align: justify; 
+	text-align: justify;
 }
 
 @media (orientation: landscape) and (min-width: 700px) {
@@ -30,6 +30,7 @@ p {
 	.grid > :first-child {
 		justify-self: self-end;
 	}
+
 	.grid > #description {
 		justify-self: self-start;
 	}

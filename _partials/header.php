@@ -6,6 +6,7 @@
 			<a href="/forum/"><li>Forum</li></a>
 			<a href="/select_uc/"><li>Exercises</li></a>
 			<a href="/actions/change_theme/"><li><?php echo $change_theme_label ?></li></a>
+			<a href="/user_settings/"><li>User Settings</li></a>
 			<a href="/actions/logout/"><li>Logout</li></a>
 		</ul>
 			<label id="menu" for="nav">
@@ -31,6 +32,7 @@
 			<a href="/forum/"><li>Forum</li></a>
 			<a href="/select_uc/"><li>Exercises</li></a>
 			<a href="/actions/change_theme/"><li><?php echo $change_theme_label ?></li></a>
+			<a href="/user_settings/"><li>User Settings</li></a>
 			<a href="/actions/logout/"><li>Logout</li></a>
 		</ul>
 	</nav>

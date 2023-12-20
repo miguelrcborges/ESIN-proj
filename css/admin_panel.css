@@ -1,145 +1,147 @@
 h1 {
-    margin: 0 0 1em 1em;
+	margin: 0 0 1em 1em;
 }
 
 
 section {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 sidebar {
-    width: 200px;
-    border-style: solid;
-    border-width: 0 2px 0 0;
-    border-color:  var(--fg);
-    margin: 0 0 0 1em;
+	width: 200px;
+	border-style: solid;
+	border-width: 0 2px 0 0;
+	border-color: var(--fg);
+	margin: 0 0 0 1em;
 
 
 	display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 sidebar > * {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
 
-    margin-left: 1em;
+	margin-left: 1em;
 }
 
 sidebar > a > button {
-    background-color: transparent;
-    color: var(--fg);
+	background-color: transparent;
+	color: var(--fg);
 }
 
 
 h2 {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 main {
-    flex-grow: 9;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction:column;
+	flex-grow: 9;
+	padding: 30px 15px;
+	display: flex;
+	flex-direction: column;
 }
 
 section > main > div {
-    margin-top: 1em;
-    display: grid;
+	margin-top: 1em;
+	display: grid;
 	column-gap: 50px;
 	row-gap: 10px;
-    grid-template-columns: 20em 20em;
-    grid-template-rows: auto auto;
+	grid-template-columns: 20em 20em;
+	grid-template-rows: auto auto;
 }
 
 #ban > button {
-    padding: 1em 2em 1em 2em;
-    margin-top: 1em;
+	padding: 1em 2em 1em 2em;
+	margin-top: 1em;
 }
 
 #ban {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 2;  
-    justify-self: center;
-}
-div > img {
-    border-radius: 100%;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 2;
+	grid-row-end: 2;
+	justify-self: center;
 }
 
-.success, .error {
-    margin: 15px, 0;
+div > img {
+	border-radius: 100%;
+}
+
+.success,
+.error {
+	margin: 15px, 0;
 }
 
 @media (orientation: portrait) or (max-width: 650px) {
-    h1 {
-        margin: 0.5em 0 0.5em 1em;
-    }
+	h1 {
+		margin: 0.5em 0 0.5em 1em;
+	}
 
-    sidebar {
-        width: auto;
-        border-style: solid;
-        border-width: 2px 0 2px 0;
-        border-color:  var(--fg);
+	sidebar {
+		width: auto;
+		border-style: solid;
+		border-width: 2px 0 2px 0;
+		border-color: var(--fg);
 
-        margin: 0;
-    
-    
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-    }
+		margin: 0;
 
-    section {
-        display: flex;
-        flex-direction: column;
-    }
 
-    sidebar > a > button {
-        background-color: transparent;
-        color: var(--fg);
-        border-width: 0 0 2px 0;
-        border-radius: 0;
-        border-style: solid;
-    }
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 10px;
+	}
 
-    div > img {
-        width: min(300px, 70dvw);
-        height: min(300px, 70dvw);
-        align-self: center;
-    }
+	section {
+		display: flex;
+		flex-direction: column;
+	}
 
-    section > main > div {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+	sidebar > a > button {
+		background-color: transparent;
+		color: var(--fg);
+		border-width: 0 0 2px 0;
+		border-radius: 0;
+		border-style: solid;
+	}
 
-    main {
-        gap: 10px;
-    }
+	div > img {
+		width: min(300px, 70dvw);
+		height: min(300px, 70dvw);
+		align-self: center;
+	}
 
-    #ban {
-        align-self: center;
-        padding: 0 0 20px 0;
-    }
+	section > main > div {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 
-    #ban > button {
-        margin: 0;
-    }
+	main {
+		gap: 10px;
+	}
 
-    #search > button {
-        padding: 10px;
-    }
+	#ban {
+		align-self: center;
+		padding: 0 0 20px 0;
+	}
 
-    #search {
-        display: grid;
-        grid-template-columns: calc(100% - 80px) 80px;
-    }
+	#ban > button {
+		margin: 0;
+	}
+
+	#search > button {
+		padding: 10px;
+	}
+
+	#search {
+		display: grid;
+		grid-template-columns: calc(100% - 80px) 80px;
+	}
 }

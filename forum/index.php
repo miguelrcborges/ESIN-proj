@@ -10,25 +10,76 @@
 	$stmt = $dbh->prepare("SELECT id, name FROM StudentUCs JOIN UC ON id=uc WHERE student=?");
 	$stmt->execute([$_SESSION['user_id']]);
 	$ucs = $stmt->fetchAll();
+	
+	$page = isset($_GET['page']) ? intval($_GET['page']) : false;
+	$filter = isset($_GET['uc']) && $_GET['uc'] != null ? $_GET['uc'] : false;
+	$THREADS_PER_PAGE = 10;
+	
+	if (!$page) {
+		$page = 1;
+	}
 
-	// TODO: Probably a cap will be need to be added when more Threads are available. (Pagination)
-	// TODO: UI breaks if a thread happens to have a huge word.
-	if (isset($_GET['uc']) && $_GET['uc'] != null) {
-		// The 2nd condition restricts the view, not letting users see
-		// users seeing posts from courses which they arent signed up
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id, UC.name as uc_name
-			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
-				WHERE uc=? AND uc in 
-					(SELECT uc FROM StudentUCs WHERE student=?)
-			ORDER BY creation_date DESC");
+	if ($filter) {
+		$stmt = $dbh->prepare("
+			SELECT COUNT(*) as count
+			FROM Thread JOIN Student ON Thread.author = Student.id 
+				LEFT JOIN UC ON Thread.uc = UC.id
+			WHERE uc=? AND uc in 
+				(SELECT uc FROM StudentUCs WHERE student=?)
+		");
 		$stmt->execute([$_GET['uc'], $user_id]);
 	} else {
-		$stmt = $dbh->prepare("SELECT Student.name as author_name, Thread.id as id, title, content, Thread.creation_date as creation_date, Student.id as author_id, UC.name as uc_name
+		$stmt = $dbh->prepare("
+			SELECT COUNT(*) as count
 			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
 				WHERE uc is NULL OR uc in 
 					(SELECT uc FROM StudentUCs WHERE student=?)
-			ORDER BY creation_date DESC");
+		");
 		$stmt->execute([$user_id]);
+	}
+
+	$count = $stmt->fetch()['count'];
+	$last_page = ceil($count / $THREADS_PER_PAGE);
+	if ($page > $last_page) {
+		$page = $last_page;
+	} else if ($page < 0) {
+		$page = 1;
+	}
+	$has_next_page = $page < $last_page;
+	$has_prev_page = $page > 1;
+
+	if ($filter) {
+		// The 2nd condition restricts the view, not letting users see
+		// users seeing posts from courses which they arent signed up
+		$stmt = $dbh->prepare("
+			SELECT 
+				Student.name as author_name, Student.id as author_id,
+				Thread.id as id, title, content, Thread.creation_date as creation_date,
+				UC.name as uc_name
+			FROM Thread 
+				JOIN Student ON Thread.author = Student.id
+				LEFT JOIN UC ON Thread.uc = UC.id
+			WHERE uc=? AND uc in 
+				(SELECT uc FROM StudentUCs WHERE student=?)
+			ORDER BY creation_date DESC
+			LIMIT ? OFFSET ?
+		");
+		$stmt->execute([$_GET['uc'], $user_id, $THREADS_PER_PAGE, ($page-1) * $THREADS_PER_PAGE]);
+	} else {
+		$stmt = $dbh->prepare("
+			SELECT 
+				Student.name as author_name, Student.id as author_id,
+				Thread.id as id, title, content, Thread.creation_date as creation_date, 
+				UC.name as uc_name
+			FROM Thread 
+				JOIN Student ON Thread.author = Student.id 
+				LEFT JOIN UC ON Thread.uc = UC.id
+			WHERE uc is NULL OR uc in 
+				(SELECT uc FROM StudentUCs WHERE student=?)
+			ORDER BY creation_date DESC
+			LIMIT ? OFFSET ? 
+		");
+		$stmt->execute([$user_id, $THREADS_PER_PAGE, ($page-1) * $THREADS_PER_PAGE]);
 	}
 	$threads = $stmt->fetchAll();
 ?>
@@ -57,7 +108,7 @@
 		</search>
 	</header>
 
-<?php if (count($threads) > 0) { ?>
+<?php if ($threads) { ?>
 	<section class="thread-container">
 		<?php 
 			foreach ($threads as $thread) { 
@@ -90,6 +141,26 @@
 		<h2>No posts found.</h2>
 	</article>
 <?php } ?>
+	<footer>
+		<div class="grid">
+			<?php
+				if ($threads) {
+					$base_url = "/forum/?uc=" . ($filter ? $filter : "") . "&page=";
+					echo "<span>";
+					if ($has_prev_page) {
+						echo "<a href=\"$base_url" . ($page - 1) . "\">Previous</a>";
+					}
+					echo "</span>";
+					echo "<span>" . $page . "</span>";
+					echo "<span>";
+					if ($has_next_page) {
+						echo "<a href=\"$base_url" . ($page + 1) . "\">Next</a>";
+					}
+					echo "</span>";
+				}
+			?>
+		</div>
+	</footer>
 </main>
 
 <?php	

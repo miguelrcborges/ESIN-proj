@@ -13,7 +13,7 @@ main {
 }
 
 form {
-	gap: 10px;
+	gap: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -22,7 +22,8 @@ form {
 }
 
 select {
-	max-width: 300px;
+	width: 160px;
+	aspect-ratio: 3;
 }
 
 button { 

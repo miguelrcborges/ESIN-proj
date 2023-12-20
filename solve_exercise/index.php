@@ -11,11 +11,10 @@
 		die();
 	}
 
-	// TODO: Probably a algorithm better than selecting a random is preferable
 	$sq = $dbh->prepare("SELECT Question.id as id, Question.question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3,
 			Student.name as author, UC.name as uc_name, UC.id as uc_id, Student.id as author_id, rating
 		FROM Question 
-		JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
+			JOIN UC ON Question.uc = UC.id JOIN Student ON Student.id = Question.author
 			LEFT JOIN (SELECT SUM(user_score) as rating, question FROM QuestionRating GROUP BY question) t2 ON Question.id = t2.question
 		WHERE uc=? AND uc in (SELECT uc FROM StudentUCs WHERE student=?) ORDER BY random() LIMIT 1;");
 
@@ -60,8 +59,6 @@
 
 	shuffle($opt_order);
 
-	// TODO: Find a way to hide a reply button until an option wasn't selected
-	//	There is :has selector, but it is too shiny (firefox received it the prev month lol)
 	$title = "Exercises";
 	$css = ["solve_exercise", "header", "footer"];
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");

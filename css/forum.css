@@ -32,6 +32,22 @@ main > header > search select {
 	aspect-ratio: 3;
 }
 
+main > footer {
+	display: flex;
+	padding: 40px;
+	justify-content: center;
+	align-items: center;
+}
+
+main > footer > .grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 16px;
+}
+
 .filter-container {
 	display: flex;
 	align-items: center;
@@ -50,6 +66,7 @@ main > header > search select {
 }
 
 .thread-container > a > article {
+	overflow-wrap: break-word;
 	color: var(--fg);
 	background-color: color-mix(in srgb, var(--secondary) 20%, transparent);
 	padding: 20px;
