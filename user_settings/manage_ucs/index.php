@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/head.php"); ?
 
 
 <?php
-    $stmt = $dbh->prepare("SELECT id, name, code, semester, year, course FROM UC");
+    $stmt = $dbh->prepare("SELECT id, name, code, course FROM UC");
     $stmt->execute();
     $ucs = $stmt->fetchAll();
 
