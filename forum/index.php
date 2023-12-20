@@ -22,7 +22,8 @@
 	if ($filter) {
 		$stmt = $dbh->prepare("
 			SELECT COUNT(*) as count
-			FROM Thread JOIN Student ON Thread.author = Student.id 
+			FROM Thread 
+				JOIN Student ON Thread.author = Student.id 
 				LEFT JOIN UC ON Thread.uc = UC.id
 			WHERE uc=? AND uc in 
 				(SELECT uc FROM StudentUCs WHERE student=?)
@@ -31,9 +32,11 @@
 	} else {
 		$stmt = $dbh->prepare("
 			SELECT COUNT(*) as count
-			FROM Thread JOIN Student ON Thread.author = Student.id LEFT JOIN UC ON Thread.uc = UC.id
-				WHERE uc is NULL OR uc in 
-					(SELECT uc FROM StudentUCs WHERE student=?)
+			FROM Thread 
+				JOIN Student ON Thread.author = Student.id 
+				LEFT JOIN UC ON Thread.uc = UC.id
+			WHERE uc is NULL OR uc in 
+				(SELECT uc FROM StudentUCs WHERE student=?)
 		");
 		$stmt->execute([$user_id]);
 	}
@@ -53,7 +56,7 @@
 		// users seeing posts from courses which they arent signed up
 		$stmt = $dbh->prepare("
 			SELECT 
-				Student.name as author_name, Student.id as author_id,
+				Student.name as author_name, Student.id as author_id, Student.username as author_username,
 				Thread.id as id, title, content, Thread.creation_date as creation_date,
 				UC.name as uc_name
 			FROM Thread 
@@ -68,7 +71,7 @@
 	} else {
 		$stmt = $dbh->prepare("
 			SELECT 
-				Student.name as author_name, Student.id as author_id,
+				Student.name as author_name, Student.id as author_id, Student.username as author_username,
 				Thread.id as id, title, content, Thread.creation_date as creation_date, 
 				UC.name as uc_name
 			FROM Thread 
@@ -135,7 +138,7 @@
 					</main>
 					<footer>
 						<img src="/assets/pfp/cat<?php echo $thread['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-						<span><?php echo $thread['author_name']; ?></span>
+						<span><?php echo $thread['author_name']; ?> (@<?php echo $thread['author_username'];?>)</span>
 					</footer>
 				</article>
 			</a>

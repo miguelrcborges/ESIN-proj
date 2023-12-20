@@ -102,6 +102,7 @@ main > footer > .grid {
 .thread-container > a > article > header > .top-row {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
@@ -109,6 +110,7 @@ main > footer > .grid {
 	display: flex;
 	align-items: center;
 	gap: 5px;
+	color: color-mix(in srgb, var(--fg) 60%, transparent);
 }
 
 .thread-container > a > article > footer > img {
