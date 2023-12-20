@@ -70,7 +70,7 @@
 					foreach ($ucs as $uc) {
 						$name = $uc['name'];
 						$id = $uc['id'];
-						echo "<a href='/actions/delete_uc/?uc=$id'><p>$name</p></a>";
+						echo "<a href='/actions/delete_uc/?uc=$id'><button>$name</button></a>";
 					}
 				?>
 			</div>

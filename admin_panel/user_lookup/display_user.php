@@ -32,7 +32,7 @@
 	$pfp_loc = '/assets/pfp/cat'.($user_stats["id"]%10) . '.jpg';
 ?>
 
-<div>
+<div id= user_info>
 
 <img src=<?php echo($pfp_loc);?> alt='Profile Picture'>
 

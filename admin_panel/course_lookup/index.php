@@ -19,8 +19,10 @@
 	<main>
         <h2>Remove Course</h2>
         
-        <form id= "search" action="/admin_panel/course_lookup/" type="GET">
-			<select name="course" required="required">
+        <form action="/admin_panel/course_lookup/" type="GET">
+			<label for="course">Select a course to manage.</label>	
+			<select id="course" name="course" required="required">
+				<option>None</option>
 				<?php foreach ($courses as $course) {
 					echo '<option value="' . $course['name'] . '">' . $course['name'] . '</option>';
 				} ?>

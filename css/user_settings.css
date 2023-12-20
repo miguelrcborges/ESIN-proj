@@ -132,10 +132,6 @@ h2 {
         gap: 20px;
     }
 
-    select {
-        height: 40px;
-    }
-
     form {
         width: min(380px, 90dvw);
     }

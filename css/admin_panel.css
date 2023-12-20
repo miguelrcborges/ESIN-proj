@@ -2,6 +2,9 @@ h1 {
 	margin: 0 0 16px 16px;
 }
 
+p{
+	margin: 8px;
+}
 
 section {
 	display: flex;
@@ -33,19 +36,41 @@ sidebar > a > button {
 	color: var(--fg);
 }
 
-
 h2 {
 	margin-top: 0;
 }
 
-main {
-	flex-grow: 9;
-	padding: 30px 15px;
-	display: flex;
-	flex-direction: column;
+form > h2 {
+	margin: 0;
 }
 
-section > main > div {
+main > form {
+	padding: 5px;
+	gap: 20px;
+}
+
+main > form > button {
+	padding: 8px 0 8px 0;
+}
+
+select {
+	height: 40px;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	padding: 30px 15px;
+	gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction:column;
+    width: min(300px, 70dvw);;
+}
+
+#user_info {
 	margin-top: 16px;
 	display: grid;
 	column-gap: 50px;
@@ -55,7 +80,7 @@ section > main > div {
 }
 
 #ban > button {
-	padding: 16px 32px 16px 32px;
+	padding: 8px 0px 8px 0px;
 	margin-top: 16px;
 }
 
@@ -76,15 +101,33 @@ div > img {
 	margin: 15px, 0;
 }
 
-#create > button {
-	padding: 16px 32px 16px 32px;
-	margin-top: 16px;
+.parameter > p > input {
+	width:100%;
+}
+
+.ucs-container {
+    display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+	gap: 16px;
+}
+
+.ucs-container > * > *  {
+	width: 100%;
+	padding: 8px 0 8px 0;
 }
 
 @media (orientation: portrait) or (max-width: 650px) {
 	h1 {
 		margin: 0.5em 0 0.5em 16px;
 	}
+
+
+
+	main {
+        align-self: center;
+        gap: 20px;
+    }
 
 	sidebar {
 		width: auto;
@@ -122,14 +165,10 @@ div > img {
 		align-self: center;
 	}
 
-	section > main > div {
+	#user_info {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-	}
-
-	main {
-		gap: 10px;
 	}
 
 	#ban {
@@ -152,5 +191,14 @@ div > img {
 
 	#create {
 		text-align: center;
+	}
+
+    form {
+        width: min(380px, 90dvw);
+    }
+
+	#create > button {
+		padding: 16px 32px 16px 32px;
+		margin-top: 16px;
 	}
 }

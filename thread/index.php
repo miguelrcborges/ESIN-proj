@@ -6,18 +6,14 @@
 	
 	$thread_id = $_GET['thread'];
 
-	$stm = $dbh->prepare("SELECT 
-	Thread.title as thread_title, 
-	Thread.creation_date as thread_date,
-	Thread.content as thread_content,
-	Thread.uc,
-	Student.id as op_id,
-	Student.name as op_name,
-	Student.username as op_username,
-	Student.role_id as op_role
-	FROM Thread 
-	JOIN Student ON author = Student.id
-	WHERE Thread.id = ?");
+	$stm = $dbh->prepare("
+		SELECT 
+			Thread.title as thread_title, Thread.creation_date as thread_date, Thread.content as thread_content, Thread.uc,
+			Student.id as op_id, Student.name as op_name, Student.username as op_username, Student.role_id as op_role
+		FROM Thread 
+			JOIN Student ON author = Student.id
+		WHERE Thread.id = ?
+	");
 	$stm->execute([$thread_id]);
 	$thread = $stm->fetch();
 
@@ -27,17 +23,14 @@
 		die();
 	}
 
-	$stm = $dbh->prepare("SELECT 
-	Reply.id as reply_id,
-	Reply.creation_date as reply_date,
-	Reply.content as reply_content,
-	Student.id as author_id,
-	Student.name as author_name,
-	Student.username as author_username,
-	Student.role_id as author_role
-	FROM Reply
-	JOIN Student ON Reply.author = Student.id
-	WHERE Reply.thread = ?");
+	$stm = $dbh->prepare("
+		SELECT 
+			Reply.id as reply_id, Reply.creation_date as reply_date, Reply.content as reply_content,
+			Student.id as author_id, Student.name as author_name, Student.username as author_username, Student.role_id as author_role
+		FROM Reply
+			JOIN Student ON Reply.author = Student.id
+		WHERE Reply.thread = ?
+	");
 	$stm->execute([$thread_id]);
 	$replies = $stm->fetchAll();
 
@@ -83,7 +76,7 @@
 							<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
 						</body>
 						<footer>
-							<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
+							<span class="date"><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
 						</footer>					
 					</article>
 			<?php }
@@ -99,7 +92,7 @@
 							<p id='reply_content'> <?php echo $reply['reply_content']; ?> </p>	
 						</body>
 						<footer>
-							<span><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
+							<span class="date"><?php echo date('j/m/y G:i', (int)$reply['reply_date']);?></span>
 						</footer>					
 					</article>
 				<?php }
@@ -114,9 +107,9 @@
 	<?php } ?>
 
 	<form action="/actions/submit_reply/" method='POST'>
-		<textarea name="reply" rows="2" cols="75" placeholder="Write here your reply."></textarea>
+		<textarea name="reply" placeholder="Write here your reply."></textarea>
 		<input type="hidden" name ="thread_id" value=<?php echo $thread_id?>>
-		<button type="submit">Post Reply</button>
+		<button type="submit">Reply</button>
 	</form>
 
 </main>
