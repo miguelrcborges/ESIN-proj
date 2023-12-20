@@ -21,8 +21,5 @@
 		die();
 	}
 
-	$sql = $dbh->prepare('UPDATE Student SET course_id = NULL WHERE course_id = ?;');
-	$sql->execute([$c_id]);
-
 	header('Location:/admin_panel/course_lookup/');
 ?>

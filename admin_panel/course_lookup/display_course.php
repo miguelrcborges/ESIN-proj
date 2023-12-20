@@ -4,14 +4,14 @@
 	$sql = $dbh->prepare('
 		SELECT
 			c.id,
-			COUNT(*) as n_students 
+			COUNT(s.id) as n_students 
 		FROM Course c
 		LEFT JOIN
 			Student s
-				ON s.course_id=c.id
+				ON s.course_id = c.id
+				AND s.role_id != 3
 		WHERE
-			c.name = ?
-			AND s.role_id !=3;
+			c.name = ?;
 		');
 
 	$sql->execute([$c_name]);
@@ -22,7 +22,7 @@
         include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/footer.php"); 
 		die();
 	}
-?>
+?> 
 
 <div>
 
