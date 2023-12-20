@@ -39,7 +39,7 @@
 		die();
 	}
 
-	if ($attempt['replier'] != $user_id && !$user_is_admin) {
+	if ($attempt['replier'] != $user_id || !$user_is_admin) {
 		$_SESSION['error'] = "You haven't permission to see this attempt.";
 		header('Location:/select_uc/');
 		die();
