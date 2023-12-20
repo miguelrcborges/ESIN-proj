@@ -66,7 +66,7 @@ main > footer > .grid {
 }
 
 .thread-container > a > article {
-	overflow-wrap: break-word;
+	overflow-wrap: anywhere;
 	color: var(--fg);
 	background-color: color-mix(in srgb, var(--secondary) 20%, transparent);
 	padding: 20px;
