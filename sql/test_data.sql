@@ -3,37 +3,37 @@
 INSERT INTO Course (name) VALUES ('Bioengeneering');
 INSERT INTO Course (name) VALUES ('Retirement Preparation');
 
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Enology 1', 'EN1', 1, 1, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Ornitology', 'ORN', 1, 1, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Enology 2', 'EN2', 1, 2, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Star Wars History 1', 'SWH1', 1, 2, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Grape Appreciation', 'GRAP', 2, 1, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Macarena and Ballroom Dances', 'MABD', 2, 1, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Enology 3', 'EN3', 2, 2, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Bakery', 'BAK', 2, 2, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Slavic', 'SLV', 1, 3, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Star Wars History 2', 'SWH2', 1, 3, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Ornitology Applied to Bird Watching', 'OABW', 2, 3, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Star Wars History Applied to Bird Watching', 'SWBW', 2, 3, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Gaming 1', 'GAM1', 1, 4, 2);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Gaming 2', 'GAM2', 2, 4, 2);
+INSERT INTO UC (name, code, course) VALUES ('Enology 1', 'EN1', 2);
+INSERT INTO UC (name, code, course) VALUES ('Ornitology', 'ORN', 2);
+INSERT INTO UC (name, code, course) VALUES ('Enology 2', 'EN2', 2);
+INSERT INTO UC (name, code, course) VALUES ('Star Wars History 1', 'SWH1', 2);
+INSERT INTO UC (name, code, course) VALUES ('Grape Appreciation', 'GRAP', 2);
+INSERT INTO UC (name, code, course) VALUES ('Macarena and Ballroom Dances', 'MABD', 2);
+INSERT INTO UC (name, code, course) VALUES ('Enology 3', 'EN3', 2);
+INSERT INTO UC (name, code, course) VALUES ('Bakery', 'BAK', 2);
+INSERT INTO UC (name, code, course) VALUES ('Slavic', 'SLV', 2);
+INSERT INTO UC (name, code, course) VALUES ('Star Wars History 2', 'SWH2', 2);
+INSERT INTO UC (name, code, course) VALUES ('Ornitology Applied to Bird Watching', 'OABW', 2);
+INSERT INTO UC (name, code, course) VALUES ('Star Wars History Applied to Bird Watching', 'SWBW', 2);
+INSERT INTO UC (name, code, course) VALUES ('Gaming 1', 'GAM1', 2);
+INSERT INTO UC (name, code, course) VALUES ('Gaming 2', 'GAM2', 2);
 
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Material Sciences', 'CMBI', 1, 1, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Cientific Programing', 'IPCOM', 1, 1, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Celular Biology', 'BIOCEL', 2, 1, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Organic Chemistry', 'QOBI', 2, 1, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Fluid Mechanics', 'MFLU', 1, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Electromagnetism', 'ELEL', 1, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Microbiology', 'MGER', 1, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Signals and Electronics', 'SEL', 2, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Statistics', 'MNES', 2, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Molecular Biology', 'BIOMOL', 2, 2, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Processing of Phisiological Signal', 'PSFI', 1, 3, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Sensors and Actuators', 'SA', 1, 3, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Anatomy', 'ANAT', 1, 3, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Image Processing', 'AIBI', 2, 3, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Information Systems Engeneering', 'ESIN', 1, 4, 1);
-INSERT INTO UC (name, code, semester, year, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1, 4, 1);
+INSERT INTO UC (name, code, course) VALUES ('Material Sciences', 'CMBI',1);
+INSERT INTO UC (name, code, course) VALUES ('Cientific Programing', 'IPCOM', 1);
+INSERT INTO UC (name, code, course) VALUES ('Celular Biology', 'BIOCEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Organic Chemistry', 'QOBI', 1);
+INSERT INTO UC (name, code, course) VALUES ('Fluid Mechanics', 'MFLU', 1);
+INSERT INTO UC (name, code, course) VALUES ('Electromagnetism', 'ELEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Microbiology', 'MGER', 1);
+INSERT INTO UC (name, code, course) VALUES ('Signals and Electronics', 'SEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Statistics', 'MNES', 1);
+INSERT INTO UC (name, code, course) VALUES ('Molecular Biology', 'BIOMOL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Processing of Phisiological Signal', 'PSFI', 1);
+INSERT INTO UC (name, code, course) VALUES ('Sensors and Actuators', 'SA', 1);
+INSERT INTO UC (name, code, course) VALUES ('Anatomy', 'ANAT', 1);
+INSERT INTO UC (name, code, course) VALUES ('Image Processing', 'AIBI', 1);
+INSERT INTO UC (name, code, course) VALUES ('Information Systems Engeneering', 'ESIN', 1);
+INSERT INTO UC (name, code, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1);
 
 
 --passwords are 'password'

@@ -27,28 +27,15 @@
 	
 	$stmt = $dbh->prepare("SELECT id FROM Course");
 	$stmt->execute();
-	$valid_course = false;
-	var_dump($stmt->fetchAll());
-	die();
-	foreach ($stmt->fetchAll() as $row) {
-		if ($valid_course) {}
+	if (!$stmt->fetchAll(PDO::FETCH_COLUMN)) {
+		$_SESSION['error'] = "Invalid course selected.";
+		header("Location:/admin_panel/manage_ucs/");
+		die();
 	}
 
-	if ($filter) {
-		$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? and uc=?;");
-		$stmt->execute([$_SESSION['user_id'], $filter]);
-		$isinuc = $stmt->fetchAll();
-		
-		if (!$isinuc) {
-			$_SESSION['error'] = "You can't post threads on courses you aren't signed in";
-			header("Location:/create_thread/");
-			die();
-		}
-	}
-
-	$stmt = $dbh->prepare("INSERT INTO Thread (title, creation_date, content, author, uc) VALUES (?, ?, ?, ?, ?);");
-	$stmt->execute([$title, time(), $content, $user_id, $filter]);
-	$_SESSION['success'] = "Thread was created successfully";
-	header("Location:/forum/");
+	$stmt = $dbh->prepare("INSERT INTO UC (name, code, course) VALUES (?, ?, ?);");
+	$stmt->execute([$name, $code, $course]);
+	$_SESSION['success'] = "UC was created successfully";
+	header("Location:/admin_panel/manage_ucs/?course=" . $course);
 	die();
 ?>
