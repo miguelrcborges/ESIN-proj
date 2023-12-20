@@ -1,7 +1,22 @@
 .read sql/init.sql
 
 INSERT INTO Course (name) VALUES ('Bioengeneering');
-INSERT INTO Course (name) VALUES ('Retirement Preparation');
+INSERT INTO Course (name) VALUES ('Professional Hobbyism');
+INSERT INTO Course (name) VALUES ('Philosophy of the City');
+
+INSERT INTO UC (name, code, course) VALUES ('Material Sciences', 'CMBI',1);
+INSERT INTO UC (name, code, course) VALUES ('Cientific Programing', 'IPCOM', 1);
+INSERT INTO UC (name, code, course) VALUES ('Cellular Biology', 'BIOCEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Fluid Mechanics', 'MFLU', 1);
+INSERT INTO UC (name, code, course) VALUES ('Electromagnetism', 'ELEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Microbiology', 'MGER', 1);
+INSERT INTO UC (name, code, course) VALUES ('Signals and Electronics', 'SEL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Statistics', 'MNES', 1);
+INSERT INTO UC (name, code, course) VALUES ('Molecular Biology', 'BIOMOL', 1);
+INSERT INTO UC (name, code, course) VALUES ('Processing of Physiological Signal', 'PSFI', 1);
+INSERT INTO UC (name, code, course) VALUES ('Image Processing', 'AIBI', 1);
+INSERT INTO UC (name, code, course) VALUES ('Information Systems Engineering', 'ESIN', 1);
+INSERT INTO UC (name, code, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1);
 
 INSERT INTO UC (name, code, course) VALUES ('Enology 1', 'EN1', 2);
 INSERT INTO UC (name, code, course) VALUES ('Ornitology', 'ORN', 2);
@@ -9,32 +24,23 @@ INSERT INTO UC (name, code, course) VALUES ('Enology 2', 'EN2', 2);
 INSERT INTO UC (name, code, course) VALUES ('Star Wars History 1', 'SWH1', 2);
 INSERT INTO UC (name, code, course) VALUES ('Grape Appreciation', 'GRAP', 2);
 INSERT INTO UC (name, code, course) VALUES ('Macarena and Ballroom Dances', 'MABD', 2);
-INSERT INTO UC (name, code, course) VALUES ('Enology 3', 'EN3', 2);
 INSERT INTO UC (name, code, course) VALUES ('Bakery', 'BAK', 2);
-INSERT INTO UC (name, code, course) VALUES ('Slavic', 'SLV', 2);
 INSERT INTO UC (name, code, course) VALUES ('Star Wars History 2', 'SWH2', 2);
 INSERT INTO UC (name, code, course) VALUES ('Ornitology Applied to Bird Watching', 'OABW', 2);
 INSERT INTO UC (name, code, course) VALUES ('Star Wars History Applied to Bird Watching', 'SWBW', 2);
 INSERT INTO UC (name, code, course) VALUES ('Gaming 1', 'GAM1', 2);
 INSERT INTO UC (name, code, course) VALUES ('Gaming 2', 'GAM2', 2);
 
-INSERT INTO UC (name, code, course) VALUES ('Material Sciences', 'CMBI',1);
-INSERT INTO UC (name, code, course) VALUES ('Cientific Programing', 'IPCOM', 1);
-INSERT INTO UC (name, code, course) VALUES ('Celular Biology', 'BIOCEL', 1);
-INSERT INTO UC (name, code, course) VALUES ('Organic Chemistry', 'QOBI', 1);
-INSERT INTO UC (name, code, course) VALUES ('Fluid Mechanics', 'MFLU', 1);
-INSERT INTO UC (name, code, course) VALUES ('Electromagnetism', 'ELEL', 1);
-INSERT INTO UC (name, code, course) VALUES ('Microbiology', 'MGER', 1);
-INSERT INTO UC (name, code, course) VALUES ('Signals and Electronics', 'SEL', 1);
-INSERT INTO UC (name, code, course) VALUES ('Statistics', 'MNES', 1);
-INSERT INTO UC (name, code, course) VALUES ('Molecular Biology', 'BIOMOL', 1);
-INSERT INTO UC (name, code, course) VALUES ('Processing of Phisiological Signal', 'PSFI', 1);
-INSERT INTO UC (name, code, course) VALUES ('Sensors and Actuators', 'SA', 1);
-INSERT INTO UC (name, code, course) VALUES ('Anatomy', 'ANAT', 1);
-INSERT INTO UC (name, code, course) VALUES ('Image Processing', 'AIBI', 1);
-INSERT INTO UC (name, code, course) VALUES ('Information Systems Engeneering', 'ESIN', 1);
-INSERT INTO UC (name, code, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1);
-
+INSERT INTO UC (name, code, course) VALUES ('Sidewalks 1', 'SDW1', 3);
+INSERT INTO UC (name, code, course) VALUES ('City Parks', 'CTP', 3);
+INSERT INTO UC (name, code, course) VALUES ('Courtroom and Prison Positioning', 'CPP', 3);
+INSERT INTO UC (name, code, course) VALUES ('Introduction to City Lakes', 'ICL', 3);
+INSERT INTO UC (name, code, course) VALUES ('Ancient Cities', 'ACT', 3);
+INSERT INTO UC (name, code, course) VALUES ('Public Transport 1', 'PT1', 3);
+INSERT INTO UC (name, code, course) VALUES ('Industrial Revolution and its Consequences', 'IRC', 3);
+INSERT INTO UC (name, code, course) VALUES ('Ethics and Surveillance', 'ETS', 3);
+INSERT INTO UC (name, code, course) VALUES ('Brutalism 101', 'BTS1', 3);
+INSERT INTO UC (name, code, course) VALUES ('Sidewalks 2', 'SDW2', 3);
 
 --passwords are 'password'
 INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Senhor Administrador', 'admin', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 12, 2, 2);
@@ -46,11 +52,11 @@ INSERT INTO Student (name, username, password_hash, creation_date, role_id, cour
 INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('J. R. R. Tolkien', 'bilbobaggins', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 876543210, 2, 2);
 
 
-INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the primary ingredient in wine?', 'Grapes', 'Apples', 'Oranges', 'Berries', 1, 1);
-INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('Which type of wine is typically lighter in color?', 'White wine', 'Red wine', 'Rosé wine', 'Sparkling wine', 2, 1);
-INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('In winemaking, what is fermentation?', 'Conversion of sugars into alcohol', 'A type of grape', 'A wine storage container', 'A wine glass', 3, 1);
-INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the purpose of aging wine?', 'Enhancing flavor and complexity', 'Reducing alcohol content', 'Preventing fermentation', NULL, 4, 1);
-INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('Which country is known for its Bordeaux wine?', 'France', 'Italy', 'Spain', NULL, 5, 1);
+INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the primary ingredient in wine?', 'Grapes', 'Apples', 'Oranges', 'Berries', 1, 14);
+INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('Which type of wine is typically lighter in color?', 'White wine', 'Red wine', 'Rosé wine', 'Sparkling wine', 2, 14);
+INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('In winemaking, what is fermentation?', 'Conversion of sugars into alcohol', 'A type of grape', 'A wine storage container', 'A wine glass', 3, 14);
+INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the purpose of aging wine?', 'Enhancing flavor and complexity', 'Reducing alcohol content', 'Preventing fermentation', NULL, 4, 14);
+INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('Which country is known for its Bordeaux wine?', 'France', 'Italy', 'Spain', NULL, 5, 14);
 
 INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the study of birds called?', 'Ornithology', 'Entomology', 'Herpetology', NULL, 6, 2);
 INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('Which bird is known for its ability to mimic human speech?', 'Parrot', 'Penguin', NULL, NULL, 7, 2);
