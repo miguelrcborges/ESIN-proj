@@ -7,7 +7,7 @@
 	if($current_role != 3)
 	{
 		$_SESSION['error'] = 'User "'.$username.'" is not banned.';
-		header('Location:/admin_panel/user_lookup');
+		header('Location:/admin_panel/user_lookup/');
 		die();
 	}
 
@@ -26,6 +26,6 @@
 		$_SESSION['error'] = 'No user found with username "'.$username.'".';
 	}
 
-	header('Location:/admin_panel/user_lookup');
+	header('Location:/admin_panel/user_lookup/');
 	die();
 ?>

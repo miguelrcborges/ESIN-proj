@@ -17,13 +17,13 @@
 		} else {
 			$_SESSION['error'] = "Can't ban an admin level user.";
 		}
-		header('Location:/admin_panel/user_lookup');
+		header('Location:/admin_panel/user_lookup/');
 		die();
 	}
 	elseif($current_role == 3)
 	{
 		$_SESSION['error'] = 'User "'.$username.'" is already banned.';
-		header('Location:/admin_panel/user_lookup');
+		header('Location:/admin_panel/user_lookup/');
 		die();
 	}
 
@@ -40,6 +40,6 @@
 		$_SESSION['error'] = 'No user found with username "'.$username.'".';
 	}
 
-	header('Location:/admin_panel/user_lookup');
+	header('Location:/admin_panel/user_lookup/');
 	die();
 ?>

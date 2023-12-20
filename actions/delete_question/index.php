@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$q_id = $_POST['q_id'];
+	$q_id = $_GET['q_id'];
 
 	$dbh = new PDO('sqlite:' . $_SERVER['DOCUMENT_ROOT'] . '/db');
 
@@ -18,5 +18,5 @@
 		$_SESSION['error'] = "Question #$q_id not found";
 	}
 
-	header('Location:/admin_panel/question_lookup');
+	header('Location:/admin_panel/question_lookup/');
 ?>

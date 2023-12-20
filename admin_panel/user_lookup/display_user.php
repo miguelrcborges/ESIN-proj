@@ -47,14 +47,14 @@
 <?php
 if ($user_stats["role_id"] == 3)
 { ?>
-<form id="ban" action='\actions\unban_user' method='GET'>
+<form id="ban" action='/actions/unban_user/' method='GET'>
 	<input type='hidden' name='username' value='<?php echo($username); ?>'>
 	<input type='hidden' name='role' value='<?php echo($user_stats["role_id"]); ?>'>
 	<button>Unban User</button>
 </form>
 <?php }
 else { ?>
-	<form id="ban" action='\actions\ban_user' method='GET'>
+	<form id="ban" action='/actions/ban_user/' method='GET'>
 		<input type='hidden' name='username' value='<?php echo($username); ?>'>
 		<input type='hidden' name='role' value='<?php echo($user_stats["role_id"]); ?>'>
 		<button>Ban User</button>

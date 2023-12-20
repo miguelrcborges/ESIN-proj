@@ -15,7 +15,7 @@
 	<main>
         <h2>Manage Users</h2>
         
-        <form id= "search" action="/admin_panel/user_lookup" type="GET">
+        <form id= "search" action="/admin_panel/user_lookup/" type="GET">
             <input type="text" name="username" placeholder="username" required="required">
             <button>Search</button>
         </form>
