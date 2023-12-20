@@ -1,140 +1,141 @@
 h1 {
-    padding: 0 0 1em 1em;
-    margin: 0; 
+	padding: 8px 16px;
 }
 
 section {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 sidebar {
-    width: 200px;
-    border-style: solid;
-    border-width: 0 2px 0 0;
-    border-color:  var(--fg);
-    margin: 0 0 0 1em;
+	width: 200px;
+	border-style: solid;
+	border-width: 0 2px 0 0;
+	border-color: var(--fg);
+	padding-left: 32px;
 
 
 	display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 1em;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 32px;
 }
 
 
-sidebar > a > button {
-    background-color: transparent;
-    color: var(--fg);
+sidebar > a, sidebar > a:visited {
+	color: var(--fg);
+	font-weight: bold;
 }
 
 section > main {
-    padding: 30px 15px;
-    display: flex;
-    flex-direction:column;
+	padding: 16px 32px;
+	display: flex;
+	flex-direction: column;
 }
 
 form {
-    display: flex;
-    flex-direction:column;
-    width: min(300px, 70dvw);;
+	display: flex;
+	flex-direction: column;
+	width: min(300px, 70dvw);
+	;
 }
 
 select {
-    height: 40px;
+	height: 40px;
 }
 
 main > form > * {
-    margin: 5px 0;
+	margin: 5px 0;
 }
 
 main > form > button {
-    align-self: center;
-    width:10em;
-    padding: 10px;
+	align-self: center;
+	width: 10em;
+	padding: 10px;
 }
 
 main > form > div {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 #info {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 15px;
 }
 
-#info > img {        
-    border-radius: 100%;
-    width: min(300px, 60dvw);
-    height: min(300px, 60dvw);
+#info > img {
+	border-radius: 100%;
+	width: min(300px, 60dvw);
+	height: min(300px, 60dvw);
 }
 
-.success, .error {
-    margin: 15px 0;
+.success,
+.error {
+	margin: 15px 0;
 }
 
 h2 {
-    margin: 0 0 40px 0 ;
+	margin: 0 0 40px 0;
 }
 
 @media (orientation: portrait) or (max-width: 650px) {
-    main {
-        align-self: center;
-    }
+	main {
+		align-self: center;
+	}
 
-    h1 {
-        padding: 0.5em 0 0.5em 1em;
-    }
+	h1 {
+		padding: 0.5em 0 0.5em 1em;
+	}
 
-    sidebar {
-        width: auto;
-        border-style: solid;
-        border-width: 2px 0 2px 0;
-        border-color:  var(--fg);
+	sidebar {
+		width: auto;
+		border-style: solid;
+		border-width: 2px 0 2px 0;
+		border-color: var(--fg);
 
-        margin: 0;
-    
-    
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-    }
+		margin: 0;
 
-    section {
-        display: flex;
-        flex-direction: column;
-    }
 
-    sidebar > a > button {
-        background-color: transparent;
-        color: var(--fg);
-        border-width: 0 0 2px 0;
-        border-radius: 0;
-        border-style: solid;
-        align-items: center;
-    }
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding: 10px;
+	}
 
-    #info {
-        display: flex;
-        flex-direction: column;
-    }
+	section {
+		display: flex;
+		flex-direction: column;
+	}
 
-    #info > img {        
-        align-self: center;
-    }
+	sidebar > a {
+		color: var(--fg);
+		border-width: 0 0 2px 0;
+		border-radius: 0;
+		border-style: solid;
+		align-items: center;
+	}
 
-    main > form {
-        gap: 20px;
-    }
+	#info {
+		display: flex;
+		flex-direction: column;
+	}
 
-    form {
-        width: min(380px, 90dvw);
-    }
+	#info > img {
+		align-self: center;
+	}
 
-    
+	main > form {
+		gap: 20px;
+	}
+
+	form {
+		width: min(380px, 90dvw);
+	}
+
+
 }

@@ -1,8 +1,8 @@
-h1 {
-	margin: 0 0 16px 16px;
+body > h1 {
+	padding: 8px 16px;
 }
 
-p{
+p {
 	margin: 8px;
 }
 
@@ -16,24 +16,18 @@ sidebar {
 	border-style: solid;
 	border-width: 0 2px 0 0;
 	border-color: var(--fg);
-	margin: 0 0 0 16px;
+	padding-left: 32px;
 
 
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	gap: 32px;
 }
 
-sidebar > * {
-	margin-block-start: 16px;
-	margin-block-end: 16px;
-
-	margin-left: 16px;
-}
-
-sidebar > a > button {
-	background-color: transparent;
+sidebar > a, sidebar > a:visited {
 	color: var(--fg);
+	font-weight: bold;
 }
 
 h2 {
@@ -60,14 +54,15 @@ select {
 main {
 	display: flex;
 	flex-direction: column;
-	padding: 30px 15px;
+	padding: 16px 32px;
 	gap: 10px;
 }
 
 form {
-    display: flex;
-    flex-direction:column;
-    width: min(300px, 70dvw);;
+	display: flex;
+	flex-direction: column;
+	width: min(300px, 70dvw);
+	;
 }
 
 #user_info {
@@ -102,17 +97,17 @@ div > img {
 }
 
 .parameter > p > input {
-	width:100%;
+	width: 100%;
 }
 
 .ucs-container {
-    display: flex;
+	display: flex;
 	flex-direction: column;
-    justify-content: space-between;
+	justify-content: space-between;
 	gap: 16px;
 }
 
-.ucs-container > * > *  {
+.ucs-container > * > * {
 	width: 100%;
 	padding: 8px 0 8px 0;
 }
@@ -125,9 +120,9 @@ div > img {
 
 
 	main {
-        align-self: center;
-        gap: 20px;
-    }
+		align-self: center;
+		gap: 20px;
+	}
 
 	sidebar {
 		width: auto;
@@ -136,7 +131,6 @@ div > img {
 		border-color: var(--fg);
 
 		margin: 0;
-
 
 		display: flex;
 		flex-direction: row;
@@ -151,8 +145,7 @@ div > img {
 		flex-direction: column;
 	}
 
-	sidebar > a > button {
-		background-color: transparent;
+	sidebar > a, sidebar > a:visited {
 		color: var(--fg);
 		border-width: 0 0 2px 0;
 		border-radius: 0;
@@ -193,9 +186,9 @@ div > img {
 		text-align: center;
 	}
 
-    form {
-        width: min(380px, 90dvw);
-    }
+	form {
+		width: min(380px, 90dvw);
+	}
 
 	#create > button {
 		padding: 16px 32px 16px 32px;
