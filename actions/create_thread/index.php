@@ -1,12 +1,20 @@
 <?php
 	session_start();
-	include_once($_SERVER['DOCUMENT_ROOT']."/_partials/must_login.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_login.php");
+
+	$THREAD_TITLE_LIMIT = 70;
 	
 	$title = $_POST["title"];
 	$content = $_POST["content"];
 	$filter = $_POST["filter"];
 	if ($filter == "") {
 		$filter = null; // So it sets null in the db
+	}
+
+	if (strlen($content) > $THREAD_TITLE_LIMIT) {
+		$_SESSION['error'] = "You can't create threads which the title is longer than " . $THREAD_TITLE_LIMIT . " characters.";
+		header("Location:/create_thread/");
+		die();
 	}
 
 	if ($filter) {
