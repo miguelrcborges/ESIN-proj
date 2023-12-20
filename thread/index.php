@@ -2,10 +2,7 @@
 	session_start();
 	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/must_login.php");
 
-	$title = "Login";
-	$css = ["header", "footer", "thread"];
-	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
-	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php"); 
+	$title = "Thread";
 	
 	$thread_id = $_GET['thread'];
 
@@ -23,6 +20,12 @@
 	$stm->execute([$thread_id]);
 	$thread = $stm->fetch();
 
+	if(!$thread) {
+		$_SESSION['error'] = "This thread doesn't exist! Please choose a valid one";
+		header('Location:/forum/');
+		die();
+	}
+
 	$stm = $dbh->prepare("SELECT 
 	Reply.id as reply_id,
 	Reply.creation_date as reply_date,
@@ -35,6 +38,10 @@
 	WHERE Reply.thread = ?");
 	$stm->execute([$thread_id]);
 	$replies = $stm->fetchAll();
+
+	$css = ["header", "footer", "thread"];
+	include($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
+	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php"); 
 ?>
 
 <main>
