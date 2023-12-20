@@ -123,7 +123,7 @@
 			<header class="replier">
 				<div>
 					<?php 
-						if ($user_id == $attempt['replier']) {
+						if ($user_id == $attempt['replier_id']) {
 							echo "You";
 						} else {
 							echo "<img src=\"/assets/pfp/cat" . $attempt['replier_id'] % 10 . ".jpg\" alt=\"Profile Picture\"/>" 
