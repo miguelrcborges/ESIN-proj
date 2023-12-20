@@ -29,8 +29,8 @@ CREATE TABLE Student (
 	creation_date INTEGER NOT NULL,
 	role_id INTEGER NOT NULL DEFAULT 1,
 	course_id INTEGER,
-	FOREIGN KEY (role_id) REFERENCES Role(id),
-	FOREIGN KEY (course_id) REFERENCES Course(id)
+	FOREIGN KEY (role_id) REFERENCES Role(id) ON DELETE SET DEFAULT,
+	FOREIGN KEY (course_id) REFERENCES Course(id) ON DELETE SET NULL
 );
 
 CREATE TABLE UC (
@@ -38,15 +38,15 @@ CREATE TABLE UC (
 	name TEXT NOT NULL,
 	code TEXT NOT NULL,
 	course INTEGER NOT NULL,
-	FOREIGN KEY (course) REFERENCES Course(id)
+	FOREIGN KEY (course) REFERENCES Course(id) ON DELETE CASCADE
 );
 
 CREATE TABLE StudentUCs (
 	student INTEGER,
 	uc INTEGER,
 	PRIMARY KEY (student, uc),
-	FOREIGN KEY (student) REFERENCES Student(id),
-	FOREIGN KEY (uc) REFERENCES UC(id)
+	FOREIGN KEY (student) REFERENCES Student(id) ON DELETE CASCADE,
+	FOREIGN KEY (uc) REFERENCES UC(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Question (
@@ -58,8 +58,8 @@ CREATE TABLE Question (
 	wrong_answer3 TEXT,
 	author INTEGER NOT NULL,
 	uc INTEGER NOT NULL,
-	FOREIGN KEY (author) REFERENCES Student(id),
-	FOREIGN KEY (uc) REFERENCES UC(id)
+	FOREIGN KEY (author) REFERENCES Student(id) ON DELETE CASCADE,
+	FOREIGN KEY (uc) REFERENCES UC(id) ON DELETE CASCADE
 );
 
 CREATE TABLE QuestionRating (
@@ -68,8 +68,8 @@ CREATE TABLE QuestionRating (
 	user_score INTEGER NOT NULL DEFAULT 0,
 	PRIMARY KEY (student, question),
 	CHECK (user_score IN (0, 1, -1)),
-	FOREIGN KEY (student) REFERENCES Student(id),
-	FOREIGN KEY (question) REFERENCES Question(id)
+	FOREIGN KEY (student) REFERENCES Student(id) ON DELETE CASCADE,
+	FOREIGN KEY (question) REFERENCES Question(id) ON DELETE CASCADE
 );
 
 CREATE TABLE QuestionAttempts (
@@ -78,8 +78,8 @@ CREATE TABLE QuestionAttempts (
 	question INTEGER NOT NULL,
 	date INTEGER NOT NULL,
 	selected INTEGER NOT NULL CHECK (selected IN (1, 2, 3, 4)),
-	FOREIGN KEY (student) REFERENCES Student(id),
-	FOREIGN KEY (question) REFERENCES Question(id)
+	FOREIGN KEY (student) REFERENCES Student(id) ON DELETE CASCADE,
+	FOREIGN KEY (question) REFERENCES Question(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Thread (
@@ -89,8 +89,8 @@ CREATE TABLE Thread (
 	content TEXT,
 	author INTEGER NOT NULL,
 	uc INTEGER,
-	FOREIGN KEY (author) REFERENCES Student(id)
-	FOREIGN KEY (uc) REFERENCES UC(id)
+	FOREIGN KEY (author) REFERENCES Student(id) ON DELETE CASCADE
+	FOREIGN KEY (uc) REFERENCES UC(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Reply (
@@ -99,8 +99,8 @@ CREATE TABLE Reply (
 	content TEXT NOT NULL,
 	author INTEGER NOT NULL,
 	thread INTEGER NOT NULL,
-	FOREIGN KEY (author) REFERENCES Student(id),
-	FOREIGN KEY (thread) REFERENCES Thread(id)
+	FOREIGN KEY (author) REFERENCES Student(id) ON DELETE CASCADE,
+	FOREIGN KEY (thread) REFERENCES Thread(id) ON DELETE CASCADE
 );
 
 INSERT INTO Role (name) VALUES ('membro');
