@@ -12,7 +12,7 @@
 	}
 
 	if (strlen($title) > $THREAD_TITLE_LIMIT) {
-		$_SESSION['error'] = "You can't create threads which the title is longer than " . $THREAD_TITLE_LIMIT . " characters.";
+		$_SESSION['error'] = "You can't create threads with a title longer than " . $THREAD_TITLE_LIMIT . " characters.";
 		header("Location:/create_thread/");
 		die();
 	}
