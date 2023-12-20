@@ -24,7 +24,7 @@ $pfp_loc = '/assets/pfp/cat'.($user_id%10) . '.jpg';
                                                                 echo $user_info["course_name"];
                                                             }?> </p>
         <p><strong>Account Role:</strong>               <?php echo $user_info["role_name"]?> </p>
-        <p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', strtotime($user_info["creation_date"])) ?> </p>
+        <p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', $user_info["creation_date"]) ?> </p>
     </div>
 </div>
 
