@@ -1,9 +1,10 @@
 <?php
 	session_start();
 	$user = $_SESSION["user_id"];
-	$new_password = $_POST['new_password'];
-	$password = $_POST['password'];
-	$confirm = $_POST['confirm'];
+	$new_password = $_GET['new_password'];
+	$password = $_GET['password'];
+	$confirm = $_GET['confirm'];
+	var_dump($_GET);
 
 	if ($confirm != $new_password) {
 		$_SESSION['error'] = "The passwords don't match";

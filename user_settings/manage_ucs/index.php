@@ -28,7 +28,7 @@ if ($user_info["course_id"]==NULL) {
     die;
 }?>
         
-<form action='/actions/user_settings/manage_ucs' method='GET'>
+<form action='/actions/user_settings/manage_ucs/' method='GET'>
     <?php foreach ($ucs as $uc) {
         if (in_array($uc["id"], $course_ucs)) {
         ?>

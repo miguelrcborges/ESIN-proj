@@ -2,7 +2,7 @@
 $page_title = "Change Password";
 include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/head.php"); ?>
         
-		<form action='\actions\user_settings\change_password' method='POST'>
+		<form action='/actions/user_settings/change_password/' method='POST'>
             <label for new_password><strong>New Password:</strong></label>
             <input type="password" name="new_password" placeholder="tengo3suerte" required="required">
             <label for confirm><strong>Confirm New Password:</strong></label>
