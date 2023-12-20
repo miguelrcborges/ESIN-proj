@@ -35,13 +35,15 @@ INSERT INTO UC (name, code, semester, year, course) VALUES ('Image Processing', 
 INSERT INTO UC (name, code, semester, year, course) VALUES ('Information Systems Engeneering', 'ESIN', 1, 4, 1);
 INSERT INTO UC (name, code, semester, year, course) VALUES ('Computer Assisted Diagnosis', 'DACO', 1, 4, 1);
 
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Diamantino Freitas', 'diamantino', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 12, 2, 2);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Jonas Carvalho', 'jonas', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 300, 1, 1);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Pedro Felix', 'furrix', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 1098765432, 1, 1);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Rocky Cebola', 'rocky', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 3456789012, 1, 2);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Jack Douglass', 'jacksfilms', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 7890123456, 1, 2);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Charles Christopher White Jr.', 'penguinz0', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 2345678901, 1, 1);
-INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('J. R. R. Tolkien', 'bilbobaggins', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 8765432109, 2, 2);
+
+--passwords are 'password'
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Senhor Administrador', 'admin', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 12, 2, 2);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Jonas Carvalho', 'jonas', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 300, 2, 1);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Pedro Felix', 'furrix', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 1009965432, 1, 1);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Rocky Cebola', 'rocky', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 345678090, 1, 2);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Jack Douglass', 'jacksfilms', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 178901234, 1, 2);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('Charles Christopher White Jr.', 'penguinz0', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 2300901, 1, 1);
+INSERT INTO Student (name, username, password_hash, creation_date, role_id, course_id) VALUES ('J. R. R. Tolkien', 'bilbobaggins', '$2y$10$M46ilCAqnBOGULh0V44B9.Qo3jcfFgoZVx6ccNTqyXKtVg.Oh5dwK', 876543210, 2, 2);
 
 
 INSERT INTO Question (question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, author, uc) VALUES ('What is the primary ingredient in wine?', 'Grapes', 'Apples', 'Oranges', 'Berries', 1, 1);
@@ -93,12 +95,13 @@ INSERT INTO StudentUCs (student, uc) VALUES (2,8);
 INSERT INTO StudentUCs (student, uc) VALUES (3,4);
 INSERT INTO StudentUCs (student, uc) VALUES (3,5);
 
-INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Help with reports', 0, 'I was interestedin throwing some blind people in the metro. Any volunteers?', 1, 17);
-INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Welcome to web-Jonas', 0, 'Our platform is built by students for students. We hope you will enjoy your study sessions here and that can help you with your academic endeavours.', 3, NULL);
-INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Where is the bathroom at FEUP?', 0, NULL, 3, NULL);
+INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Welcome to web-Jonas', 10, 'Our platform is built by students for students. We hope you will enjoy your study sessions here and that can help you with your academic endeavours.', 1, NULL);
+INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Help with field trip', 10500, 'I was interestedin goint to see the the metros. Anyone wants to join?', 2, 17);
+INSERT INTO Thread (title, creation_date, content, author, uc) VALUES ('Where is the bathroom at FEUP?', 20320, NULL, 3, NULL);
 
-INSERT INTO Reply (content, creation_date, author, thread) VALUES ('No thanks uwu', 1, 3, 1);
-INSERT INTO Reply (content, creation_date, author, thread) VALUES ('I would also like to know.', 1, 2, 2);
+INSERT INTO Reply (content, creation_date, author, thread) VALUES ('No thanks uwu', 1, 3, 2);
+INSERT INTO Reply (content, creation_date, author, thread) VALUES ('I would also like to know.', 50020, 2, 3);
+INSERT INTO Reply (content, creation_date, author, thread) VALUES ('First door on the left.', 60000, 1, 3);
 
 
 INSERT INTO QuestionAttempts (student, question, date, selected) VALUES (1, 1, 3600, 1);

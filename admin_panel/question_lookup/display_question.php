@@ -49,7 +49,7 @@
 </div>
 </div>
 
-<form id="ban" action='\actions\delete_question' method='POST'>
+<form id="ban" action='/actions/delete_question/' method='GET'>
 	<input type='hidden' name='q_id' value='<?php echo($q_id); ?>'>
 	<button>Delete Question</button>
 </form>

@@ -5,7 +5,8 @@
 		SELECT 
 		s.name, 
 		s.id, 
-		s.creation_date, 
+		s.creation_date,
+		s.role_id,
 		r.name AS role_name, 
 		c.name AS course_name
 		FROM 
@@ -40,12 +41,24 @@
 	<p><strong>Username:</strong>                   <?php echo $username?> </p>
 	<p><strong>Course:</strong>                     <?php echo $user_stats["course_name"]?> </p>
 	<p><strong>Account Role:</strong>               <?php echo $user_stats["role_name"]?> </p>
-	<p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', strtotime($user_stats["creation_date"])) ?> </p>
+	<p><strong>Account Created on:</strong>         <?php echo date('d-m-Y', $user_stats["creation_date"]) ?> </p>
 </div>
 
-<form id="ban" action='\actions\ban_user' method='POST'>
+<?php
+if ($user_stats["role_id"] == 3)
+{ ?>
+<form id="ban" action='/actions/unban_user/' method='GET'>
 	<input type='hidden' name='username' value='<?php echo($username); ?>'>
-	<button>Ban User</button>
+	<input type='hidden' name='role' value='<?php echo($user_stats["role_id"]); ?>'>
+	<button>Unban User</button>
 </form>
+<?php }
+else { ?>
+	<form id="ban" action='/actions/ban_user/' method='GET'>
+		<input type='hidden' name='username' value='<?php echo($username); ?>'>
+		<input type='hidden' name='role' value='<?php echo($user_stats["role_id"]); ?>'>
+		<button>Ban User</button>
+	</form>
+	<?php } ?>
 
 </div>

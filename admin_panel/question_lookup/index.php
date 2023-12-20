@@ -15,7 +15,7 @@
 	<main>
 		<h2>Manage Questions</h2>
 
-		<form id= "search" action="/admin_panel/question_lookup" type="GET">
+		<form id= "search" action="/admin_panel/question_lookup/" type="GET">
 			<input type="number" name="q_id" placeholder="question ID" required="required">
 			<button>Search</button>
 		</form>
