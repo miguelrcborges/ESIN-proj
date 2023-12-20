@@ -43,10 +43,14 @@ button[type="submit"] {
 	display: block;
 }
 
-#option2:placeholder-shown + p + #option3 {
+#option2:placeholder-shown ~ #option3 {
 	display: none;
 }
 
-#option3:placeholder-shown + #option4 {
+#option2:placeholder-shown ~ #option4 {
+	display: none;
+}
+
+#option3:placeholder-shown ~ #option4 {
 	display: none;
 }
