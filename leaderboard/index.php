@@ -66,7 +66,7 @@
 				$img_num = $result['id'] % 10;
 				$username = $result['username'];
 				if ($result['points'] === null) {
-					$rounddedScore = 0;
+					$roundedScore = 0;
 				} else {
 					$roundedScore = round($result['points'], 1);
 				}
