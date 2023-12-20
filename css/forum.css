@@ -32,6 +32,10 @@ main > header > search select {
 	aspect-ratio: 3;
 }
 
+main > .success, main > .error {
+	align-self: center;
+}
+
 main > footer {
 	display: flex;
 	padding: 40px;

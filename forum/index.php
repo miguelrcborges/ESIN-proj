@@ -107,8 +107,13 @@
 			</form>
 		</search>
 	</header>
-
 <?php if ($threads) { ?>
+	<?php if ($success) { ?>
+		<p class="success"><?php echo $success; ?></p>
+	<?php }
+	if ($error) { ?>
+		<p class="error"><?php echo $error; ?></p>
+	<?php } ?>
 	<section class="thread-container">
 		<?php 
 			foreach ($threads as $thread) { 

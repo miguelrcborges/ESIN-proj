@@ -17,6 +17,14 @@
 		die();
 	}
 
+	$stmt = $dbh->prepare("SELECT id FROM Thread WHERE id=?;");
+	$stmt->execute([$thread]);
+	if (!$stmt->fetch()) {
+		$_SESSION['error'] = "The given thread does not exist.";
+		header("Location:/forum/");
+		die();
+	}
+
 	if (!$user_is_admin) {
 		$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND uc=?;");
 		$stmt->execute([$user_id, $uc]);
