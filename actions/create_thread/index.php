@@ -11,7 +11,7 @@
 		$filter = null; // So it sets null in the db
 	}
 
-	if (strlen($content) > $THREAD_TITLE_LIMIT) {
+	if (strlen($title) > $THREAD_TITLE_LIMIT) {
 		$_SESSION['error'] = "You can't create threads which the title is longer than " . $THREAD_TITLE_LIMIT . " characters.";
 		header("Location:/create_thread/");
 		die();
