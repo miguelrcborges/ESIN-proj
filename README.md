@@ -13,7 +13,7 @@
 
 **Database Setup:**
    - The project comes with a preset database named `db`, so you can skip this step.
-   - However, if ou wish to initialize a database, two init files are provided:
+   - However, if you wish to initialize a database, two init files are provided:
       - `init.sql`: Initializes an empty database without data in any of the tables. No admins, courses, or UCs are present, limiting some website features.
       - `test_data.sql`: Initializes the same tables with a collection of users, UCs, questions, and other relevant data. Simulates the website's functionality with preloaded data.
 
@@ -27,7 +27,7 @@
 4. Make sure your docker is running.
 5. Run the command (with admin privileges!)
  ```powershell
- docker run -d -p 8080:8080 -it --name=php -v *your location*/jonas quay.io/vesica/php73:de
+ docker run -d -p 8080:8080 -it --name=php -v "*your location*/jonas:/var/www/html" quay.io/vesica/php73:de
  ```
  
 6. Open  your  browser  and  go  to  [http://localhost:8080](http://localhost:8080).
@@ -38,4 +38,12 @@
 
 **Login Information:**
    - Although creating a new account is an option, the test database comes preloaded with users, all with the password 'password'.
+      - The current users present in the database are:
+         - admin
+         - jonas
+         - furrix
+         - rocky
+         - jacksfilms
+         - penguinz0
+         - bilbobaggins      
    - Log in with the username 'admin' or 'jonas' to access administrative features of the website.
