@@ -14,11 +14,6 @@
 	$stmt->execute(array($_SESSION['user_id']));
 	$ucs = $stmt->fetchAll();
 
-	if (isset($_SESSION['error'])) {
-		$error = $_SESSION['error'];
-		unset($_SESSION['error']);
-	}
-
 	if (!$ucs) {
 		$enrolled = "You are not enrolled in any UC! Please do so by enrolling <a href=\"/user_settings/\">here</a>!";
 	}
