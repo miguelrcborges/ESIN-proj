@@ -1,7 +1,5 @@
 .read sql/defaults.sql
 
-DROP TABLE IF EXISTS Notification;
-DROP TABLE IF EXISTS NotificationLevel;
 DROP TABLE IF EXISTS Reply;
 DROP TABLE IF EXISTS Thread;
 DROP TABLE IF EXISTS QuestionAttempts;
@@ -106,24 +104,6 @@ CREATE TABLE Reply (
 	thread INTEGER NOT NULL,
 	FOREIGN KEY (author) REFERENCES Student(id),
 	FOREIGN KEY (thread) REFERENCES Thread(id)
-);
-
-CREATE TABLE NotificationLevel (
-	student INTEGER,
-	thread INTEGER,
-	level INTEGER not NULL DEFAULT 0,
-	PRIMARY KEY (student, thread),
-	FOREIGN KEY (student) REFERENCES Student(id)
-	FOREIGN KEY (thread) REFERENCES Thread(id)  
-);
-
-CREATE TABLE Notification (
-	student INTEGER,
-	reply INTEGER,
-	was_read INTEGER NOT NULL DEFAULT 0 CHECK (was_read IN (0, 1)),
-	PRIMARY KEY (student, reply),
-	FOREIGN KEY (student) REFERENCES Student(id)
-	FOREIGN KEY (reply) REFERENCES Reply(id)	
 );
 
 INSERT INTO Role (name) VALUES ('membro');
