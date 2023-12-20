@@ -6,6 +6,10 @@
 	$css = ["admin_panel", "header", "footer"];
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/head.php");
 	include_once($_SERVER['DOCUMENT_ROOT'] . "/_partials/header.php");
+
+	$stmt = $dbh->prepare("SELECT id, name FROM Course;");
+	$stmt->execute(array());
+	$courses = $stmt->fetchAll();
 ?>
 
 <h1>Admin Panel </h1>
@@ -16,7 +20,11 @@
         <h2>Remove Course</h2>
         
         <form id= "search" action="/admin_panel/course_lookup/" type="GET">
-            <input type="text" name="course" placeholder="course name" required="required">
+			<select name="course" required="required">
+				<?php foreach ($courses as $course) {
+					echo '<option value="' . $course['name'] . '">' . $course['name'] . '</option>';
+				} ?>
+			</select>
             <button>Search</button>
         </form>
 
