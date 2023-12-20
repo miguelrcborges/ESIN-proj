@@ -9,7 +9,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . "/user_settings/_partials/head.php"); ?
     $courses = $stmt->fetchAll();
 ?>
 
-<form action='\actions\user_settings\change_course' method='POST'>
+<form action='/actions/user_settings/change_course/' method='POST'>
     <p><strong>Current Course: </strong><?php if ($user_info["course_id"]==NULL) {
                                                                 echo("None");
                                                             } else {
