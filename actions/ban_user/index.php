@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	$username = $_POST['username'];
-	$current_role = $_POST['role'];
+	$username = $_GET['username'];
+	$current_role = $_GET['role'];
 
 	$dbh = new PDO('sqlite:'.$_SERVER['DOCUMENT_ROOT'].'/db');
 

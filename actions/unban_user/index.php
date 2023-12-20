@@ -1,8 +1,8 @@
 <?php
 	session_start();
 
-	$username = $_POST['username'];
-	$current_role = $_POST['role'];
+	$username = $_GET['username'];
+	$current_role = $_GET['role'];
 
 	if($current_role != 3)
 	{
