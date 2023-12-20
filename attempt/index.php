@@ -13,10 +13,10 @@
 
 	$sq = $dbh->prepare("
 		SELECT 
-			QA.student as replier_id, QA.id as id,
+			QA.student as replier_id, QA.id as id, selected, A.username,
 			Q.question as question, correct_answer, wrong_answer1, wrong_answer2, wrong_answer3, Q.id as question_id,
-			A.name as author, A.id as author_id, selected, 
-			R.name as replier,
+			A.name as author, A.id as author_id, A.username as author_username,
+			R.name as replier, R.username as replier_username,
 			UC.name as uc, UC.id as uc_id, 
 			QA.date as date, 
 			QR.user_score as q_rating, 
@@ -39,7 +39,7 @@
 		die();
 	}
 
-	if ($attempt['replier'] != $user_id || !$user_is_admin) {
+	if ($attempt['replier_id'] != $user_id && !$user_is_admin) {
 		$_SESSION['error'] = "You haven't permission to see this attempt.";
 		header('Location:/select_uc/');
 		die();
@@ -90,7 +90,7 @@
 					<header>
 						<div>
 							<img src="/assets/pfp/cat<?php echo $attempt['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-							<span><?php echo $attempt['author']; ?></span>
+							<span><?php echo $attempt['author']; ?> @(<?php echo $attempt['author_username']; ?>)</span>
 						</div>
 						<div>
 							<span>Question #<?php echo $attempt['question_id']; ?></span>
@@ -126,7 +126,8 @@
 						if ($user_id == $attempt['replier']) {
 							echo "You";
 						} else {
-								echo "<img src=\"/assets/pfp/cat" . $attempt['replier_id'] % 10 . ".jpg\" alt=\"Profile Picture\"/>" . $attempt['replier'];
+							echo "<img src=\"/assets/pfp/cat" . $attempt['replier_id'] % 10 . ".jpg\" alt=\"Profile Picture\"/>" 
+								. $attempt['replier'] . " @(" . $attempt['replier_username'] . ')';
 						}
 					?>
 					replied:
