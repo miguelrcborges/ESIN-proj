@@ -25,7 +25,7 @@
 			<div class="parameter">
 				<p><label for="password">Password</label></p>
 				<p><input type="password" id="password" name="password" placeholder="snakegoodfriend420" required="required"></p>
-					</div>
+			</div>
 			<div class="parameter">
 				<p><label for="confirm">Confirm Password</label></p>
 				<p><input type="password" id="confirm" name="confirm" placeholder="snakegoodfriend420" required="required"></p>
