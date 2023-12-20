@@ -14,8 +14,11 @@
 <main>
 	<h1>Thread creation</h1>
 	<form action="/actions/create_thread/" method="POST">
+		<?php if (isset($succes)) { ?>
+			<span class="success"><?php echo $error; ?></span>
+		<?php } ?>
 		<?php if (isset($error)) { ?>
-			<span><?php echo $error; ?></span>
+			<span class="error"><?php echo $error; ?></span>
 		<?php } ?>
 		<div class="parameter">
 			<p><label for="title">Title</label></p>
