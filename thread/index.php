@@ -13,6 +13,7 @@
 	Thread.uc,
 	Student.id as op_id,
 	Student.name as op_name,
+	Student.username as op_username,
 	Student.role_id as op_role
 	FROM Thread 
 	JOIN Student ON author = Student.id
@@ -32,6 +33,7 @@
 	Reply.content as reply_content,
 	Student.id as author_id,
 	Student.name as author_name,
+	Student.username as author_username,
 	Student.role_id as author_role
 	FROM Reply
 	JOIN Student ON Reply.author = Student.id
@@ -50,7 +52,7 @@
 			<h1 class="title"> <?php echo $thread['thread_title'];?> </h1>
 			<span class="profile">
 				<img src="/assets/pfp/cat<?php echo $thread['op_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-				<span class="author"><?php echo $thread['op_name'];?></span>
+				<?php echo "<span class='author'> " . $thread['op_name'] . " (@" . $thread['op_username'] . ") </span>";?>
 			</span>
 		</header>
 		<body>
@@ -74,7 +76,7 @@
 						<header>
 							<div class="profile">
 								<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-								<span><?php echo $reply['author_name']; ?></span>
+								<?php echo "<span class='author'> " . $reply['author_name'] . " (@" . $reply['author_username'] . ") </span>";?>
 							</div>
 						</header>
 						<body>
@@ -90,7 +92,7 @@
 						<header>
 							<div class="profile">
 								<img src="/assets/pfp/cat<?php echo $reply['author_id'] % 10; ?>.jpg" alt="Profile Picture"/>
-								<span><?php echo $reply['author_name']; ?></span>
+								<?php echo "<span class='author'> " . $reply['author_name'] . " (@" . $reply['author_username'] . ") </span>";?>
 							</div>
 						</header>
 						<body>
