@@ -17,17 +17,18 @@
 		die();
 	}
 
-	$stmt = $dbh->prepare("SELECT id FROM Thread WHERE id=?;");
+	$stmt = $dbh->prepare("SELECT uc FROM Thread WHERE id=?;");
 	$stmt->execute([$thread]);
-	if (!$stmt->fetch()) {
+	$uc_response = $stmt->fetch();
+	if (empty($uc_response)) {
 		$_SESSION['error'] = "The given thread does not exist.";
 		header("Location:/forum/");
 		die();
 	}
 
-	if (!$user_is_admin) {
+	if (!$user_is_admin && $uc_response['uc'] != null) {
 		$stmt = $dbh->prepare("SELECT uc FROM StudentUCs WHERE student=? AND uc=?;");
-		$stmt->execute([$user_id, $uc]);
+		$stmt->execute([$user_id, $uc_response['uc']]);
 
 		if (!$stmt->fetch()) {
 			$_SESSION['error'] = "You don't have permissions to access this thread.";
