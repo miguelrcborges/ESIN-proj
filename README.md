@@ -24,8 +24,10 @@
    ``` 
 
 **Run with Docker:** 
+
 4. Make sure your docker is running.
 5. Run the command (with admin privileges!)
+
  ```powershell
  docker run -d -p 8080:8080 -it --name=php -v "*your location*/jonas:/var/www/html" quay.io/vesica/php73:de
  ```
